@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>信火追源 · 从星火到征途</title>
+    <!-- 引入书法与衬线字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* ===== CSS 变量（主题色） ===== */
+        :root {
+            --red: #C00000;
+            --red-dark: #8B0000;
+            --gold: #D4AF37;
+            --gold-light: #F0D080;
+            --bg-dark: #1A0A05;
+            --bg-card: #2C1810;
+            --text-light: #F5EDE3;
+            --text-muted: #B8A99A;
+            --green-jinggang: #2D6B4F;
+            --shadow-gold: 0 0 30px rgba(212, 175, 55, 0.15);
+            --font-serif: 'Noto Serif SC', serif;
+            --font-calligraphy: 'Ma Shan Zheng', cursive;
+        }
+
+        /* ===== 全局重置 ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: var(--font-serif);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ===== 滚动条 ===== */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 10px;
+        }
+
+        /* ===== 通用工具 ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            letter-spacing: 4px;
+            background: linear-gradient(180deg, var(--gold-light) 0%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-sub {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 1rem;
+            letter-spacing: 2px;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding-bottom: 1.5rem;
+        }
+
+        .gold-underline {
+            width: 80px;
+            height: 3px;
+            background: var(--gold);
+            margin: 0.5rem auto 2rem;
+            border-radius: 2px;
+        }
+
+        /* ===== 导航栏 ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 16px 0;
+            background: rgba(26, 10, 5, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-calligraphy);
+            font-size: 1.5rem;
+            color: var(--gold);
+            letter-spacing: 2px;
+        }
+
+        .nav-logo .star {
+            color: var(--gold);
+            font-size: 1.8rem;
+            animation: pulse-star 2s infinite alternate;
+        }
+
+        @keyframes pulse-star {
+            0% { opacity: 0.6; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s;
+            position: relative;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 5px;
+        }
+
+        .nav-hamburger span {
+            display: block;
+            width: 28px;
+            height: 2px;
+            background: var(--gold);
+            transition: 0.3s;
+        }
+
+        /* ===== Hero 区域 ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding: 120px 24px 80px;
+            background: 
+                radial-gradient(ellipse at 30% 50%, rgba(192, 0, 0, 0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 80%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+                var(--bg-dark);
+            overflow: hidden;
+        }
+
+        /* 星火粒子背景 */
+        .hero-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: var(--gold);
+            border-radius: 50%;
+            opacity: 0.3;
+            box-shadow: 0 0 15px var(--gold);
+            animation: float-particle linear infinite;
+        }
+
+        @keyframes float-particle {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 6px 24px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            margin-bottom: 2rem;
+            background: rgba(212, 175, 55, 0.05);
+            backdrop-filter: blur(4px);
+        }
+
+        .hero-title {
+            font-family: var(--font-calligraphy);
+            font-size: clamp(3rem, 10vw, 6rem);
+            color: var(--gold);
+            text-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+            letter-spacing: 8px;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-weight: 400;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            letter-spacing: 6px;
+        }
+
+        .hero-quote {
+            font-family: var(--font-calligraphy);
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            color: var(--text-muted);
+            margin: 2rem 0 2.5rem;
+            padding: 1.5rem 0;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            letter-spacing: 2px;
+        }
+
+        .hero-quote span {
+            color: var(--gold-light);
+            display: block;
+            font-size: 0.9rem;
+            margin-top: 8px;
+            font-family: var(--font-serif);
+            letter-spacing: 4px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 40px;
+            border: none;
+            border-radius: 60px;
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--red);
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(192, 0, 0, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(192, 0, 0, 0.6);
+            background: #a00000;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--gold);
+            border: 1.5px solid var(--gold);
+        }
+
+        .btn-outline:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-gold);
+        }
+
+        /* ===== 标语长廊 ===== */
+        .slogan-section {
+            padding: 80px 0;
+            background: linear-gradient(180deg, var(--bg-dark) 0%, #110804 100%);
+        }
+
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-tab {
+            padding: 10px 28px;
+            border-radius: 40px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            background: transparent;
+            color: var(--text-muted);
+            font-family: var(--font-serif);
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            letter-spacing: 1px;
+        }
+
+        .filter-tab:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .filter-tab.active {
+            background: var(--gold);
+            color: var(--bg-dark);
+            border-color: var(--gold);
+            font-weight: 700;
+        }
+
+        .slogan-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .slogan-card {
+            background: rgba(44, 24, 16, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 16px;
+            padding: 28px 30px;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: default;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slogan-card::before {
+            content: '★';
+            position: absolute;
+            top: -20px;
+            right: -10px;
+            font-size: 80px;
+            color: rgba(212, 175, 55, 0.03);
+            pointer-events: none;
+        }
+
+        .slogan-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--gold);
+            box-shadow: var(--shadow-gold), inset 0 0 30px rgba(212, 175, 55, 0.02);
+        }
+
+        .slogan-text {
+            font-family: var(--font-calligraphy);
+            font-size: 1.6rem;
+            color: var(--gold-light);
+            margin-bottom: 12px;
+            line-height: 1.4;
+            letter-spacing: 2px;
+        }
+
+        .slogan-meta {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .slogan-period {
+            display: inline-block;
+            padding: 2px 14px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            background: var(--red);
+            color: #fff;
+        }
+
+        .slogan-period.jinggang {
+            background: var(--green-jinggang);
+        }
+
+        .slogan-period.changzheng {
+            background: #8B4513;
+        }
+
+        .slogan-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            border-top: 1px dashed rgba(212, 175, 55, 0.1);
+            padding-top: 12px;
+            margin-top: 6px;
+        }
+
+        .slogan-actions {
+            margin-top: 16px;
+            display: flex;
+            gap: 12px;
+        }
+
+        .slogan-actions button {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: color 0.3s;
+            font-family: var(--font-serif);
+            padding: 4px 8px;
+        }
+
+        .slogan-actions button:hover {
+            color: var(--gold);
+        }
+
+        /* ===== 调研足迹（时间轴） ===== */
+        .footprint-section {
+            padding: 80px 0;
+            background: var(--bg-card);
+            border-top: 1px solid rgba(212, 175, 55, 0.08);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.08);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 12px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--gold), var(--red), var(--gold));
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 48px;
+            padding-left: 30px;
+        }
+
+        .timeline-item::before {
+            content: '★';
+            position: absolute;
+            left: -30px;
+            top: 4px;
+            color: var(--gold);
+            font-size: 1.2rem;
+            background: var(--bg-dark);
+            padding: 4px;
+            border-radius: 50%;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+
+        .timeline-item .date {
+            font-size: 0.8rem;
+            color: var(--gold);
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+
+        .timeline-item h3 {
+            font-size: 1.4rem;
+            margin: 6px 0 8px;
+            color: var(--text-light);
+        }
+
+        .timeline-item p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        /* ===== 成果展示 / AI 入口 ===== */
+        .result-section {
+            padding: 80px 0;
+            background: var(--bg-dark);
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .result-card {
+            background: rgba(44, 24, 16, 0.5);
+            border-radius: 16px;
+            padding: 30px 24px;
+            text-align: center;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: all 0.4s;
+            cursor: pointer;
+        }
+
+        .result-card:hover {
+            border-color: var(--gold);
+            transform: scale(1.02);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .result-card .icon {
+            font-size: 3rem;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .result-card h4 {
+            color: var(--gold-light);
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .result-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* ===== AI 数字讲解员浮窗 ===== */
+        .ai-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 12px;
+        }
+
+        .ai-toggle {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--red), var(--red-dark));
+            border: 2px solid var(--gold);
+            box-shadow: 0 4px 30px rgba(192, 0, 0, 0.5);
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-serif);
+            animation: pulse-star 3s infinite alternate;
+        }
+
+        .ai-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 50px rgba(212, 175, 55, 0.3);
+        }
+
+        .ai-chat-window {
+            width: 340px;
+            max-width: 90vw;
+            background: rgba(26, 10, 5, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 20px;
+            padding: 20px;
+            display: none;
+            flex-direction: column;
+            gap: 14px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+        }
+
+        .ai-chat-window.open {
+            display: flex;
+        }
+
+        .ai-chat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--gold);
+            font-weight: 700;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding-bottom: 10px;
+        }
+
+        .ai-chat-header button {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .ai-chat-body {
+            max-height: 200px;
+            overflow-y: auto;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .ai-chat-body .bot-msg {
+            background: rgba(212, 175, 55, 0.08);
+            padding: 10px 14px;
+            border-radius: 12px;
+            border-left: 3px solid var(--gold);
+            margin-bottom: 10px;
+        }
+
+        .ai-chat-input {
+            display: flex;
+            gap: 10px;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            padding-top: 12px;
+        }
+
+        .ai-chat-input input {
+            flex: 1;
+            padding: 10px 16px;
+            border-radius: 40px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            background: rgba(255,255,255,0.05);
+            color: #fff;
+            font-family: var(--font-serif);
+            outline: none;
+        }
+
+        .ai-chat-input input:focus {
+            border-color: var(--gold);
+        }
+
+        .ai-chat-input button {
+            padding: 10px 20px;
+            background: var(--gold);
+            border: none;
+            border-radius: 40px;
+            color: var(--bg-dark);
+            font-weight: 700;
+            cursor: pointer;
+            font-family: var(--font-serif);
+        }
+
+        /* ===== 页脚 ===== */
+        .footer {
+            padding: 40px 0;
+            border-top: 1px solid rgba(212, 175, 55, 0.08);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        .footer .heart {
+            color: var(--red);
+        }
+
+        .footer .gold-text {
+            color: var(--gold);
+        }
+
+        /* ===== 响应式适配 ===== */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: rgba(26, 10, 5, 0.98);
+                padding: 24px;
+                gap: 1.5rem;
+                border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            }
+            .nav-links.open {
+                display: flex;
+            }
+            .nav-hamburger {
+                display: flex;
+            }
+
+            .hero-title {
+                font-size: 3.2rem;
+            }
+
+            .slogan-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline {
+                padding-left: 20px;
+            }
+            .timeline-item {
+                padding-left: 20px;
+            }
+            .timeline-item::before {
+                left: -20px;
+            }
+
+            .ai-chat-window {
+                width: 85vw;
+                right: 0;
+                bottom: 80px;
+            }
+            .ai-float {
+                right: 16px;
+                bottom: 16px;
+            }
+            .ai-toggle {
+                width: 60px;
+                height: 60px;
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .nav-links {
+                display: flex !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== 导航栏 ===== -->
+<nav class="navbar" id="navbar">
+    <div class="container">
+        <div class="nav-logo">
+            <span class="star">★</span> 
+            信火追源
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#hero">首页</a></li>
+            <li><a href="#slogan">标语长廊</a></li>
+            <li><a href="#footprint">调研足迹</a></li>
+            <li><a href="#result">成果·AI</a></li>
+        </ul>
+        <button class="nav-hamburger" id="hamburger" aria-label="菜单">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="hero">
+    <div class="hero-particles" id="particles"></div>
+    <div class="hero-content">
+        <div class="hero-badge">中国海洋大学 · 信息科学与工程学部</div>
+        <h1 class="hero-title">从星火到征途</h1>
+        <p class="hero-subtitle">井冈山斗争对长征政治动员的深层影响研究</p>
+        <div class="hero-quote">
+            “星星之火，可以燎原”
+            <span>—— 毛泽东 · 井冈山斗争时期</span>
+        </div>
+        <div class="hero-buttons">
+            <a href="#slogan" class="btn btn-primary">探索红色标语</a>
+            <a href="#footprint" class="btn btn-outline">重走调研路</a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== 标语长廊 ===== -->
+<section class="slogan-section" id="slogan">
+    <div class="container">
+        <h2 class="section-title">★ 标语长廊</h2>
+        <div class="gold-underline"></div>
+        <p class="section-sub">政治动员的精神密码 · 从井冈山到长征</p>
+
+        <div class="filter-tabs" id="filterTabs">
+            <button class="filter-tab active" data-filter="all">全部</button>
+            <button class="filter-tab" data-filter="jinggang">井冈山时期</button>
+            <button class="filter-tab" data-filter="changzheng">长征时期</button>
+        </div>
+
+        <div class="slogan-grid" id="sloganGrid">
+            <!-- 由 JS 动态渲染 -->
+        </div>
+    </div>
+</section>
+
+<!-- ===== 调研足迹 ===== -->
+<section class="footprint-section" id="footprint">
+    <div class="container">
+        <h2 class="section-title">★ 调研足迹</h2>
+        <div class="gold-underline"></div>
+        <p class="section-sub">从精神策源到征途探路 · 时空叙事</p>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="date">1927 — 1930</div>
+                <h3>井冈山斗争 · 精神策源</h3>
+                <p>探访井冈山革命博物馆，搜集政治动员原始档案，访谈红军后代与党史专家，梳理“农村包围城市”理论的形成脉络。</p>
+            </div>
+            <div class="timeline-item">
+                <div class="date">1934.08</div>
+                <h3>红六军团西征 · 长征探路</h3>
+                <p>遂川县新江乡横石村，参观红六军团西征始发地雕塑广场及指挥部旧址（钟家祠），实地了解领导人如何在此谋划突围。</p>
+            </div>
+            <div class="timeline-item">
+                <div class="date">1934.10</div>
+                <h3>中央红军出发 · 伟大远征</h3>
+                <p>吉安县吉州窑博物馆，《伟大的出发 永远的长征》历史展览，把握战略背景与物资筹备情况，完成精神谱系溯源。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== 成果展示 + AI入口 ===== -->
+<section class="result-section" id="result">
+    <div class="container">
+        <h2 class="section-title">★ 成果 · 数字赋能</h2>
+        <div class="gold-underline"></div>
+        <p class="section-sub">学术研究 · 微课程 · 数字讲解员</p>
+
+        <div class="result-grid">
+            <div class="result-card">
+                <span class="icon">?</span>
+                <h4>学术论文</h4>
+                <p>《精神策源与道路自信：井冈山斗争对长征政治动员的深层影响》</p>
+            </div>
+            <div class="result-card">
+                <span class="icon">?</span>
+                <h4>系列微课程</h4>
+                <p>《井冈山到长征：一条精神主线》3-5期，沉浸式学习体验。</p>
+            </div>
+            <div class="result-card">
+                <span class="icon">?</span>
+                <h4>队员札记</h4>
+                <p>《信火追源》实践心得汇编，记录青年学子的红色感悟。</p>
+            </div>
+            <div class="result-card" id="aiDemoTrigger">
+                <span class="icon">?</span>
+                <h4>数字讲解员</h4>
+                <p>AI 智能互动，与历史“隔空对话”，探索标语背后的故事。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== 页脚 ===== -->
+<footer class="footer">
+    <div class="container">
+        <p>信火追源研习团 · 中国海洋大学信息科学与工程学部</p>
+        <p style="margin-top:8px; font-size:0.8rem;">
+            <span class="gold-text">★</span> 从星火到征途 · 传承红色基因 <span class="gold-text">★</span>
+        </p>
+        <p style="margin-top:12px; opacity:0.6;">
+            ? 2026 井冈情·中国梦 课题实施 | 长征胜利90周年献礼
+        </p>
+    </div>
+</footer>
+
+<!-- ===== AI 浮窗 ===== -->
+<div class="ai-float">
+    <div class="ai-chat-window" id="aiChatWindow">
+        <div class="ai-chat-header">
+            <span>? 数字讲解员</span>
+            <button id="closeAiChat">?</button>
+        </div>
+        <div class="ai-chat-body" id="aiChatBody">
+            <div class="bot-msg">
+                ★ 您好！我是“信火追源”数字讲解员。<br>
+                井冈山的星星之火，如何照亮长征的征途？欢迎向我提问。
+            </div>
+        </div>
+        <div class="ai-chat-input">
+            <input type="text" id="aiChatInput" placeholder="输入您的问题..." />
+            <button id="aiSendBtn">发送</button>
+        </div>
+    </div>
+    <button class="ai-toggle" id="aiToggle">★</button>
+</div>
+
+<script>
+    // ============================================================
+    // 1. 标语数据集
+    // ============================================================
+    const sloganData = [
+        {
+            id: 1,
+            text: '星星之火，可以燎原',
+            period: 'jinggang',
+            periodLabel: '井冈山斗争',
+            desc: '毛泽东同志在井冈山斗争时期提出的著名论断，揭示了中国革命必胜的信念，是“农村包围城市”道路的思想基石。'
+        },
+        {
+            id: 2,
+            text: '红军不怕远征难，万水千山只等闲',
+            period: 'changzheng',
+            periodLabel: '长征途中',
+            desc: '革命乐观主义与英雄主义的集中体现，展现了红军将士在极端困境中保持斗志不灭的精神风貌。'
+        },
+        {
+            id: 3,
+            text: '实事求是、敢闯新路',
+            period: 'jinggang',
+            periodLabel: '井冈山斗争',
+            desc: '井冈山精神的核心要义，为后续革命实践提供了方法论指引，是马克思主义中国化的生动体现。'
+        },
+        {
+            id: 4,
+            text: '雄关漫道真如铁，而今迈步从头越',
+            period: 'changzheng',
+            periodLabel: '长征途中',
+            desc: '遵义会议后毛泽东所作，体现了红军在经历挫折后重整旗鼓、坚定前行的钢铁意志。'
+        },
+        {
+            id: 5,
+            text: '支部建在连上',
+            period: 'jinggang',
+            periodLabel: '井冈山斗争',
+            desc: '三湾改编确立的党对军队绝对领导原则，为红军在长征中保持建制不散提供了根本政治保障。'
+        },
+        {
+            id: 6,
+            text: '更喜岷山千里雪，三军过后尽开颜',
+            period: 'changzheng',
+            periodLabel: '长征途中',
+            desc: '长征胜利在望时的豪迈情怀，展现了中国共产党人战胜一切困难的革命浪漫主义精神。'
+        }
+    ];
+
+    // ============================================================
+    // 2. 渲染标语
+    // ============================================================
+    const grid = document.getElementById('sloganGrid');
+    const filterTabs = document.querySelectorAll('.filter-tab');
+
+    function renderSlogans(filter = 'all') {
+        const filtered = filter === 'all' 
+            ? sloganData 
+            : sloganData.filter(s => s.period === filter);
+
+        if (filtered.length === 0) {
+            grid.innerHTML = `<div style="grid-column:1/-1; text-align:center; color:var(--text-muted); padding:40px;">暂无该时期的标语，请切换筛选</div>`;
+            return;
+        }
+
+        grid.innerHTML = filtered.map(s => `
+            <div class="slogan-card" data-id="${s.id}">
+                <div class="slogan-text">“${s.text}”</div>
+                <div class="slogan-meta">
+                    <span class="slogan-period ${s.period}">${s.periodLabel}</span>
+                    <span style="color:var(--text-muted); font-size:0.75rem;">★ 政治动员</span>
+                </div>
+                <div class="slogan-desc">${s.desc}</div>
+                <div class="slogan-actions">
+                    <button onclick="alert('已收藏：${s.text}')">☆ 收藏</button>
+                    <button onclick="alert('分享：${s.text}')">↗ 分享</button>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    // 筛选切换
+    filterTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            filterTabs.forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+            const filter = this.dataset.filter;
+            renderSlogans(filter);
+        });
+    });
+
+    // 初始渲染
+    renderSlogans('all');
+
+    // ============================================================
+    // 3. 粒子背景
+    // ============================================================
+    function createParticles() {
+        const container = document.getElementById('particles');
+        for (let i = 0; i < 30; i++) {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            p.style.left = Math.random() * 100 + '%';
+            p.style.width = p.style.height = (Math.random() * 6 + 3) + 'px';
+            p.style.animationDuration = (Math.random() * 20 + 15) + 's';
+            p.style.animationDelay = (Math.random() * 20) + 's';
+            container.appendChild(p);
+        }
+    }
+    createParticles();
+
+    // ============================================================
+    // 4. 移动端汉堡菜单
+    // ============================================================
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+    });
+    // 点击链接后关闭
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+
+    // ============================================================
+    // 5. AI 数字讲解员交互
+    // ============================================================
+    const aiToggle = document.getElementById('aiToggle');
+    const aiChatWindow = document.getElementById('aiChatWindow');
+    const closeAi = document.getElementById('closeAiChat');
+    const aiSendBtn = document.getElementById('aiSendBtn');
+    const aiInput = document.getElementById('aiChatInput');
+    const aiBody = document.getElementById('aiChatBody');
+
+    function toggleAi() {
+        aiChatWindow.classList.toggle('open');
+    }
+
+    aiToggle.addEventListener('click', toggleAi);
+    closeAi.addEventListener('click', toggleAi);
+
+    // 点击成果卡片中的AI入口也打开
+    document.getElementById('aiDemoTrigger').addEventListener('click', () => {
+        if (!aiChatWindow.classList.contains('open')) {
+            toggleAi();
+        }
+    });
+
+    function sendAiMessage() {
+        const msg = aiInput.value.trim();
+        if (!msg) return;
+        // 用户消息
+        const userDiv = document.createElement('div');
+        userDiv.style.textAlign = 'right';
+        userDiv.style.marginBottom = '10px';
+        userDiv.style.color = 'var(--gold-light)';
+        userDiv.textContent = '? ' + msg;
+        aiBody.appendChild(userDiv);
+
+        // 模拟机器人回复
+        const botDiv = document.createElement('div');
+        botDiv.className = 'bot-msg';
+        const replies = [
+            '★ 井冈山的政治动员实践，为长征储备了宝贵的组织经验和群众基础。',
+            '★ “支部建在连上”确保了红军在长征极端困难条件下依然保持凝聚力。',
+            '★ 井冈山时期的土地革命政策，为长征途中赢得群众支持提供了范本。',
+            '★ 实事求是、敢闯新路的精神，始终贯穿于从井冈山到长征的全过程。'
+        ];
+        const randomReply = replies[Math.floor(Math.random() * replies.length)];
+        botDiv.textContent = '? ' + randomReply;
+        aiBody.appendChild(botDiv);
+
+        aiBody.scrollTop = aiBody.scrollHeight;
+        aiInput.value = '';
+    }
+
+    aiSendBtn.addEventListener('click', sendAiMessage);
+    aiInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') sendAiMessage();
+    });
+
+    // ============================================================
+    // 6. 平滑滚动与导航高亮（简单处理）
+    // ============================================================
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href === "#") return;
+            const target = document.querySelector(href);
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+
+    console.log('★ 信火追源 · 从星火到征途 UI 已启动 ★');
+</script>
+</body>
+</html>
