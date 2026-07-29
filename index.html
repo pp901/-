@@ -6,6 +6,7 @@
     <title>信火追源 · 从星火到征途</title>
     <!-- 引入书法与衬线字体 -->
     <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="archive.css">
     <style>
         /* ===== CSS 变量（主题色） ===== */
         :root {
@@ -792,6 +793,7 @@
         <ul class="nav-links" id="navLinks">
             <li><a href="#hero">首页</a></li>
             <li><a href="#slogan">标语长廊</a></li>
+            <li><button class="nav-archive-link" type="button" data-open-archive>标语数字档案库</button></li>
             <li><a href="#footprint">调研足迹</a></li>
             <li><a href="#result">成果·AI</a></li>
         </ul>
@@ -909,6 +911,27 @@
         </p>
     </div>
 </footer>
+
+<!-- ===== 标语数字档案库：独立栏目，不改动原页面结构 ===== -->
+<div class="archive-app" id="archiveApp" aria-hidden="true">
+    <header class="da-topbar">
+        <div class="da-container da-topbar-inner">
+            <button class="da-brand" id="archiveBrand" type="button" aria-label="返回标语数字档案库首页">
+                <span class="da-brand-mark" aria-hidden="true"></span>
+                <span>井冈山革命根据地标语数字档案</span>
+            </button>
+            <nav class="da-nav" id="archiveNav" aria-label="标语数字档案库导航">
+                <button class="da-nav-button is-active" type="button" data-da-route="home">首页</button>
+                <button class="da-nav-button" type="button" data-da-route="categories">分类总览</button>
+                <button class="da-nav-button" type="button" data-da-route="detail">标语档案</button>
+                <button class="da-nav-button" type="button" data-da-route="timeline">时间线索</button>
+                <button class="da-nav-button" type="button" data-main-target="footprint">调研过程</button>
+            </nav>
+            <button class="da-close" id="archiveClose" type="button" aria-label="返回信火追源原网站">← 返回原站</button>
+        </div>
+    </header>
+    <main id="archiveContent"></main>
+</div>
 
 <!-- ===== AI 浮窗 ===== -->
 <div class="ai-float">
@@ -1129,5 +1152,6 @@
 
     console.log('★ 信火追源 · 从星火到征途 UI 已启动 ★');
 </script>
+<script src="archive.js"></script>
 </body>
 </html>

@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="760" viewBox="0 0 1800 760" role="img" aria-labelledby="title desc">
+  <title id="title">井冈山革命根据地标语档案主视觉</title>
+  <desc id="desc">薄雾山峦与写有工农兵联合起来，打倒土豪劣绅的旧墙。</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eadcc2"/>
+      <stop offset=".56" stop-color="#d8c4a3"/>
+      <stop offset="1" stop-color="#bca580"/>
+    </linearGradient>
+    <linearGradient id="wall" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e3d2b4"/>
+      <stop offset=".55" stop-color="#c8ae87"/>
+      <stop offset="1" stop-color="#a98c67"/>
+    </linearGradient>
+    <linearGradient id="roof" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#342b24"/>
+      <stop offset=".65" stop-color="#171513"/>
+      <stop offset="1" stop-color="#080808"/>
+    </linearGradient>
+    <linearGradient id="mountainBack" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#817a68"/>
+      <stop offset="1" stop-color="#514d40"/>
+    </linearGradient>
+    <linearGradient id="mountainMid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5e5a4b"/>
+      <stop offset="1" stop-color="#2e322c"/>
+    </linearGradient>
+    <linearGradient id="mountainFront" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#484b3d"/>
+      <stop offset="1" stop-color="#20271f"/>
+    </linearGradient>
+    <pattern id="bricks" width="98" height="54" patternUnits="userSpaceOnUse">
+      <path d="M0 0H98M0 54H98M49 0V27M0 27H98M0 27V54M98 27V54" fill="none" stroke="#755f48" stroke-width="2" opacity=".24"/>
+      <path d="M4 5h40v17H4zM55 4h38v18H55zM6 33h84v14H6z" fill="#fff4dc" opacity=".08"/>
+    </pattern>
+    <pattern id="stones" width="120" height="74" patternUnits="userSpaceOnUse">
+      <path d="M3 12Q22-3 53 9T112 13L118 55Q91 73 61 56T4 61Z" fill="#5a5041" stroke="#352f28" stroke-width="3"/>
+      <path d="M13 20q20-10 36 0M68 18q18-8 35 1" fill="none" stroke="#8f8169" stroke-width="3" opacity=".45"/>
+    </pattern>
+    <pattern id="tiles" width="64" height="28" patternUnits="userSpaceOnUse">
+      <path d="M0 3Q16 24 32 3Q48 24 64 3" fill="none" stroke="#75685a" stroke-width="5"/>
+      <path d="M0 7Q16 28 32 7Q48 28 64 7" fill="none" stroke="#151310" stroke-width="9"/>
+    </pattern>
+    <filter id="paper">
+      <feTurbulence type="fractalNoise" baseFrequency=".72" numOctaves="3" seed="17" result="noise"/>
+      <feColorMatrix in="noise" type="saturate" values="0" result="mono"/>
+      <feComponentTransfer in="mono" result="faint">
+        <feFuncA type="table" tableValues="0 .13"/>
+      </feComponentTransfer>
+      <feBlend in="SourceGraphic" in2="faint" mode="multiply"/>
+    </filter>
+    <filter id="mist" x="-30%" y="-80%" width="160%" height="260%">
+      <feGaussianBlur stdDeviation="28"/>
+    </filter>
+    <filter id="roughText">
+      <feTurbulence type="fractalNoise" baseFrequency=".025 .19" numOctaves="2" seed="9" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="3"/>
+    </filter>
+    <radialGradient id="vignette">
+      <stop offset=".55" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#47331f" stop-opacity=".34"/>
+    </radialGradient>
+  </defs>
+
+  <g filter="url(#paper)">
+    <rect width="1800" height="760" fill="url(#sky)"/>
+    <circle cx="310" cy="170" r="150" fill="#f3e8d2" opacity=".3"/>
+
+    <path d="M260 540 390 355l78 65 155-245 78 124 89-116 126 212 98 145Z" fill="url(#mountainBack)" opacity=".63"/>
+    <path d="m398 387 70 33 155-245 10 165 69-41 88-116 3 174 79-31 44 69 58 145H427Z" fill="#342f27" opacity=".22"/>
+    <path d="M35 602 214 471l89 48 145-181 98 124 128-176 113 139 91-74 196 255Z" fill="url(#mountainMid)" opacity=".79"/>
+    <path d="m219 474 84 45 145-181 16 155 82-31 128-176 7 155 106-16 91-74 9 159 80 39 107 57H137Z" fill="#1f2920" opacity=".32"/>
+    <path d="M-70 690 105 545l106 74 153-131 150 169 109-96 143 138Z" fill="url(#mountainFront)"/>
+    <path d="M-40 574Q248 501 460 551T929 514" fill="none" stroke="#f3ead7" stroke-width="78" opacity=".27" filter="url(#mist)"/>
+    <path d="M190 400Q472 337 715 405T1138 356" fill="none" stroke="#f7efdf" stroke-width="48" opacity=".22" filter="url(#mist)"/>
+
+    <g opacity=".72" fill="#18231b">
+      <path d="m93 568 13-48 14 48-7-8v35h-13v-35z"/>
+      <path d="m140 552 16-61 17 61-9-10v44h-15v-44z"/>
+      <path d="m558 562 15-58 16 58-8-10v42h-15v-42z"/>
+      <path d="m646 527 17-69 19 69-10-11v52h-17v-52z"/>
+      <path d="m754 523 16-62 17 62-9-10v46h-16v-46z"/>
+    </g>
+
+    <path d="M1054 217 1800 93V690H994Z" fill="url(#wall)" stroke="#6f5840" stroke-width="4"/>
+    <path d="M1054 217 1800 93V690H994Z" fill="url(#bricks)" opacity=".72"/>
+    <path d="M1002 608Q1200 575 1388 597T1800 558V760H972Z" fill="url(#stones)"/>
+    <path d="M988 191 1800 42v74l-794 151Z" fill="url(#roof)"/>
+    <path d="M994 190 1800 44v55l-798 148Z" fill="url(#tiles)" opacity=".88"/>
+    <path d="M993 234 1800 91v26L999 262Z" fill="#0d0d0c"/>
+
+    <g fill="#8d2722" opacity=".84" filter="url(#roughText)" font-family="'KaiTi','STKaiti','Noto Serif SC',serif" font-weight="700">
+      <text x="1128" y="326" font-size="75" transform="rotate(-6 1128 326)">工农兵联合起来</text>
+      <text x="1194" y="446" font-size="79" transform="rotate(-6 1194 446)">打倒土豪劣绅！</text>
+    </g>
+
+    <path d="M1039 272q54 30 94 0M1472 172q61 30 106-4M1316 520q74-34 142-4" fill="none" stroke="#785c42" stroke-width="10" opacity=".22"/>
+    <path d="M1120 253q-11 120 6 261M1649 158q-19 161-3 342" fill="none" stroke="#6d523a" stroke-width="5" opacity=".15"/>
+    <rect width="1800" height="760" fill="url(#vignette)"/>
+  </g>
+</svg>
