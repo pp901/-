@@ -92,6 +92,11 @@
             border-radius: 2px;
         }
 
+        /* 固定导航栏偏移补正，防止锚点跳转被遮挡 */
+        section[id] {
+            scroll-margin-top: 80px;
+        }
+
         /* ===== 导航栏 ===== */
         .navbar {
             position: fixed;
@@ -1073,9 +1078,9 @@
     hamburger.addEventListener('click', () => {
         navLinks.classList.toggle('open');
     });
-    // 点击链接后关闭
-    navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => navLinks.classList.remove('open'));
+    // 点击导航内任意元素后关闭移动端菜单
+    navLinks.querySelectorAll('a, button').forEach(el => {
+        el.addEventListener('click', () => navLinks.classList.remove('open'));
     });
 
     // ============================================================
