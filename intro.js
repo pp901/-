@@ -2,13 +2,13 @@
     "use strict";
 
     const field = document.getElementById("sparkField");
-    const exploreButton = document.getElementById("exploreButton");
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     if (field && !reduceMotion) {
         const fragment = document.createDocumentFragment();
+        const sparkCount = window.matchMedia("(max-width: 620px)").matches ? 14 : 22;
 
-        for (let index = 0; index < 28; index += 1) {
+        for (let index = 0; index < sparkCount; index += 1) {
             const spark = document.createElement("span");
             const seed = (index * 47) % 101;
             spark.className = "spark";
@@ -22,13 +22,4 @@
 
         field.appendChild(fragment);
     }
-
-    exploreButton?.addEventListener("click", (event) => {
-        if (reduceMotion || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-        event.preventDefault();
-        document.body.classList.add("is-leaving");
-        window.setTimeout(() => {
-            window.location.href = exploreButton.href;
-        }, 520);
-    });
 })();

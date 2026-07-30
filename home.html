@@ -10,7 +10,9 @@
     <meta property="og:image" content="assets/team-emblem.png">
     <title>信火追源 · 专题首页</title>
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="preload" href="assets/team-emblem-mark.webp" as="image" type="image/webp" fetchpriority="high">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="page-transitions.css">
 </head>
 <body>
     <a class="skip-link" href="#mainContent">跳到主要内容</a>
@@ -76,13 +78,13 @@
     <header class="site-header" id="siteHeader">
         <div class="site-container nav-shell">
             <a class="brand" href="home.html" aria-label="信火追源首页">
-                <img class="brand-emblem" src="assets/team-emblem.png" alt="">
+                <img class="brand-emblem" src="assets/team-emblem-mark.webp" width="192" height="192" fetchpriority="high" decoding="async" alt="">
                 <span class="brand-name">信火追源</span>
             </a>
 
             <nav class="main-nav" id="mainNav" aria-label="主导航">
                 <a class="nav-link is-active" href="#hero">首页</a>
-                <a class="nav-link" href="archive.html#archive-home">墙上星火</a>
+                <a class="nav-link" href="archive.html">墙上星火</a>
                 <a class="nav-link" href="decode.html">星火解码</a>
                 <a class="nav-link" href="fieldwork.html">星火寻访</a>
                 <a class="nav-link" href="research.html">星火研创</a>
@@ -141,7 +143,7 @@
             </div>
 
             <nav class="site-container portal-strip reveal" aria-label="五大核心栏目">
-                <a class="portal-item" href="archive.html#archive-home">
+                <a class="portal-item" href="archive.html">
                     <span class="portal-icon"><svg aria-hidden="true"><use href="#icon-archive"></use></svg></span>
                     <span class="portal-copy">
                         <strong>墙上星火</strong>
@@ -216,11 +218,11 @@
                         <a href="#recommendations">更多 <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
                     </header>
                     <div class="news-list">
-                        <a class="news-item" href="archive.html#archive-categories">
+                        <a class="news-item" href="archive.html#slogan-jg-0001">
                             <span class="news-mark" aria-hidden="true">档</span>
                             <span>
                                 <small>新增标语档案</small>
-                                <strong>《红军不怕远征难》专题档案入库</strong>
+                                <strong>“实行马克斯（思）主义！实行共产主义！”档案入库</strong>
                                 <time datetime="2026-07-28">2026-07-28</time>
                             </span>
                         </a>
@@ -257,15 +259,15 @@
 
                 <div class="recommendation-grid">
                     <article class="recommendation-card recommendation-feature reveal">
-                        <a class="recommendation-image slogan-cover cover-archive" href="archive.html#archive-detail-2" aria-label="阅读最新档案：工农兵联合起来">
-                            <span>工农兵<br>联合起来</span>
-                            <small>墙上星火 · A-019</small>
+                        <a class="recommendation-image slogan-cover cover-archive" href="archive.html#slogan-jg-0001" aria-label="阅读最新档案：实行马克斯（思）主义，实行共产主义">
+                            <span>实行马克思主义<br>实行共产主义</span>
+                            <small>墙上星火 · JG-0001</small>
                         </a>
                         <div class="recommendation-body">
-                            <span class="archive-label">最新档案 · A-019</span>
-                            <h3><a href="archive.html#archive-detail-2">工农兵联合起来：一句标语里的组织逻辑</a></h3>
-                            <p>从文字位置、传播对象与政策语境入手，整理标语的基本档案信息。</p>
-                            <footer><span>茨坪 · 墙体档案</span><a href="archive.html#archive-detail-2">查看详情</a></footer>
+                            <span class="archive-label">最新档案 · JG-0001</span>
+                            <h3><a href="archive.html#slogan-jg-0001">实行马克斯（思）主义！实行共产主义！</a></h3>
+                            <p>大革命失败后，以毛泽东为代表的中国共产党人将工作重心由城市转向农村，在农民群众中广泛传播中国共产党的政治主张。</p>
+                            <footer><span>遂川县行洲</span><a href="archive.html#slogan-jg-0001">查看详情</a></footer>
                         </div>
                     </article>
 
@@ -394,6 +396,52 @@
         </section>
     </main>
 
+    <button class="ai-tab" id="aiTab" type="button" aria-label="打开 AI 数字讲解员"
+            aria-expanded="false" aria-controls="aiReader">
+        <svg aria-hidden="true"><use href="#icon-ai"></use></svg>
+        <span>AI 数字讲解员</span>
+    </button>
+
+    <aside class="ai-reader" id="aiReader" aria-hidden="true" aria-labelledby="aiReaderTitle">
+        <header class="ai-reader-header">
+            <div>
+                <p class="panel-kicker">AI / RESEARCH GUIDE</p>
+                <h2 id="aiReaderTitle">
+                    <svg aria-hidden="true"><use href="#icon-ai"></use></svg>
+                    标语共读助手
+                </h2>
+            </div>
+            <button class="icon-button" id="aiClose" type="button" aria-label="关闭 AI 数字讲解员">
+                <svg aria-hidden="true"><use href="#icon-close"></use></svg>
+            </button>
+        </header>
+
+        <div class="ai-quick-prompts" aria-label="快捷提问">
+            <button type="button" data-prompt="“支部建在连上”为什么重要？">组织建设</button>
+            <button type="button" data-prompt="比较井冈山与长征时期标语的表达重点">时期对照</button>
+            <button type="button" data-prompt="推荐与军民关系有关的红军标语和史料线索">关联档案</button>
+        </div>
+
+        <div class="ai-messages" id="aiMessages" aria-live="polite">
+            <article class="message message-assistant">
+                <span>数字讲解员</span>
+                <p>您好，我是“信火追源”标语共读助手。可以从标语原文、历史语境、传播对象与政治动员方式出发，和您一起寻找线索。</p>
+            </article>
+        </div>
+
+        <form class="ai-form" id="aiForm">
+            <label for="aiInput">输入你的问题</label>
+            <div>
+                <input id="aiInput" name="question" type="text" maxlength="300"
+                       autocomplete="off" placeholder="例如：标语怎样转化为群众行动？" required>
+                <button type="submit" aria-label="发送问题">
+                    <svg aria-hidden="true"><use href="#icon-send"></use></svg>
+                </button>
+            </div>
+            <p>AI 内容用于辅助阅读，具体史实请继续核对原始档案。</p>
+        </form>
+    </aside>
+
     <footer class="site-footer">
         <div class="site-container footer-main">
             <div>
@@ -402,7 +450,7 @@
             </div>
             <nav aria-label="页脚导航">
                 <a href="home.html">星火启程</a>
-                <a href="archive.html#archive-home">墙上星火</a>
+                <a href="archive.html">墙上星火</a>
                 <a href="decode.html">星火解码</a>
                 <a href="fieldwork.html">星火寻访</a>
                 <a href="research.html">星火研创</a>
@@ -415,6 +463,10 @@
         </div>
     </footer>
 
-    <script src="home.js"></script>
+    <a class="entry-return" href="index.html" aria-label="返回入口页">↖ 返回序章</a>
+
+    <script src="navigation.js"></script>
+    <script src="config.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

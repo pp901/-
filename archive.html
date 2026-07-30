@@ -3,34 +3,159 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#fffdf9">
-    <meta name="description" content="墙上星火——井冈山革命标语数字档案，支持分类、关键词与时间线浏览。">
-    <meta property="og:title" content="墙上星火 · 标语数字档案">
+    <meta name="theme-color" content="#8b2024">
+    <meta name="description" content="墙上星火——依据《整合.md》整理的井冈山精神与长征红色标语数字档案。">
+    <meta property="og:title" content="墙上星火 · 红色标语数字档案">
     <meta property="og:image" content="assets/team-emblem.png">
-    <title>墙上星火 · 标语数字档案</title>
+    <title>墙上星火 · 红色标语数字档案</title>
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="preload" href="assets/team-emblem-mark.webp" as="image" type="image/webp" fetchpriority="high">
     <link rel="stylesheet" href="archive.css">
+    <link rel="stylesheet" href="page-transitions.css">
 </head>
-<body data-archive-page="true">
-    <a class="da-skip-link" href="#archiveContent">跳到档案内容</a>
-    <div class="archive-app" id="archiveApp" aria-hidden="true">
-        <header class="da-topbar">
-            <div class="da-container da-topbar-inner">
-                <button class="da-brand" id="archiveBrand" type="button" aria-label="返回标语数字档案库首页">
-                    <img class="da-brand-emblem" src="assets/team-emblem.png" alt="">
-                    <span>墙上星火 · 标语数字档案</span>
-                </button>
-                <nav class="da-nav" id="archiveNav" aria-label="标语数字档案库导航">
-                    <button class="da-nav-button is-active" type="button" data-da-route="home">栏目首页</button>
-                    <button class="da-nav-button" type="button" data-da-route="categories">分类检索</button>
-                    <button class="da-nav-button" type="button" data-da-route="detail">代表档案</button>
-                    <button class="da-nav-button" type="button" data-da-route="timeline">时间线索</button>
-                </nav>
-                <a class="da-close" href="home.html" aria-label="返回信火追源首页">← 返回首页</a>
+<body>
+    <a class="archive-skip-link" href="#archiveSearch">跳到标语搜索</a>
+
+    <header class="archive-header">
+        <div class="archive-container archive-header-inner">
+            <a class="archive-brand" href="home.html" aria-label="返回信火追源首页">
+                <img src="assets/team-emblem-mark.webp" width="192" height="192"
+                     fetchpriority="high" decoding="async" alt="">
+                <span>
+                    <strong>墙上星火</strong>
+                    <small>红色标语数字档案</small>
+                </span>
+            </a>
+            <a class="archive-home-link" href="home.html">返回首页 <span aria-hidden="true">↗</span></a>
+        </div>
+    </header>
+
+    <main>
+        <section class="archive-hero">
+            <div class="archive-container archive-hero-inner">
+                <div>
+                    <p class="archive-kicker">01 / SLOGAN ARCHIVE</p>
+                    <h1>墙上星火</h1>
+                    <p class="archive-subtitle">从井冈山精神到伟大长征，沿着墙壁、传单与口号留下的文字，查看革命主张如何被表达、传播并转化为行动。</p>
+                </div>
+                <aside class="archive-source-note">
+                    <span>DATA SOURCE</span>
+                    <strong>《整合.md》</strong>
+                    <p>逐条生成，不补写、不推断；原文件未提供的信息在详情中保持空缺。</p>
+                </aside>
             </div>
-        </header>
-        <main id="archiveContent"></main>
-    </div>
+        </section>
+
+        <section class="archive-search-section" id="archiveSearch" aria-labelledby="searchTitle">
+            <div class="archive-container">
+                <form class="archive-search" id="archiveSearchForm" role="search">
+                    <div class="search-heading">
+                        <span>SEARCH / 检索</span>
+                        <label id="searchTitle" for="archiveSearchInput">搜索标语</label>
+                    </div>
+                    <div class="search-control">
+                        <svg aria-hidden="true" viewBox="0 0 24 24">
+                            <circle cx="10.5" cy="10.5" r="6.5"></circle>
+                            <path d="m15.5 15.5 5 5"></path>
+                        </svg>
+                        <input id="archiveSearchInput" type="search" autocomplete="off"
+                               placeholder="输入标语原文、地点、类别或出处">
+                        <button id="archiveSearchClear" type="button" hidden>清除</button>
+                    </div>
+                    <p id="archiveSearchStatus" aria-live="polite">正在读取档案数据…</p>
+                </form>
+            </div>
+        </section>
+
+        <section class="archive-statistics" aria-labelledby="statisticsTitle">
+            <div class="archive-container">
+                <header class="archive-section-heading">
+                    <div>
+                        <p class="archive-kicker">QUANTITATIVE OVERVIEW</p>
+                        <h2 id="statisticsTitle">两类标语量化统计</h2>
+                    </div>
+                    <p>数字直接来自《整合.md》的有效表格记录；点击任一类别即可查看对应标语。</p>
+                </header>
+                <div class="period-stat-grid" id="periodStats" aria-live="polite">
+                    <div class="archive-skeleton"></div>
+                    <div class="archive-skeleton"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="archive-taxonomy" aria-labelledby="taxonomyTitle">
+            <div class="archive-container">
+                <header class="archive-section-heading">
+                    <div>
+                        <p class="archive-kicker">CATEGORY INDEX</p>
+                        <h2 id="taxonomyTitle">按主题进入档案</h2>
+                    </div>
+                    <p>井冈山部分沿用原文件七项分类，长征部分沿用原文件五项分类。</p>
+                </header>
+                <div class="theme-groups" id="themeGroups">
+                    <div class="archive-skeleton archive-skeleton-wide"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="archive-catalog" id="catalog" aria-labelledby="catalogTitle">
+            <div class="archive-container">
+                <header class="catalog-header">
+                    <div>
+                        <p class="archive-kicker">ARCHIVE LEDGER</p>
+                        <h2 id="catalogTitle">标语目录</h2>
+                    </div>
+                    <button class="reset-filter" id="resetArchiveFilter" type="button" hidden>查看全部</button>
+                </header>
+
+                <div class="active-filter" id="activeArchiveFilter" aria-live="polite"></div>
+                <div class="record-list" id="archiveRecordList" aria-live="polite"></div>
+
+                <div class="archive-empty" id="archiveEmpty" hidden>
+                    <strong>没有找到匹配的标语</strong>
+                    <p>请尝试缩短关键词，或清除当前类别筛选。</p>
+                </div>
+
+                <div class="load-more-wrap">
+                    <button class="load-more" id="archiveLoadMore" type="button" hidden>
+                        继续加载
+                        <span aria-hidden="true">↓</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="archive-footer">
+        <div class="archive-container archive-footer-inner">
+            <div>
+                <strong>信火追源</strong>
+                <p>中国海洋大学信息科学与工程学部 · 信火追源研习团</p>
+            </div>
+            <p>本栏目数据来源：《整合.md》</p>
+        </div>
+    </footer>
+
+    <dialog class="record-dialog" id="archiveRecordDialog" aria-labelledby="recordDialogTitle">
+        <article class="record-detail">
+            <header class="record-detail-header">
+                <div>
+                    <p class="archive-kicker" id="recordDialogIndex">ARCHIVE RECORD</p>
+                    <p class="record-breadcrumb" id="recordDialogBreadcrumb"></p>
+                </div>
+                <button class="record-close" id="archiveRecordClose" type="button" aria-label="关闭标语详情">×</button>
+            </header>
+            <div class="record-detail-body" id="archiveRecordDetail"></div>
+            <footer class="record-detail-footer">
+                <button id="previousRecord" type="button">← 上一条</button>
+                <button id="nextRecord" type="button">下一条 →</button>
+            </footer>
+        </article>
+    </dialog>
+
+    <a class="entry-return" href="index.html" aria-label="返回入口页">↖ 返回序章</a>
+
+    <script src="navigation.js"></script>
     <script src="archive.js"></script>
 </body>
 </html>

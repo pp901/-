@@ -10,7 +10,9 @@
     <meta property="og:image" content="assets/team-emblem.png">
     <title>信火追源 · 从星火到征途</title>
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="preload" href="assets/team-emblem.webp" as="image" type="image/webp" fetchpriority="high">
     <link rel="stylesheet" href="intro.css">
+    <link rel="stylesheet" href="page-transitions.css">
 </head>
 <body>
     <a class="skip-link" href="#introMain">跳到课题介绍</a>
@@ -25,11 +27,8 @@
 
     <header class="intro-header">
         <a class="intro-brand" href="index.html" aria-label="信火追源序章">
-            <img src="assets/team-emblem.png" alt="">
-            <span>
-                <strong>信火追源</strong>
-                <small>中国海洋大学研习团</small>
-            </span>
+            <img src="assets/team-emblem-mark.webp" width="192" height="192" decoding="async" alt="">
+            <strong>信火追源 · 红色标语数字研学平台</strong>
         </a>
         <p>2026 · 井冈情 中国梦</p>
     </header>
@@ -41,18 +40,15 @@
                 <span>从星火</span>
                 <span>到征途</span>
             </h1>
-            <p class="intro-lead">从井冈山革命标语切入，追索政治语言如何凝聚群众、组织行动，又如何在长征途中延续并发展。</p>
+            <p class="intro-lead">井冈山斗争对长征政治动员的深层影响研究——以红军标语为中心的考察</p>
 
-            <div class="intro-meta">
-                <article>
-                    <span>我们的课题</span>
-                    <strong>井冈山斗争对长征政治动员的深层影响研究</strong>
-                </article>
-                <article>
-                    <span>我们是谁</span>
-                    <strong>中国海洋大学信息科学与工程学部 · 信火追源研习团</strong>
-                </article>
-            </div>
+            <nav class="intro-meta" aria-label="五大核心栏目">
+                <a href="archive.html"><span>01</span><strong>墙上星火</strong></a>
+                <a href="decode.html"><span>02</span><strong>星火解码</strong></a>
+                <a href="fieldwork.html"><span>03</span><strong>星火寻访</strong></a>
+                <a href="research.html"><span>04</span><strong>星火研创</strong></a>
+                <a href="experience.html"><span>05</span><strong>星火沉浸</strong></a>
+            </nav>
 
             <a class="explore-button" id="exploreButton" href="home.html">
                 <span>开启探索之旅</span>
@@ -63,7 +59,7 @@
         <aside class="intro-emblem" aria-label="信火追源研习团队徽">
             <div class="emblem-orbit orbit-one"></div>
             <div class="emblem-orbit orbit-two"></div>
-            <img src="assets/team-emblem.png" alt="信火追源研习团队徽：海浪、火炬、山峦与帆船组成的圆形图案">
+            <img src="assets/team-emblem.webp" width="640" height="640" fetchpriority="high" decoding="async" alt="信火追源研习团队徽：海浪、火炬、山峦与帆船组成的圆形图案">
             <p><span>OUC</span> / 山海为证，信火相传</p>
         </aside>
     </main>
@@ -74,6 +70,7 @@
         <span aria-hidden="true">SCROLL TO BEGIN · 01</span>
     </footer>
 
+    <script src="navigation.js"></script>
     <script src="intro.js"></script>
 </body>
 </html>

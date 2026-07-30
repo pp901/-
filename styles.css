@@ -1071,9 +1071,10 @@ button:active,
 }
 
 .portal-copy strong {
-    font-size: 1.08rem;
+    font-size: 1.2rem;
     font-weight: 900;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.075em;
+    line-height: 1.35;
 }
 
 .portal-copy small {
@@ -2275,7 +2276,7 @@ button:active,
 }
 
 .message-loading {
-    border-left-color: var(--gold);
+    border-left-color: var(--brown-light);
     background: rgba(213, 183, 139, 0.25);
     animation: ai-pulse 1.2s ease-in-out infinite;
 }
@@ -2725,8 +2726,9 @@ button:active,
 
     .hero-title {
         margin-top: 0.4rem;
-        font-size: clamp(3.1rem, 15vw, 4.4rem);
+        font-size: clamp(2.6rem, 10vw, 3.7rem);
         letter-spacing: 0.025em;
+        white-space: nowrap;
     }
 
     .title-brush {
@@ -2734,10 +2736,12 @@ button:active,
     }
 
     .hero-subtitle {
-        max-width: 23rem;
+        max-width: 100%;
         margin-inline: auto;
+        padding-inline: 0.5rem;
         font-size: 1.02rem;
         line-height: 1.65;
+        overflow-wrap: anywhere;
     }
 
     .hero-quote {
@@ -2803,7 +2807,8 @@ button:active,
     }
 
     .portal-copy strong {
-        font-size: 0.98rem;
+        font-size: 1.08rem;
+        font-weight: 900;
     }
 
     .portal-copy small {

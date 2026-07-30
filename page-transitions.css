@@ -1,0 +1,94 @@
+/*
+ * Fast same-origin page changes.
+ * Supporting browsers use the native cross-document View Transition API;
+ * other browsers simply navigate immediately without an artificial delay.
+ */
+@view-transition {
+    navigation: auto;
+}
+
+::view-transition-old(root) {
+    animation: page-out 140ms ease-out both;
+}
+
+::view-transition-new(root) {
+    animation: page-in 220ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes page-out {
+    to {
+        opacity: 0.72;
+        transform: translateY(-3px);
+    }
+}
+
+@keyframes page-in {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+}
+
+/* Avoid laying out and painting long, off-screen sections during first render. */
+main > section:not(:first-child) {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 760px;
+}
+
+.entry-return {
+    position: fixed;
+    z-index: 95;
+    bottom: 0.75rem;
+    left: 0.75rem;
+    display: inline-flex;
+    min-height: 2rem;
+    align-items: center;
+    border: 1px solid rgba(101, 21, 25, 0.34);
+    padding: 0.3rem 0.55rem;
+    color: #651519;
+    background: rgba(255, 244, 223, 0.9);
+    box-shadow: 0 4px 14px rgba(67, 42, 25, 0.09);
+    font-family: "Noto Sans SC", "Microsoft YaHei", "PingFang SC", sans-serif;
+    font-size: 0.64rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    line-height: 1;
+    transition: color 180ms ease, background-color 180ms ease, transform 180ms ease;
+}
+
+.entry-return:hover {
+    color: #fff7e8;
+    background: #651519;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 760px) {
+    body::before,
+    .grain {
+        /* Fixed procedural noise is expensive to repaint while mobile pages scroll. */
+        display: none;
+    }
+
+    .channel-header,
+    .da-topbar,
+    .intro-emblem p {
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+    }
+
+    .archive-app {
+        background-attachment: scroll;
+    }
+
+    .entry-return {
+        bottom: 0.6rem;
+        left: 0.6rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+        animation-duration: 1ms;
+    }
+}
