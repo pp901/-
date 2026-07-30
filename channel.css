@@ -743,6 +743,92 @@ button:focus-visible {
     background: var(--white);
 }
 
+/* --- Media link cards --- */
+.media-links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.media-card {
+    display: grid;
+    grid-template-columns: 3.6rem minmax(0, 1fr) auto;
+    gap: 1.2rem;
+    align-items: center;
+    border: 1px solid var(--line);
+    border-top: 4px solid var(--accent-deep);
+    padding: 1.35rem 1.5rem;
+    color: var(--ink);
+    background: rgba(243, 223, 189, 0.58);
+    transition: color 240ms ease, background-color 240ms ease, transform 240ms var(--ease);
+}
+
+.media-card:hover {
+    color: var(--white);
+    background: var(--accent-deep);
+    transform: translateY(-3px);
+}
+
+.media-icon {
+    display: grid;
+    width: 3.6rem;
+    height: 3.6rem;
+    place-items: center;
+    border: 1px solid var(--line);
+    color: var(--accent-deep);
+    background: rgba(243, 223, 189, 0.72);
+}
+
+.media-card:hover .media-icon {
+    color: var(--white);
+    border-color: rgba(255, 247, 232, 0.3);
+    background: rgba(255, 247, 232, 0.1);
+}
+
+.media-icon svg {
+    width: 1.6rem;
+    height: 1.6rem;
+}
+
+.media-body {
+    display: grid;
+    gap: 0.25rem;
+}
+
+.media-body strong {
+    font-size: 1rem;
+    font-weight: 900;
+    line-height: 1.45;
+}
+
+.media-body small {
+    color: var(--muted);
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    font-weight: 700;
+}
+
+.media-card:hover .media-body small {
+    color: rgba(255, 247, 232, 0.72);
+}
+
+.media-arrow {
+    display: grid;
+    width: 2rem;
+    height: 2rem;
+    place-items: center;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    color: var(--accent-deep);
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+.media-card:hover .media-arrow {
+    color: var(--white);
+    border-color: rgba(255, 247, 232, 0.3);
+}
+
 .channel-footer {
     padding: 3.2rem 0 1.2rem;
     color: rgba(255, 247, 232, 0.84);
@@ -1006,6 +1092,25 @@ button:focus-visible {
 
     .cta-band a {
         justify-self: start;
+    }
+
+    .media-links {
+        grid-template-columns: 1fr;
+    }
+
+    .media-card {
+        grid-template-columns: 2.8rem minmax(0, 1fr) auto;
+        gap: 0.8rem;
+        padding: 1rem;
+    }
+
+    .media-icon {
+        width: 2.8rem;
+        height: 2.8rem;
+    }
+
+    .media-body strong {
+        font-size: 0.9rem;
     }
 
     .footer-row,
