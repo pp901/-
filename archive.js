@@ -20,6 +20,7 @@
         searchInput: document.getElementById("archiveSearchInput"),
         searchClear: document.getElementById("archiveSearchClear"),
         searchStatus: document.getElementById("archiveSearchStatus"),
+        archiveComposition: document.getElementById("archiveComposition"),
         periodStats: document.getElementById("periodStats"),
         themeGroups: document.getElementById("themeGroups"),
         activeFilter: document.getElementById("activeArchiveFilter"),
@@ -98,16 +99,70 @@
         return getFilteredRecords().filter((record) => record.periodId === periodId);
     }
 
+    function getPeriodMetrics(period) {
+        const records = state.data.records.filter((record) => record.periodId === period.id);
+        const subcategories = new Set(
+            records.map((record) => record.subcategory).filter(Boolean)
+        );
+        const topTheme = [...period.themes].sort((a, b) => b.count - a.count)[0];
+        const traceCount = records.filter((record) => record.place || record.source).length;
+
+        return {
+            records,
+            subcategoryCount: subcategories.size,
+            topTheme,
+            traceCount,
+            share: (period.count / state.data.meta.total) * 100
+        };
+    }
+
+    function renderComposition() {
+        elements.archiveComposition.replaceChildren();
+
+        const heading = createElement("div", "composition-heading");
+        const totalThemes = state.data.periods.reduce(
+            (sum, period) => sum + period.themes.length,
+            0
+        );
+        const totalSubcategories = new Set(
+            state.data.records
+                .map((record) => `${record.periodId}:${record.subcategory}`)
+                .filter((value) => !value.endsWith(":"))
+        ).size;
+
+        heading.append(
+            createElement("strong", "", "档案构成"),
+            createElement("span", "", `${totalThemes} 条主题线索 · ${totalSubcategories} 个细分类目`)
+        );
+
+        const track = createElement("div", "composition-track");
+        state.data.periods.forEach((period) => {
+            const metrics = getPeriodMetrics(period);
+            const button = createElement("button", `composition-segment is-${period.id}`);
+            button.type = "button";
+            button.dataset.period = period.id;
+            button.style.setProperty("--segment-share", `${metrics.share}%`);
+            button.setAttribute(
+                "aria-label",
+                `查看${period.name}的 ${numberFormatter.format(period.count)} 条标语`
+            );
+            button.append(
+                createElement("span", "", period.name),
+                createElement("strong", "", `${metrics.share.toFixed(1)}%`)
+            );
+            track.appendChild(button);
+        });
+
+        elements.archiveComposition.append(heading, track);
+    }
+
     function renderPeriodStats() {
         elements.periodStats.replaceChildren();
 
         state.data.periods.forEach((period, index) => {
-            const button = createElement("button", "period-stat");
-            button.type = "button";
-            button.dataset.period = period.id;
-            button.dataset.watermark = period.id === "jinggang" ? "井" : "征";
-            button.setAttribute("aria-pressed", String(state.periodId === period.id));
-            button.classList.toggle("is-active", state.periodId === period.id);
+            const metrics = getPeriodMetrics(period);
+            const article = createElement("article", `period-stat is-${period.id}`);
+            article.dataset.watermark = period.id === "jinggang" ? "井" : "征";
 
             const top = createElement("div", "period-stat-top");
             top.append(
@@ -115,21 +170,88 @@
                 createElement("i", "", `${String(index + 1).padStart(2, "0")} / PERIOD`)
             );
 
-            const count = createElement(
-                "strong",
-                "period-stat-number",
-                numberFormatter.format(period.count)
+            const headline = createElement("div", "period-stat-headline");
+            const count = createElement("div", "period-stat-number");
+            count.append(
+                createElement("strong", "", numberFormatter.format(period.count)),
+                createElement("span", "", "条标语")
             );
 
-            const footer = createElement("div", "period-stat-footer");
-            footer.append(
-                createElement("span", "", `${period.themes.length} 个主题分类`),
-                createElement("span", "", "→")
+            const share = createElement("div", "period-stat-share");
+            share.append(
+                createElement("strong", "", `${metrics.share.toFixed(1)}%`),
+                createElement("span", "", "档案占比")
             );
+            headline.append(count, share);
 
-            button.append(top, count, footer);
-            elements.periodStats.appendChild(button);
+            const insights = createElement("dl", "period-insights");
+            [
+                ["主题线索", `${period.themes.length} 项`],
+                ["细分类目", `${metrics.subcategoryCount} 项`],
+                ["地点 / 出处线索", `${numberFormatter.format(metrics.traceCount)} 条`]
+            ].forEach(([label, value]) => {
+                const item = createElement("div", "period-insight");
+                item.append(
+                    createElement("dt", "", label),
+                    createElement("dd", "", value)
+                );
+                insights.appendChild(item);
+            });
+
+            const distribution = createElement("div", "period-distribution");
+            const distributionHeading = createElement("div", "distribution-heading");
+            distributionHeading.append(
+                createElement("span", "", "主题分布"),
+                createElement(
+                    "strong",
+                    "",
+                    `最大主题：${metrics.topTheme.name} ${numberFormatter.format(metrics.topTheme.count)} 条`
+                )
+            );
+            distribution.appendChild(distributionHeading);
+
+            period.themes.forEach((theme) => {
+                const row = createElement("button", "distribution-row");
+                row.type = "button";
+                row.dataset.period = period.id;
+                row.dataset.theme = theme.id;
+                row.setAttribute("aria-label", `查看${theme.name}主题档案`);
+
+                const label = createElement("span", "distribution-label");
+                label.append(
+                    createElement("b", "", theme.name),
+                    createElement("i", "", numberFormatter.format(theme.count))
+                );
+
+                const meter = createElement("span", "distribution-meter");
+                const fill = createElement("span", "distribution-fill");
+                fill.style.setProperty("--theme-share", `${(theme.count / period.count) * 100}%`);
+                meter.appendChild(fill);
+
+                row.append(label, meter);
+                distribution.appendChild(row);
+            });
+
+            const footer = createElement("button", "period-stat-footer", `查看${period.name}全部标语`);
+            footer.type = "button";
+            footer.dataset.period = period.id;
+            footer.appendChild(createElement("span", "", "→"));
+
+            article.append(top, headline, insights, distribution, footer);
+            elements.periodStats.appendChild(article);
         });
+    }
+
+    function getThemeSample(themeId) {
+        const records = state.data.records.filter((record) => record.themeId === themeId);
+        const candidates = records.filter(
+            (record) => record.text.length >= 8 && record.text.length <= 48
+        );
+        const pool = candidates.length ? candidates : records;
+
+        return [...pool].sort(
+            (a, b) => Math.abs(a.text.length - 24) - Math.abs(b.text.length - 24)
+        )[0] || null;
     }
 
     function renderThemeGroups() {
@@ -145,31 +267,60 @@
             );
 
             const grid = createElement("div", "theme-card-grid");
+            const spans = period.themes.length === 7
+                ? [7, 5, 4, 4, 4, 5, 7]
+                : [7, 5, 4, 4, 4];
 
             period.themes.forEach((theme, themeIndex) => {
                 const button = createElement("button", "theme-card");
                 button.type = "button";
                 button.dataset.period = period.id;
                 button.dataset.theme = theme.id;
+                button.dataset.symbol = theme.name.slice(0, 1);
                 button.setAttribute("aria-pressed", String(state.themeId === theme.id));
                 button.classList.toggle("is-active", state.themeId === theme.id);
+                button.classList.add(`theme-card--span-${spans[themeIndex]}`);
 
-                button.append(
-                    createElement("span", "theme-index", `${String(themeIndex + 1).padStart(2, "0")} / THEME`),
-                    createElement("strong", "theme-name", theme.name)
+                const top = createElement("span", "theme-card-top");
+                top.append(
+                    createElement("span", "theme-index", `线索 ${String(themeIndex + 1).padStart(2, "0")}`),
+                    createElement("span", "theme-symbol", theme.name.slice(0, 1))
                 );
 
-                if (theme.description) {
-                    const description = createElement("p", "theme-description", theme.description);
-                    description.title = theme.description;
-                    button.appendChild(description);
-                } else {
-                    button.appendChild(createElement("span", "theme-description", ""));
-                }
-
-                button.appendChild(
-                    createElement("span", "theme-count", numberFormatter.format(theme.count))
+                const heading = createElement("span", "theme-card-heading");
+                heading.append(
+                    createElement("strong", "theme-name", theme.name),
+                    createElement(
+                        "span",
+                        "theme-share",
+                        `${((theme.count / period.count) * 100).toFixed(1)}% / 本时期`
+                    )
                 );
+
+                const sample = getThemeSample(theme.id);
+                const clue = createElement(
+                    "span",
+                    "theme-clue",
+                    sample ? `“${sample.text}”` : ""
+                );
+
+                const footer = createElement("span", "theme-card-footer");
+                const count = createElement("span", "theme-count");
+                count.append(
+                    createElement("strong", "", numberFormatter.format(theme.count)),
+                    createElement("i", "", "条标语")
+                );
+                footer.append(
+                    count,
+                    createElement("span", "theme-enter", "进入主题档案 ↗")
+                );
+
+                const meter = createElement("span", "theme-card-meter");
+                const fill = createElement("span", "");
+                fill.style.setProperty("--theme-card-share", `${(theme.count / period.count) * 100}%`);
+                meter.appendChild(fill);
+
+                button.append(top, heading, clue, footer, meter);
                 grid.appendChild(button);
             });
 
@@ -346,13 +497,6 @@
         elements.dialogDetail.append(title, classification);
         if (fields.children.length) elements.dialogDetail.appendChild(fields);
 
-        elements.dialogDetail.appendChild(
-            createElement(
-                "p",
-                "record-detail-source",
-                `数据定位：《${state.data.meta.sourceFile}》第 ${record.sourceLine} 行`
-            )
-        );
     }
 
     function getDialogRecordSet() {
@@ -451,10 +595,22 @@
             elements.searchInput.focus();
         });
 
-        elements.periodStats.addEventListener("click", (event) => {
+        elements.archiveComposition.addEventListener("click", (event) => {
             const button = event.target.closest("[data-period]");
             if (!button) return;
             setFilter(button.dataset.period, "all");
+        });
+
+        elements.periodStats.addEventListener("click", (event) => {
+            const themeButton = event.target.closest("[data-theme]");
+            if (themeButton) {
+                setFilter(themeButton.dataset.period, themeButton.dataset.theme);
+                return;
+            }
+
+            const periodButton = event.target.closest("[data-period]");
+            if (!periodButton) return;
+            setFilter(periodButton.dataset.period, "all");
         });
 
         elements.themeGroups.addEventListener("click", (event) => {
@@ -512,6 +668,7 @@
             }
 
             state.data = data;
+            renderComposition();
             renderPeriodStats();
             renderThemeGroups();
             renderCatalog();

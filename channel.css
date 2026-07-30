@@ -361,7 +361,7 @@ button:focus-visible {
     padding-bottom: 0.18rem;
     color: var(--accent-deep);
     font-family: var(--sans);
-    font-size: 0.82rem;
+    font-size: 0.92rem;
     font-weight: 900;
     transition: transform 220ms ease;
 }

@@ -162,9 +162,7 @@ for (const period of periods) {
 
 const archiveData = {
     meta: {
-        sourceFile: "整合.md",
-        total: records.length,
-        note: "页面数据由项目根目录《整合.md》逐行生成；空缺信息不作推断。"
+        total: records.length
     },
     periods,
     records
