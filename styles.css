@@ -581,165 +581,9 @@ button:active,
 .hero-layout {
     display: grid;
     min-height: 448px;
-    grid-template-columns: minmax(15rem, 0.82fr) minmax(33rem, 1.75fr) minmax(15rem, 0.7fr);
-    gap: clamp(1.7rem, 3.5vw, 4.7rem);
+    grid-template-columns: minmax(0, 1.1fr) minmax(19rem, 0.65fr);
+    gap: clamp(2rem, 5vw, 6rem);
     align-items: center;
-}
-
-.hero-collage {
-    position: relative;
-    min-height: 392px;
-}
-
-.archive-photo {
-    position: absolute;
-    margin: 0;
-    border: 8px solid var(--paper-card-light);
-    border-bottom-width: 27px;
-    background: var(--paper-card-light);
-    box-shadow: var(--shadow-paper);
-    filter: sepia(0.35) saturate(0.68) contrast(0.96);
-}
-
-.archive-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.archive-photo figcaption {
-    position: absolute;
-    right: 7px;
-    bottom: 2px;
-    left: 7px;
-    overflow: hidden;
-    color: var(--text-muted);
-    font-family: var(--font-sans);
-    font-size: 0.62rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    white-space: nowrap;
-}
-
-.photo-main {
-    z-index: 1;
-    top: 22px;
-    left: -9%;
-    width: 106%;
-    height: 238px;
-    transform: rotate(-4.5deg);
-}
-
-.photo-main img {
-    object-position: 12% center;
-}
-
-.photo-small {
-    z-index: 2;
-    width: 57%;
-    height: 132px;
-}
-
-.slogan-fragment {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 0.8rem 0.9rem 1.25rem;
-    color: var(--paper-card-light);
-    background:
-        linear-gradient(rgba(104, 21, 25, 0.92), rgba(134, 29, 34, 0.94)),
-        var(--china-red-dark);
-    filter: none;
-}
-
-.slogan-fragment::before {
-    position: absolute;
-    inset: 0;
-    content: "";
-    opacity: 0.1;
-    background-image: radial-gradient(circle, var(--paper-light) 0.7px, transparent 0.8px);
-    background-size: 7px 7px;
-}
-
-.slogan-fragment p,
-.slogan-fragment cite {
-    position: relative;
-    z-index: 1;
-}
-
-.slogan-fragment p {
-    margin: 0;
-    font-family: var(--font-title);
-    font-size: clamp(1.05rem, 1.65vw, 1.55rem);
-    font-weight: 900;
-    letter-spacing: 0.08em;
-    line-height: 1.35;
-}
-
-.slogan-fragment cite {
-    margin-top: 0.25rem;
-    color: rgba(255, 247, 232, 0.72);
-    font-family: var(--font-sans);
-    font-size: 0.58rem;
-    font-style: normal;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-}
-
-.photo-site {
-    bottom: 8px;
-    left: 0;
-    transform: rotate(-7deg);
-}
-
-.photo-site img {
-    object-position: 8% 72%;
-}
-
-.photo-wall {
-    right: -7%;
-    bottom: 15px;
-    transform: rotate(5deg);
-}
-
-.photo-wall img {
-    object-position: 92% center;
-}
-
-.paper-clip {
-    position: absolute;
-    z-index: 4;
-    top: -2px;
-    left: 9%;
-    width: 20px;
-    height: 55px;
-    border: 2px solid rgba(48, 37, 29, 0.68);
-    border-bottom-color: transparent;
-    border-radius: 12px 12px 5px 5px;
-    transform: rotate(7deg);
-}
-
-.paper-clip::after {
-    position: absolute;
-    top: 5px;
-    left: 4px;
-    width: 9px;
-    height: 42px;
-    border: 1px solid rgba(48, 37, 29, 0.55);
-    border-bottom-color: transparent;
-    border-radius: 9px 9px 0 0;
-    content: "";
-}
-
-.photo-note {
-    position: absolute;
-    right: -3%;
-    bottom: 154px;
-    color: rgba(89, 70, 56, 0.5);
-    font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
-    font-size: 0.62rem;
-    letter-spacing: 0.18em;
-    transform: rotate(5deg);
 }
 
 .hero-copy {
@@ -756,6 +600,77 @@ button:active,
     letter-spacing: 0.045em;
     line-height: 1;
     text-wrap: balance;
+}
+
+.hero-fragments {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin-top: 1.6rem;
+}
+
+.hero-fragment {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 5.5rem;
+    margin: 0;
+    border-left: 4px solid var(--china-red-dark);
+    padding: 0.9rem 1rem;
+    color: var(--paper-card-light);
+    background:
+        linear-gradient(rgba(104, 21, 25, 0.94), rgba(134, 29, 34, 0.96)),
+        var(--china-red-dark);
+    box-shadow: 0 4px 14px rgba(67, 42, 25, 0.12);
+    transform: rotate(-0.8deg);
+    transition: transform 240ms var(--ease-paper);
+}
+
+.hero-fragment + .hero-fragment {
+    transform: rotate(1.2deg);
+    margin-top: 0.6rem;
+}
+
+.hero-fragment:hover {
+    transform: rotate(0deg) translateY(-2px);
+}
+
+.hero-fragment + .hero-fragment:hover {
+    transform: rotate(0deg) translateY(-2px);
+}
+
+.hero-fragment::before {
+    position: absolute;
+    inset: 0;
+    content: "";
+    opacity: 0.08;
+    background-image: radial-gradient(circle, var(--paper-light) 0.7px, transparent 0.8px);
+    background-size: 7px 7px;
+}
+
+.hero-fragment p {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    font-family: var(--font-title);
+    font-size: clamp(1.05rem, 1.5vw, 1.35rem);
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    line-height: 1.35;
+}
+
+.hero-fragment cite {
+    position: relative;
+    z-index: 1;
+    display: block;
+    margin-top: 0.35rem;
+    color: rgba(255, 247, 232, 0.7);
+    font-family: var(--font-sans);
+    font-size: 0.62rem;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 0.1em;
 }
 
 .title-brush {
@@ -812,12 +727,8 @@ button:active,
     margin-top: 1.55rem;
 }
 
-.hero-notes {
+.hero-inscription {
     position: relative;
-    min-height: 390px;
-}
-
-.slogan-inscription {
     align-self: center;
     min-height: 320px;
     border-left: 3px solid var(--china-red-dark);
@@ -836,11 +747,11 @@ button:active,
     letter-spacing: 0.14em;
 }
 
-.slogan-inscription blockquote {
+.hero-inscription blockquote {
     margin: 1.2rem 0 0;
 }
 
-.slogan-inscription blockquote p {
+.hero-inscription blockquote p {
     margin: 0;
     color: var(--ink);
     font-family: var(--font-title);
@@ -850,7 +761,7 @@ button:active,
     line-height: 1.65;
 }
 
-.slogan-inscription > p {
+.hero-inscription > p {
     margin: 1rem 0 0;
     color: var(--ink-secondary);
     font-size: 0.9rem;
@@ -2507,20 +2418,17 @@ button:active,
 
     .hero-layout {
         min-height: 0;
-        grid-template-columns: minmax(12rem, 0.72fr) minmax(0, 1.28fr);
+        grid-template-columns: minmax(0, 1.28fr) minmax(10rem, 0.72fr);
         gap: 2rem;
-    }
-
-    .hero-collage {
-        min-height: 360px;
-    }
-
-    .hero-notes {
-        display: none;
     }
 
     .hero-copy {
         padding-right: 1rem;
+    }
+
+    .hero-inscription {
+        min-height: 280px;
+        padding: 1.5rem 1.2rem 3.5rem;
     }
 
     .hero-title {
@@ -2676,48 +2584,28 @@ button:active,
     .hero-layout {
         display: flex;
         flex-direction: column;
-        gap: 0.7rem;
-    }
-
-    .hero-collage {
-        width: 100%;
-        min-height: 210px;
-        order: 1;
-    }
-
-    .photo-main {
-        top: 7px;
-        left: 5%;
-        width: 72%;
-        height: 150px;
-    }
-
-    .photo-site {
-        display: none;
-    }
-
-    .photo-wall {
-        right: 3%;
-        bottom: 3px;
-        width: 42%;
-        height: 95px;
-    }
-
-    .paper-clip {
-        top: -3px;
-        left: 10%;
-        height: 45px;
-    }
-
-    .photo-note {
-        right: 6%;
-        bottom: 105px;
+        gap: 2rem;
     }
 
     .hero-copy {
-        order: 2;
+        order: 1;
         padding: 0.5rem 0 1.2rem;
         text-align: center;
+    }
+
+    .hero-fragments {
+        margin-top: 1.2rem;
+    }
+
+    .hero-fragment {
+        min-height: 4.5rem;
+        padding: 0.7rem 0.9rem;
+    }
+
+    .hero-inscription {
+        order: 2;
+        min-height: 0;
+        padding: 1.5rem 1.2rem 3rem;
     }
 
     .hero-copy .eyebrow {
