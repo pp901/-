@@ -7,10 +7,11 @@
     appearance: none;
     border: 0;
     background: transparent;
-    color: var(--text-light);
+    color: var(--ink-secondary);
     font-family: var(--font-serif);
     font-size: inherit;
-    letter-spacing: 1px;
+    font-weight: 700;
+    letter-spacing: 0.035em;
     cursor: pointer;
     padding: 0;
     position: relative;
@@ -21,15 +22,15 @@
     content: "";
     position: absolute;
     left: 0;
-    bottom: -4px;
+    bottom: -1px;
     width: 0;
-    height: 2px;
-    background: var(--gold);
+    height: 3px;
+    background: var(--china-red-dark);
     transition: width 0.3s;
 }
 
 .nav-archive-link:hover {
-    color: var(--gold);
+    color: var(--china-red-dark);
 }
 
 .nav-archive-link:hover::after {
