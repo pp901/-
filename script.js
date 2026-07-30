@@ -314,41 +314,47 @@
         }
     }
 
-    function chooseAiReply(question) {
-        const prompt = normalized(question);
+    const AI_API = "https://api.siliconflow.cn/v1/chat/completions";
+    const AI_KEY = "sk-sshxuaczighzniwxvgltwmybtvcxiimrkticycnnfafuugmz";
+    const AI_MODEL = "Qwen/Qwen3-8B";
 
-        if (prompt.includes("星星之火") || prompt.includes("燎原")) {
-            return {
-                text: "这句话把处于局部、弱小状态的革命力量理解为能够持续扩展的“火种”。阅读时可重点关注它如何回应当时对革命前途的疑问，并将信念表达转化为继续组织群众的行动判断。",
-                linkText: "关联档案：星星之火，可以燎原"
-            };
+    const AI_SYSTEM_PROMPT = [
+        "你是「信火追源」项目的数字讲解员，专注于井冈山斗争（1927-1930）与长征（1934-1936）时期的革命历史研究。",
+        "你的专业知识涵盖：政治动员标语的历史背景与深层含义、井冈山根据地创建与土地革命政策、",
+        "长征的战略决策与沿途群众工作、红色文化的精神谱系与当代传承。",
+        "回答要求：",
+        "1. 使用简洁流畅的中文，回答控制在200字以内",
+        "2. 引用具体历史事件或标语原文作为论据",
+        "3. 欢迎追问，引导用户深入探索",
+        "4. 遇到不了解的具体史料细节时诚实说明",
+        "5. 遇到与红色历史文化无关的问题时，礼貌引导回主题"
+    ].join("");
+
+    async function fetchAiReply(question) {
+        const response = await fetch(AI_API, {
+            method: "POST",
+            headers: {
+                "Authorization": `Bearer ${AI_KEY}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                model: AI_MODEL,
+                messages: [
+                    { role: "system", content: AI_SYSTEM_PROMPT },
+                    { role: "user", content: question }
+                ],
+                max_tokens: 512,
+                temperature: 0.7
+            })
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text().catch(() => "未知错误");
+            throw new Error(`API 请求失败 (${response.status}): ${errorText}`);
         }
 
-        if (prompt.includes("支部") || prompt.includes("连上")) {
-            return {
-                text: "“支部建在连上”首先是一项组织原则。它使政治动员不只停留在口号层面，而是落实到基层组织、日常教育与行动纪律之中，这也是队伍在长征艰难条件下保持凝聚力的重要线索。",
-                linkText: "关联档案：支部建在连上"
-            };
-        }
-
-        if (prompt.includes("比较") || prompt.includes("两个时期") || prompt.includes("长征")) {
-            return {
-                text: "井冈山时期更突出根据地创建、土地政策与军民关系，长征时期则更强调突破困境、统一意志与沿途群众工作。两者的连续性在于：都以通俗语言解释政治目标，并依靠基层组织把表达转化为行动。",
-                linkText: "查看：井冈山与长征时期标语选读"
-            };
-        }
-
-        if (prompt.includes("关联") || prompt.includes("推荐")) {
-            return {
-                text: "可将“支部建在连上”“实事求是、敢闯新路”与长征时期体现纪律、信念和革命乐观主义的标语并读。建议同时核对年代、地点、传播对象和史料来源。",
-                linkText: "打开首页标语选读"
-            };
-        }
-
-        return {
-            text: "可以先把问题拆成四项：标语面向谁、使用什么语言形式、希望促成何种行动、处于怎样的历史语境。当前回答是辅助批注，进一步研究还需回到原始史料与专题成果。",
-            linkText: "从标语选读开始核对"
-        };
+        const data = await response.json();
+        return data.choices?.[0]?.message?.content || "抱歉，AI 未返回有效回复，请稍后再试。";
     }
 
     function appendAiMessage(type, text, linkText = "") {
@@ -357,7 +363,15 @@
         article.className = `message message-${type}`;
 
         const label = document.createElement("span");
-        label.textContent = type === "user" ? "你的问题" : `共读批注 ${String(elements.aiMessages.children.length + 1).padStart(2, "0")}`;
+        if (type === "user") {
+            label.textContent = "你的问题";
+        } else if (type === "loading") {
+            label.textContent = "正在思考";
+        } else if (type === "error") {
+            label.textContent = "请求失败";
+        } else {
+            label.textContent = `共读批注 ${String(elements.aiMessages.children.length + 1).padStart(2, "0")}`;
+        }
 
         const paragraph = document.createElement("p");
         paragraph.textContent = text;
@@ -374,15 +388,33 @@
 
         elements.aiMessages.appendChild(article);
         elements.aiMessages.scrollTop = elements.aiMessages.scrollHeight;
+        return article;
     }
 
-    function submitAiQuestion(question) {
+    function removeMessage(article) {
+        if (article && article.parentNode) {
+            article.remove();
+        }
+    }
+
+    async function submitAiQuestion(question) {
         const cleanQuestion = question.trim();
         if (!cleanQuestion) return;
 
         appendAiMessage("user", cleanQuestion);
-        const reply = chooseAiReply(cleanQuestion);
-        appendAiMessage("assistant", reply.text, reply.linkText);
+        const loadingMsg = appendAiMessage("loading", "AI 正在分析您的问题...");
+
+        try {
+            const reply = await fetchAiReply(cleanQuestion);
+            removeMessage(loadingMsg);
+            appendAiMessage("assistant", reply);
+        } catch (error) {
+            removeMessage(loadingMsg);
+            const errMsg = error.message.includes("Failed to fetch")
+                ? "网络连接失败，请检查网络后重试。"
+                : error.message.slice(0, 120);
+            appendAiMessage("error", errMsg);
+        }
 
         if (elements.aiInput) elements.aiInput.value = "";
     }

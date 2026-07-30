@@ -2274,6 +2274,26 @@ button:active,
     text-underline-offset: 3px;
 }
 
+.message-loading {
+    border-left-color: var(--gold);
+    background: rgba(213, 183, 139, 0.25);
+    animation: ai-pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes ai-pulse {
+    0%, 100% { opacity: 0.55; }
+    50% { opacity: 1; }
+}
+
+.message-error {
+    border-left-color: #c0392b;
+    background: rgba(192, 57, 43, 0.08);
+}
+
+.message-error span {
+    color: #c0392b;
+}
+
 .ai-form {
     border-top: 1px solid var(--line);
     padding-top: 0.8rem;
