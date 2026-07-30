@@ -757,7 +757,7 @@ button:focus-visible {
     align-items: center;
     border: 1px solid var(--line);
     border-top: 4px solid var(--accent-deep);
-    padding: 1.35rem 1.5rem;
+    padding: 1.5rem;
     color: var(--ink);
     background: rgba(243, 223, 189, 0.58);
     transition: color 240ms ease, background-color 240ms ease, transform 240ms var(--ease);
@@ -769,10 +769,29 @@ button:focus-visible {
     transform: translateY(-3px);
 }
 
+.media-card-image {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    gap: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.media-card-image img {
+    width: 100%;
+    height: 12rem;
+    object-fit: cover;
+    display: block;
+}
+
+.media-card-image .media-body {
+    padding: 1.25rem 1.5rem 1.35rem;
+}
+
 .media-icon {
     display: grid;
-    width: 3.6rem;
-    height: 3.6rem;
+    width: 3.8rem;
+    height: 3.8rem;
     place-items: center;
     border: 1px solid var(--line);
     color: var(--accent-deep);
@@ -786,17 +805,17 @@ button:focus-visible {
 }
 
 .media-icon svg {
-    width: 1.6rem;
-    height: 1.6rem;
+    width: 1.7rem;
+    height: 1.7rem;
 }
 
 .media-body {
     display: grid;
-    gap: 0.25rem;
+    gap: 0.3rem;
 }
 
 .media-body strong {
-    font-size: 1rem;
+    font-size: 1.12rem;
     font-weight: 900;
     line-height: 1.45;
 }
@@ -804,7 +823,7 @@ button:focus-visible {
 .media-body small {
     color: var(--muted);
     font-family: var(--sans);
-    font-size: 0.72rem;
+    font-size: 0.78rem;
     font-weight: 700;
 }
 
@@ -814,13 +833,13 @@ button:focus-visible {
 
 .media-arrow {
     display: grid;
-    width: 2rem;
-    height: 2rem;
+    width: 2.2rem;
+    height: 2.2rem;
     place-items: center;
     border: 1px solid var(--line);
     border-radius: 50%;
     color: var(--accent-deep);
-    font-size: 0.9rem;
+    font-size: 1rem;
     flex-shrink: 0;
 }
 
@@ -1101,7 +1120,16 @@ button:focus-visible {
     .media-card {
         grid-template-columns: 2.8rem minmax(0, 1fr) auto;
         gap: 0.8rem;
-        padding: 1rem;
+        padding: 1.1rem;
+    }
+
+    .media-card-image {
+        grid-template-columns: 1fr;
+        padding: 0;
+    }
+
+    .media-card-image img {
+        height: 10rem;
     }
 
     .media-icon {
@@ -1110,7 +1138,7 @@ button:focus-visible {
     }
 
     .media-body strong {
-        font-size: 0.9rem;
+        font-size: 1rem;
     }
 
     .footer-row,
