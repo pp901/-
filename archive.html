@@ -10,44 +10,57 @@
     <title>墙上星火 · 红色标语数字档案</title>
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     <link rel="preload" href="assets/team-emblem-mark.webp" as="image" type="image/webp" fetchpriority="high">
+    <link rel="stylesheet" href="channel.css">
     <link rel="stylesheet" href="archive.css">
     <link rel="stylesheet" href="page-transitions.css">
 </head>
-<body>
-    <a class="archive-skip-link" href="#archiveSearch">跳到标语搜索</a>
+<body class="page-archive">
+    <a class="skip-link" href="#archiveSearch">跳到标语搜索</a>
 
-    <header class="archive-header">
-        <div class="archive-container archive-header-inner">
-            <a class="archive-brand" href="home.html" aria-label="返回信火追源首页">
-                <img src="assets/team-emblem-mark.webp" width="192" height="192"
-                     fetchpriority="high" decoding="async" alt="">
-                <span>
-                    <strong>墙上星火</strong>
-                    <small>红色标语数字档案</small>
-                </span>
+    <header class="channel-header">
+        <div class="channel-container channel-header-inner">
+            <a class="channel-brand" href="home.html" aria-label="返回信火追源首页">
+                <img src="assets/team-emblem-mark.webp" width="192" height="192" fetchpriority="high" decoding="async" alt="">
+                <span><strong>信火追源</strong><small>中国海洋大学研习团</small></span>
             </a>
-            <a class="archive-home-link" href="home.html">返回首页 <span aria-hidden="true">↗</span></a>
+            <nav class="channel-nav" id="channelNav" aria-label="全站导航">
+                <a href="home.html">首页</a>
+                <a class="is-current" href="archive.html">墙上星火</a>
+                <a href="decode.html">星火解码</a>
+                <a href="fieldwork.html">星火寻访</a>
+                <a href="research.html">星火研创</a>
+                <a href="experience.html">星火沉浸</a>
+            </nav>
+            <button class="menu-button" id="channelMenuButton" type="button" aria-label="打开导航菜单" aria-expanded="false" aria-controls="channelNav"><span></span></button>
         </div>
     </header>
 
-    <main>
-        <section class="archive-hero">
-            <div class="archive-container archive-hero-inner">
-                <div>
-                    <p class="archive-kicker">01 / SLOGAN ARCHIVE</p>
-                    <h1>墙上星火</h1>
-                    <p class="archive-subtitle">从井冈山精神到伟大长征，沿着墙壁、传单与口号留下的文字，查看革命主张如何被表达、传播并转化为行动。</p>
+    <main id="mainContent">
+        <section class="channel-hero">
+            <div class="channel-container channel-hero-inner">
+                <div class="reveal">
+                    <p class="breadcrumb"><a href="home.html">星火启程</a><span>/</span><span>墙上星火</span></p>
+                    <p class="channel-kicker">01 / SLOGAN ARCHIVE</p>
+                    <h1 class="channel-title">墙上星火</h1>
+                    <p class="channel-subtitle">红色标语数字档案</p>
+                    <p class="channel-lead">从井冈山精神到伟大长征，沿着墙壁、传单与口号留下的文字，查看革命主张如何被表达、传播并转化为行动。</p>
+                    <nav class="hero-jump-links" aria-label="本页目录">
+                        <a href="#archiveSearch">搜索标语</a>
+                        <a href="#statistics">量化统计</a>
+                        <a href="#taxonomy">主题分类</a>
+                        <a href="#catalog">标语目录</a>
+                    </nav>
                 </div>
-                <aside class="archive-source-note">
-                    <span>DATA SOURCE</span>
-                    <strong>《整合.md》</strong>
-                    <p>逐条生成，不补写、不推断；原文件未提供的信息在详情中保持空缺。</p>
+                <aside class="slogan-monument reveal" aria-label="档案说明">
+                    <span>DATA SOURCE / 整合.md</span>
+                    <blockquote><p>逐条生成<br>不补写不推断</p></blockquote>
+                    <cite>原文件未提供的信息在详情中保持空缺</cite>
                 </aside>
             </div>
         </section>
 
-        <section class="archive-search-section" id="archiveSearch" aria-labelledby="searchTitle">
-            <div class="archive-container">
+        <section class="content-section archive-search-section" id="archiveSearch" aria-labelledby="searchTitle">
+            <div class="channel-container">
                 <form class="archive-search" id="archiveSearchForm" role="search">
                     <div class="search-heading">
                         <span>SEARCH / 检索</span>
@@ -67,14 +80,14 @@
             </div>
         </section>
 
-        <section class="archive-statistics" aria-labelledby="statisticsTitle">
-            <div class="archive-container">
-                <header class="archive-section-heading">
-                    <div>
-                        <p class="archive-kicker">QUANTITATIVE OVERVIEW</p>
-                        <h2 id="statisticsTitle">两类标语量化统计</h2>
+        <section class="content-section" id="statistics" aria-labelledby="statisticsTitle">
+            <div class="channel-container">
+                <header class="section-intro reveal">
+                    <div class="section-marker"><span>01 / STATS</span><strong>量化统计</strong></div>
+                    <div class="section-heading">
+                        <h2 id="statisticsTitle">井冈山精神 · 长征</h2>
+                        <p>数字直接来自《整合.md》的有效表格记录；点击任一类别即可查看对应标语。</p>
                     </div>
-                    <p>数字直接来自《整合.md》的有效表格记录；点击任一类别即可查看对应标语。</p>
                 </header>
                 <div class="period-stat-grid" id="periodStats" aria-live="polite">
                     <div class="archive-skeleton"></div>
@@ -83,14 +96,14 @@
             </div>
         </section>
 
-        <section class="archive-taxonomy" aria-labelledby="taxonomyTitle">
-            <div class="archive-container">
-                <header class="archive-section-heading">
-                    <div>
-                        <p class="archive-kicker">CATEGORY INDEX</p>
+        <section class="content-section is-tinted" id="taxonomy" aria-labelledby="taxonomyTitle">
+            <div class="channel-container">
+                <header class="section-intro reveal">
+                    <div class="section-marker"><span>02 / CATEGORY</span><strong>主题分类</strong></div>
+                    <div class="section-heading">
                         <h2 id="taxonomyTitle">按主题进入档案</h2>
+                        <p>井冈山部分沿用原文件七项分类，长征部分沿用原文件五项分类。</p>
                     </div>
-                    <p>井冈山部分沿用原文件七项分类，长征部分沿用原文件五项分类。</p>
                 </header>
                 <div class="theme-groups" id="themeGroups">
                     <div class="archive-skeleton archive-skeleton-wide"></div>
@@ -98,25 +111,44 @@
             </div>
         </section>
 
-        <section class="archive-catalog" id="catalog" aria-labelledby="catalogTitle">
-            <div class="archive-container">
-                <header class="catalog-header">
-                    <div>
-                        <p class="archive-kicker">ARCHIVE LEDGER</p>
-                        <h2 id="catalogTitle">标语目录</h2>
+        <section class="content-section" id="catalog" aria-labelledby="catalogTitle">
+            <div class="channel-container">
+                <header class="section-intro reveal">
+                    <div class="section-marker"><span>03 / LEDGER</span><strong>标语目录</strong></div>
+                    <div class="section-heading">
+                        <h2 id="catalogTitle">全部标语</h2>
+                        <p>左侧井冈山精神，右侧长征标语；点击任一条目查看完整档案信息。</p>
                     </div>
-                    <button class="reset-filter" id="resetArchiveFilter" type="button" hidden>查看全部</button>
                 </header>
 
-                <div class="active-filter" id="activeArchiveFilter" aria-live="polite"></div>
-                <div class="record-list" id="archiveRecordList" aria-live="polite"></div>
+                <div class="catalog-toolbar">
+                    <div class="active-filter" id="activeArchiveFilter" aria-live="polite"></div>
+                    <button class="reset-filter" id="resetArchiveFilter" type="button" hidden>查看全部</button>
+                </div>
+
+                <div class="catalog-two-col">
+                    <div class="catalog-col" id="catalogColJinggang">
+                        <div class="col-head jinggang-head">
+                            <span class="col-badge">井</span>
+                            <strong>井冈山精神</strong>
+                        </div>
+                        <div class="record-list" id="archiveRecordListJG" aria-live="polite"></div>
+                    </div>
+                    <div class="catalog-col" id="catalogColLongmarch">
+                        <div class="col-head longmarch-head">
+                            <span class="col-badge">征</span>
+                            <strong>长征</strong>
+                        </div>
+                        <div class="record-list" id="archiveRecordListCZ" aria-live="polite"></div>
+                    </div>
+                </div>
 
                 <div class="archive-empty" id="archiveEmpty" hidden>
                     <strong>没有找到匹配的标语</strong>
                     <p>请尝试缩短关键词，或清除当前类别筛选。</p>
                 </div>
 
-                <div class="load-more-wrap">
+                <div class="load-more-wrap" id="archiveLoadMoreWrap">
                     <button class="load-more" id="archiveLoadMore" type="button" hidden>
                         继续加载
                         <span aria-hidden="true">↓</span>
@@ -126,13 +158,20 @@
         </section>
     </main>
 
-    <footer class="archive-footer">
-        <div class="archive-container archive-footer-inner">
-            <div>
-                <strong>信火追源</strong>
-                <p>中国海洋大学信息科学与工程学部 · 信火追源研习团</p>
+    <footer class="channel-footer">
+        <div class="channel-container footer-row">
+            <div class="footer-branding">
+                <img src="assets/team-emblem-mark.webp" width="192" height="192" loading="lazy" decoding="async" alt="">
+                <span><strong>信火追源</strong><small>中国海洋大学信息科学与工程学部</small></span>
             </div>
-            <p>本栏目数据来源：《整合.md》</p>
+            <nav aria-label="页脚导航">
+                <a href="home.html">首页</a>
+                <a href="decode.html">星火解码 →</a>
+            </nav>
+        </div>
+        <div class="channel-container footer-meta">
+            <p>从星火到征途 · 传承红色基因</p>
+            <p>本栏目数据来源：《整合.md》 © 2026 井冈情·中国梦课题实施</p>
         </div>
     </footer>
 
@@ -156,6 +195,7 @@
     <a class="entry-return" href="index.html" aria-label="返回入口页">↖ 返回序章</a>
 
     <script src="navigation.js"></script>
+    <script src="channel.js"></script>
     <script src="archive.js"></script>
 </body>
 </html>

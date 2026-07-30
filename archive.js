@@ -2,14 +2,15 @@
     "use strict";
 
     const DATA_URL = "assets/archive-data.json";
-    const PAGE_SIZE = 24;
+    const PAGE_SIZE = 20;
 
     const state = {
         data: null,
         query: "",
         periodId: "all",
         themeId: "all",
-        visibleLimit: PAGE_SIZE,
+        visibleLimitJG: PAGE_SIZE,
+        visibleLimitCZ: PAGE_SIZE,
         currentRecordId: null,
         searchTimer: null
     };
@@ -22,9 +23,11 @@
         periodStats: document.getElementById("periodStats"),
         themeGroups: document.getElementById("themeGroups"),
         activeFilter: document.getElementById("activeArchiveFilter"),
-        recordList: document.getElementById("archiveRecordList"),
+        recordListJG: document.getElementById("archiveRecordListJG"),
+        recordListCZ: document.getElementById("archiveRecordListCZ"),
         empty: document.getElementById("archiveEmpty"),
         loadMore: document.getElementById("archiveLoadMore"),
+        loadMoreWrap: document.getElementById("archiveLoadMoreWrap"),
         resetFilter: document.getElementById("resetArchiveFilter"),
         catalog: document.getElementById("catalog"),
         dialog: document.getElementById("archiveRecordDialog"),
@@ -91,6 +94,10 @@
         });
     }
 
+    function getRecordsByPeriod(periodId) {
+        return getFilteredRecords().filter((record) => record.periodId === periodId);
+    }
+
     function renderPeriodStats() {
         elements.periodStats.replaceChildren();
 
@@ -116,7 +123,7 @@
 
             const footer = createElement("div", "period-stat-footer");
             footer.append(
-                createElement("span", "", `${period.themes.length} 个原始主题分类`),
+                createElement("span", "", `${period.themes.length} 个主题分类`),
                 createElement("span", "", "→")
             );
 
@@ -187,29 +194,26 @@
                 createElement(
                     "p",
                     "",
-                    `${record.place ? "保存地" : "备注 / 出处"}：${primaryNote}`
+                    `${record.place ? "保存地" : "出处"}：${primaryNote}`
                 )
             );
-        }
-
-        const meta = createElement("span", "record-meta");
-        const category = record.subcategory && record.subcategory !== record.theme
-            ? `${record.theme} · ${record.subcategory}`
-            : record.theme;
-        meta.appendChild(createElement("span", "", `${record.period} / ${category}`));
-
-        if (record.description) {
-            meta.appendChild(createElement("p", "", record.description));
         }
 
         button.append(
             code,
             main,
-            meta,
             createElement("span", "record-arrow", "↗")
         );
 
         return button;
+    }
+
+    function renderColumn(container, records, limitKey) {
+        container.replaceChildren();
+        const limit = state[limitKey];
+        const visible = records.slice(0, limit);
+        visible.forEach((record) => container.appendChild(createRecordRow(record)));
+        return records.length > limit;
     }
 
     function updateActiveState() {
@@ -226,14 +230,15 @@
         });
     }
 
-    function updateFilterSummary(total) {
+    function updateFilterSummary(jgRecords, czRecords) {
         const period = getPeriod(state.periodId);
         const theme = getTheme(state.themeId);
+        const total = jgRecords.length + czRecords.length;
         const parts = [];
 
         if (period) parts.push(period.name);
         if (theme) parts.push(theme.name);
-        if (state.query) parts.push(`关键词“${state.query}”`);
+        if (state.query) parts.push(`关键词"${state.query}"`);
 
         elements.activeFilter.replaceChildren();
         elements.activeFilter.appendChild(
@@ -258,23 +263,24 @@
     }
 
     function renderCatalog() {
-        const records = getFilteredRecords();
-        const visibleRecords = records.slice(0, state.visibleLimit);
+        const jgRecords = getRecordsByPeriod("jinggang");
+        const czRecords = getRecordsByPeriod("longmarch");
 
-        elements.recordList.replaceChildren(
-            ...visibleRecords.map(createRecordRow)
-        );
+        const hasMoreJG = renderColumn(elements.recordListJG, jgRecords, "visibleLimitJG");
+        const hasMoreCZ = renderColumn(elements.recordListCZ, czRecords, "visibleLimitCZ");
 
-        const hasRecords = records.length > 0;
+        const hasRecords = jgRecords.length > 0 || czRecords.length > 0;
         elements.empty.hidden = hasRecords;
-        elements.loadMore.hidden = state.visibleLimit >= records.length;
+        elements.loadMore.hidden = !(hasMoreJG || hasMoreCZ);
 
         if (!elements.loadMore.hidden) {
-            const remaining = records.length - state.visibleLimit;
+            const remainingJG = Math.max(0, jgRecords.length - state.visibleLimitJG);
+            const remainingCZ = Math.max(0, czRecords.length - state.visibleLimitCZ);
+            const remaining = remainingJG + remainingCZ;
             elements.loadMore.firstChild.textContent = `继续加载（余 ${numberFormatter.format(remaining)} 条）`;
         }
 
-        updateFilterSummary(records.length);
+        updateFilterSummary(jgRecords, czRecords);
         updateActiveState();
         updateDialogNavigation();
     }
@@ -282,7 +288,8 @@
     function setFilter(periodId = "all", themeId = "all", shouldScroll = true) {
         state.periodId = periodId;
         state.themeId = themeId;
-        state.visibleLimit = PAGE_SIZE;
+        state.visibleLimitJG = PAGE_SIZE;
+        state.visibleLimitCZ = PAGE_SIZE;
         renderCatalog();
 
         if (shouldScroll) {
@@ -292,7 +299,8 @@
 
     function setQuery(value) {
         state.query = value.trim();
-        state.visibleLimit = PAGE_SIZE;
+        state.visibleLimitJG = PAGE_SIZE;
+        state.visibleLimitCZ = PAGE_SIZE;
         renderCatalog();
     }
 
@@ -300,7 +308,8 @@
         state.query = "";
         state.periodId = "all";
         state.themeId = "all";
-        state.visibleLimit = PAGE_SIZE;
+        state.visibleLimitJG = PAGE_SIZE;
+        state.visibleLimitCZ = PAGE_SIZE;
         elements.searchInput.value = "";
         renderCatalog();
     }
@@ -347,8 +356,6 @@
     }
 
     function getDialogRecordSet() {
-        const filtered = getFilteredRecords();
-        if (filtered.some((record) => record.id === state.currentRecordId)) return filtered;
         return state.data?.records || [];
     }
 
@@ -456,14 +463,21 @@
             setFilter(button.dataset.period, button.dataset.theme);
         });
 
-        elements.recordList.addEventListener("click", (event) => {
+        elements.recordListJG.addEventListener("click", (event) => {
+            const button = event.target.closest("[data-record]");
+            if (!button) return;
+            openRecord(button.dataset.record);
+        });
+
+        elements.recordListCZ.addEventListener("click", (event) => {
             const button = event.target.closest("[data-record]");
             if (!button) return;
             openRecord(button.dataset.record);
         });
 
         elements.loadMore.addEventListener("click", () => {
-            state.visibleLimit += PAGE_SIZE;
+            state.visibleLimitJG += PAGE_SIZE;
+            state.visibleLimitCZ += PAGE_SIZE;
             renderCatalog();
         });
 
@@ -505,7 +519,8 @@
         } catch (error) {
             elements.periodStats.replaceChildren();
             elements.themeGroups.replaceChildren();
-            elements.recordList.replaceChildren();
+            elements.recordListJG.replaceChildren();
+            elements.recordListCZ.replaceChildren();
             elements.searchStatus.textContent = "档案数据暂时无法读取";
             elements.empty.hidden = false;
             elements.empty.querySelector("strong").textContent = "档案数据加载失败";

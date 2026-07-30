@@ -18,6 +18,11 @@
     --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+body.page-archive {
+    --accent: #8b2024;
+    --accent-deep: #641519;
+}
+
 body.page-decode {
     --accent: #8b2024;
     --accent-deep: #641519;
@@ -78,7 +83,8 @@ body::before {
     mix-blend-mode: multiply;
 }
 
-body.menu-open {
+body.menu-open,
+body.dialog-open {
     overflow: hidden;
 }
 
