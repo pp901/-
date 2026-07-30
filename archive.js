@@ -387,6 +387,7 @@
     const content = document.getElementById("archiveContent");
     const archiveNav = document.getElementById("archiveNav");
     const originalNavLinks = document.getElementById("navLinks");
+    const isStandalonePage = document.body.dataset.archivePage === "true";
 
     if (!archiveApp || !content || !archiveNav) return;
 
@@ -963,6 +964,10 @@
     window.addEventListener("keydown", event => {
         if (event.key === "Escape" && archiveApp.classList.contains("is-open")) closeArchive();
     });
+
+    if (isStandalonePage && !location.hash.startsWith("#archive-")) {
+        history.replaceState(null, "", "#archive-home");
+    }
 
     syncFromHash();
 })();

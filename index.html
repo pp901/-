@@ -3,583 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#d5b78b">
-    <meta name="description" content="信火追源——从井冈山革命标语切入，研究井冈山斗争对长征政治动员的深层影响。">
+    <meta name="theme-color" content="#170d09">
+    <meta name="description" content="信火追源研习团——从井冈山革命标语切入，研究井冈山斗争对长征政治动员的深层影响。">
     <meta property="og:title" content="信火追源 · 从星火到征途">
-    <meta property="og:description" content="井冈山斗争对长征政治动员的深层影响研究">
-    <meta property="og:image" content="assets/archive-hero.svg">
+    <meta property="og:description" content="中国海洋大学“井冈情·中国梦”暑期社会实践课题">
+    <meta property="og:image" content="assets/team-emblem.png">
     <title>信火追源 · 从星火到征途</title>
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="archive.css">
+    <link rel="stylesheet" href="intro.css">
 </head>
 <body>
-    <a class="skip-link" href="#mainContent">跳到主要内容</a>
+    <a class="skip-link" href="#introMain">跳到课题介绍</a>
 
-    <svg class="svg-sprite" aria-hidden="true">
-        <symbol id="icon-search" viewBox="0 0 24 24">
-            <circle cx="11" cy="11" r="6.75"></circle>
-            <path d="m16 16 4.2 4.2"></path>
-        </symbol>
-        <symbol id="icon-menu" viewBox="0 0 24 24">
-            <path d="M4 6h16M4 12h16M4 18h16"></path>
-        </symbol>
-        <symbol id="icon-close" viewBox="0 0 24 24">
-            <path d="m5 5 14 14M19 5 5 19"></path>
-        </symbol>
-        <symbol id="icon-archive" viewBox="0 0 24 24">
-            <path d="M4 7.5h16v12H4zM3 4.5h18v3H3zM9 11.5h6"></path>
-        </symbol>
-        <symbol id="icon-decode" viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="7.5"></circle>
-            <path d="M12 4.5V2M12 22v-2.5M19.5 12H22M2 12h2.5M8.7 8.7l6.6 6.6M15.3 8.7l-6.6 6.6"></path>
-        </symbol>
-        <symbol id="icon-location" viewBox="0 0 24 24">
-            <path d="M12 21s6-5.4 6-11a6 6 0 1 0-12 0c0 5.6 6 11 6 11Z"></path>
-            <circle cx="12" cy="10" r="2"></circle>
-        </symbol>
-        <symbol id="icon-book" viewBox="0 0 24 24">
-            <path d="M3.5 5.5c3.6-1 6.5-.4 8.5 1.2v13c-2-1.6-4.9-2.2-8.5-1.2v-13ZM20.5 5.5c-3.6-1-6.5-.4-8.5 1.2v13c2-1.6 4.9-2.2 8.5-1.2v-13Z"></path>
-        </symbol>
-        <symbol id="icon-experience" viewBox="0 0 24 24">
-            <path d="M4 10.5 12 4l8 6.5V20H4v-9.5Z"></path>
-            <path d="M9.2 13.5h5.6M12 10.7v5.6"></path>
-        </symbol>
-        <symbol id="icon-arrow" viewBox="0 0 24 24">
-            <path d="M5 12h13M14 7l5 5-5 5"></path>
-        </symbol>
-        <symbol id="icon-ai" viewBox="0 0 24 24">
-            <path d="M7 4.5h10a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3h-5.5L7 21v-3.5a3 3 0 0 1-3-3v-7a3 3 0 0 1 3-3Z"></path>
-            <path d="M8 12h1.5M14.5 12H16M12 2v2.5"></path>
-        </symbol>
-        <symbol id="icon-camera" viewBox="0 0 24 24">
-            <path d="M4 7.5h4l1.3-2h5.4l1.3 2h4v11H4z"></path>
-            <circle cx="12" cy="13" r="3.4"></circle>
-        </symbol>
-        <symbol id="icon-file" viewBox="0 0 24 24">
-            <path d="M6 3.5h8l4 4V21H6zM14 3.5v4h4M9 12h6M9 16h6"></path>
-        </symbol>
-        <symbol id="icon-route" viewBox="0 0 24 24">
-            <circle cx="5" cy="18" r="2"></circle>
-            <circle cx="19" cy="6" r="2"></circle>
-            <path d="M7 18c6 0 2-12 10-12"></path>
-        </symbol>
-        <symbol id="icon-bookmark" viewBox="0 0 24 24">
-            <path d="M7 4h10v17l-5-3-5 3z"></path>
-        </symbol>
-        <symbol id="icon-share" viewBox="0 0 24 24">
-            <circle cx="18" cy="5" r="2"></circle>
-            <circle cx="6" cy="12" r="2"></circle>
-            <circle cx="18" cy="19" r="2"></circle>
-            <path d="m8 11 8-5M8 13l8 5"></path>
-        </symbol>
-        <symbol id="icon-send" viewBox="0 0 24 24">
-            <path d="m3.5 4 17 8-17 8 3.5-8L3.5 4ZM7 12h13"></path>
-        </symbol>
-    </svg>
-
-    <header class="site-header" id="siteHeader">
-        <div class="site-container nav-shell">
-            <a class="brand" href="#hero" aria-label="信火追源首页">
-                <span class="brand-name">信火追源</span>
-                <span class="brand-mark" aria-hidden="true"></span>
-            </a>
-
-            <nav class="main-nav" id="mainNav" aria-label="主导航">
-                <a class="nav-link is-active" href="#hero">首页</a>
-                <button class="nav-link nav-archive-link" type="button" data-open-archive>墙上星火</button>
-                <a class="nav-link" href="#slogan">星火解码</a>
-                <a class="nav-link" href="#footprint">星火寻访</a>
-                <a class="nav-link" href="#recommendations">星火研创</a>
-                <a class="nav-link" href="#experience">星火沉浸</a>
-            </nav>
-
-            <div class="nav-actions">
-                <button class="icon-button search-toggle" id="searchToggle" type="button"
-                        aria-label="打开站内检索" aria-expanded="false" aria-controls="searchPanel">
-                    <svg aria-hidden="true"><use href="#icon-search"></use></svg>
-                </button>
-                <button class="icon-button menu-toggle" id="menuToggle" type="button"
-                        aria-label="打开导航菜单" aria-expanded="false" aria-controls="mainNav">
-                    <svg aria-hidden="true"><use href="#icon-menu"></use></svg>
-                </button>
-            </div>
-        </div>
-
-        <form class="search-panel" id="searchPanel" role="search" hidden>
-            <div class="site-container search-panel-inner">
-                <div class="form-field">
-                    <label for="siteSearch">检索站内标语</label>
-                    <div class="search-field-row">
-                        <input id="siteSearch" name="query" type="search"
-                               placeholder="输入标语、时期或研究关键词" autocomplete="off">
-                        <button class="button button-primary" type="submit">
-                            <svg aria-hidden="true"><use href="#icon-search"></use></svg>
-                            开始检索
-                        </button>
-                    </div>
-                    <p class="field-helper" id="searchHelper">可检索首页标语选读；完整地点、年代与主题检索请进入数字档案库。</p>
-                    <p class="field-error" id="searchError" role="status" hidden></p>
-                </div>
-                <button class="icon-button search-close" id="searchClose" type="button" aria-label="关闭站内检索">
-                    <svg aria-hidden="true"><use href="#icon-close"></use></svg>
-                </button>
-            </div>
-        </form>
-    </header>
-
-    <main id="mainContent">
-        <section class="hero paper-section" id="hero" aria-labelledby="heroTitle">
-            <div class="hero-manuscript" aria-hidden="true">考察札记　路线：茨坪—黄洋界—茅坪　档案号 JGS·1928</div>
-            <div class="site-container hero-layout">
-                <aside class="hero-collage reveal" aria-label="井冈山档案影像拼贴">
-                    <figure class="archive-photo photo-main">
-                        <img src="assets/archive-hero.svg" alt="井冈山革命根据地山峦与标语旧墙档案插画">
-                        <figcaption>井冈山 · 根据地山貌</figcaption>
-                    </figure>
-                    <figure class="archive-photo photo-small photo-site">
-                        <img src="assets/archive-hero.svg" alt="井冈山标语旧墙局部档案插画">
-                        <figcaption>旧址采录 01</figcaption>
-                    </figure>
-                    <figure class="archive-photo photo-small photo-wall">
-                        <img src="assets/archive-hero.svg" alt="革命标语墙体局部档案插画">
-                        <figcaption>墙面标语 02</figcaption>
-                    </figure>
-                    <span class="paper-clip" aria-hidden="true"></span>
-                    <span class="photo-note" aria-hidden="true">FIELD / 2025</span>
-                </aside>
-
-                <div class="hero-copy reveal">
-                    <p class="eyebrow">星火启程 · 专题研究档案</p>
-                    <h1 class="hero-title" id="heroTitle">从星火到征途</h1>
-                    <span class="title-brush" aria-hidden="true"></span>
-                    <p class="hero-subtitle">井冈山斗争对长征政治动员的深层影响研究</p>
-                    <blockquote class="hero-quote">
-                        <p>“星星之火，可以燎原”</p>
-                        <cite>——毛泽东 · 井冈山斗争时期</cite>
-                    </blockquote>
-                    <div class="hero-actions">
-                        <button class="button button-primary" type="button" data-open-archive>
-                            进入数字档案库
-                            <svg aria-hidden="true"><use href="#icon-arrow"></use></svg>
-                        </button>
-                        <a class="text-link" href="#researchQuestions">
-                            查看研究问题
-                            <svg aria-hidden="true"><use href="#icon-arrow"></use></svg>
-                        </a>
-                    </div>
-                </div>
-
-                <aside class="hero-notes reveal" aria-label="研究手稿与档案批注">
-                    <div class="note-sheet">
-                        <span class="note-number">JGS / 01</span>
-                        <p>标语不仅是口号，也是组织群众、解释政策与凝聚信念的政治文本。</p>
-                        <span class="note-rule" aria-hidden="true"></span>
-                        <p class="hand-note">从墙面文字出发，追索一条跨越井冈山与长征的动员脉络。</p>
-                        <span class="seal seal-square" aria-hidden="true">信火<br>追源</span>
-                    </div>
-                    <figure class="note-photo">
-                        <img src="assets/archive-hero.svg" alt="井冈山标语档案旧墙局部插画">
-                        <figcaption>档案采样 / 墙体载体</figcaption>
-                    </figure>
-                </aside>
-            </div>
-
-            <nav class="site-container portal-strip reveal" aria-label="五大核心栏目">
-                <button class="portal-item" type="button" data-open-archive>
-                    <span class="portal-icon"><svg aria-hidden="true"><use href="#icon-archive"></use></svg></span>
-                    <span class="portal-copy">
-                        <strong>墙上星火</strong>
-                        <small>标语数字档案</small>
-                    </span>
-                </button>
-                <a class="portal-item" href="#slogan">
-                    <span class="portal-icon"><svg aria-hidden="true"><use href="#icon-decode"></use></svg></span>
-                    <span class="portal-copy">
-                        <strong>星火解码</strong>
-                        <small>标语分析与 AI 共读</small>
-                    </span>
-                </a>
-                <a class="portal-item" href="#footprint">
-                    <span class="portal-icon"><svg aria-hidden="true"><use href="#icon-location"></use></svg></span>
-                    <span class="portal-copy">
-                        <strong>星火寻访</strong>
-                        <small>标语寻访与融媒传播</small>
-                    </span>
-                </a>
-                <a class="portal-item" href="#recommendations">
-                    <span class="portal-icon"><svg aria-hidden="true"><use href="#icon-book"></use></svg></span>
-                    <span class="portal-copy">
-                        <strong>星火研创</strong>
-                        <small>标语研究与学术成果</small>
-                    </span>
-                </a>
-                <a class="portal-item" href="#experience">
-                    <span class="portal-icon"><svg aria-hidden="true"><use href="#icon-experience"></use></svg></span>
-                    <span class="portal-copy">
-                        <strong>星火沉浸</strong>
-                        <small>互动与数字体验</small>
-                    </span>
-                </a>
-            </nav>
-        </section>
-
-        <section class="overview paper-section" aria-label="首页研究概览">
-            <div class="site-container editorial-grid">
-                <article class="quote-panel reveal">
-                    <p class="panel-kicker">代表标语</p>
-                    <blockquote>
-                        <p>星星之火，<br>可以燎原</p>
-                        <cite>——毛泽东 · 井冈山斗争时期</cite>
-                    </blockquote>
-                    <img src="assets/archive-hero.svg" alt="井冈山山峦与标语旧墙淡色插画" loading="lazy">
-                    <span class="seal seal-small" aria-hidden="true">燎原</span>
-                </article>
-
-                <article class="questions-panel reveal" id="researchQuestions">
-                    <p class="panel-kicker">核心研究问题</p>
-                    <ol class="question-list">
-                        <li>
-                            <span>01</span>
-                            <p>井冈山时期标语如何开展政治动员？</p>
-                        </li>
-                        <li>
-                            <span>02</span>
-                            <p>这些经验如何影响长征时期的政治动员？</p>
-                        </li>
-                        <li>
-                            <span>03</span>
-                            <p>对当代具有怎样的启示与借鉴意义？</p>
-                        </li>
-                    </ol>
-                    <span class="paper-clip paper-clip-small" aria-hidden="true"></span>
-                </article>
-
-                <article class="news-panel reveal">
-                    <header class="panel-heading">
-                        <p class="panel-kicker">最新动态</p>
-                        <a href="#recommendations">更多 <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
-                    </header>
-                    <div class="news-list">
-                        <a class="news-item" href="#slogan">
-                            <img src="assets/archive-hero.svg" alt="革命标语旧墙档案插画缩略图" loading="lazy">
-                            <span>
-                                <small>新增标语档案</small>
-                                <strong>《红军不怕远征难》专题档案入库</strong>
-                                <time datetime="2025-05-18">2025-05-18</time>
-                            </span>
-                        </a>
-                        <a class="news-item" href="#footprint">
-                            <img src="assets/archive-hero.svg" alt="井冈山旧址寻访档案插画缩略图" loading="lazy">
-                            <span>
-                                <small>寻访手记</small>
-                                <strong>遂川标语：乡村壁书里的信念</strong>
-                                <time datetime="2025-05-12">2025-05-12</time>
-                            </span>
-                        </a>
-                        <a class="news-item" href="#recommendations">
-                            <img src="assets/archive-hero.svg" alt="井冈山研究札记档案插画缩略图" loading="lazy">
-                            <span>
-                                <small>研究札记</small>
-                                <strong>三湾改编的标语意义</strong>
-                                <time datetime="2025-05-05">2025-05-05</time>
-                            </span>
-                        </a>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <section class="recommendations paper-section" id="recommendations" aria-labelledby="recommendationTitle">
-            <div class="site-container">
-                <header class="section-heading reveal">
-                    <div>
-                        <p class="eyebrow">编辑部选编 · 05 / 2025</p>
-                        <h2 id="recommendationTitle">最新推荐</h2>
-                    </div>
-                    <p>从新入库档案、深度解读到调研现场与互动成果，形成一份可连续阅读的研究目录。</p>
-                </header>
-
-                <div class="recommendation-grid">
-                    <article class="recommendation-card recommendation-feature reveal">
-                        <a class="recommendation-image" href="#slogan" aria-label="阅读最新档案：工农兵联合起来">
-                            <img src="assets/archive-hero.svg" alt="写有工农兵联合起来的革命标语旧墙插画" loading="lazy">
-                        </a>
-                        <div class="recommendation-body">
-                            <span class="archive-label">最新档案 · A-019</span>
-                            <h3><a href="#slogan">工农兵联合起来：一句标语里的组织逻辑</a></h3>
-                            <p>从文字位置、传播对象与政策语境入手，整理标语的基本档案信息。</p>
-                            <footer><span>茨坪 · 墙体档案</span><a href="#slogan">查看详情</a></footer>
-                        </div>
-                    </article>
-
-                    <article class="recommendation-card reveal">
-                        <a class="recommendation-image crop-mountain" href="#slogan" aria-label="阅读深度解读">
-                            <img src="assets/archive-hero.svg" alt="井冈山山地档案插画" loading="lazy">
-                        </a>
-                        <div class="recommendation-body">
-                            <span class="archive-label">深度解读</span>
-                            <h3><a href="#slogan">从“敢闯新路”看政治语言的行动指向</a></h3>
-                            <p>比较井冈山时期的表达方法与长征中的延续。</p>
-                            <footer><span>研究札记</span><a href="#slogan">查看详情</a></footer>
-                        </div>
-                    </article>
-
-                    <article class="recommendation-card reveal">
-                        <a class="recommendation-image crop-route" href="#footprint" aria-label="阅读寻访手记">
-                            <img src="assets/archive-hero.svg" alt="井冈山旧址与山地路线档案插画" loading="lazy">
-                        </a>
-                        <div class="recommendation-body">
-                            <span class="archive-label">寻访手记</span>
-                            <h3><a href="#footprint">横石村：在旧墙与口述之间核对一条线索</a></h3>
-                            <p>记录实地采样、村民访谈与史料互证的过程。</p>
-                            <footer><span>遂川县新江乡</span><a href="#footprint">查看详情</a></footer>
-                        </div>
-                    </article>
-
-                    <article class="recommendation-card reveal">
-                        <a class="recommendation-image crop-wall" href="#researchQuestions" aria-label="阅读阶段研究成果">
-                            <img src="assets/archive-hero.svg" alt="革命标语墙体档案插画" loading="lazy">
-                        </a>
-                        <div class="recommendation-body">
-                            <span class="archive-label">研究成果</span>
-                            <h3><a href="#researchQuestions">精神策源与道路自信：阶段研究提要</a></h3>
-                            <p>梳理政治动员经验由根据地走向长征的内在线索。</p>
-                            <footer><span>专题论文</span><a href="#researchQuestions">查看详情</a></footer>
-                        </div>
-                    </article>
-
-                    <article class="recommendation-card reveal" id="experience">
-                        <button class="recommendation-image crop-experience" type="button" data-open-ai aria-label="打开 AI 共读体验">
-                            <img src="assets/archive-hero.svg" alt="用于标语数字共读的档案插画" loading="lazy">
-                            <span class="image-action"><svg aria-hidden="true"><use href="#icon-ai"></use></svg>开始共读</span>
-                        </button>
-                        <div class="recommendation-body">
-                            <span class="archive-label">互动体验</span>
-                            <h3><button class="title-button" type="button" data-open-ai>AI 共读：比较两个时期的动员表达</button></h3>
-                            <p>从主题、对象、语言与组织策略四个角度辅助阅读。</p>
-                            <footer><span>预计 5 分钟</span><button type="button" data-open-ai>开始体验</button></footer>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section class="slogan-section paper-section" id="slogan" aria-labelledby="sloganTitle">
-            <div class="site-container">
-                <header class="section-heading reveal">
-                    <div>
-                        <p class="eyebrow">墙上星火 · 标语选读</p>
-                        <h2 id="sloganTitle">政治动员的文字现场</h2>
-                    </div>
-                    <p>保留原有标语数据与时期筛选，并以档案摘录的方式呈现。完整资料可进入数字档案库检索。</p>
-                </header>
-
-                <div class="archive-toolbar reveal">
-                    <div class="filter-tabs" id="filterTabs" aria-label="按时期筛选标语">
-                        <button class="filter-tab is-active" type="button" data-filter="all" aria-pressed="true">全部标语</button>
-                        <button class="filter-tab" type="button" data-filter="jinggang" aria-pressed="false">井冈山时期</button>
-                        <button class="filter-tab" type="button" data-filter="changzheng" aria-pressed="false">长征时期</button>
-                    </div>
-                    <button class="text-link toolbar-link" type="button" data-open-archive>
-                        打开完整档案库
-                        <svg aria-hidden="true"><use href="#icon-arrow"></use></svg>
-                    </button>
-                </div>
-
-                <div class="slogan-grid" id="sloganGrid" aria-live="polite"></div>
-                <div class="empty-state" id="sloganEmpty" hidden>
-                    <svg aria-hidden="true"><use href="#icon-archive"></use></svg>
-                    <h3>未找到匹配标语</h3>
-                    <p>请更换关键词，或清除检索后查看全部首页选读。</p>
-                    <button class="button button-secondary" id="clearSearch" type="button">清除检索</button>
-                </div>
-            </div>
-        </section>
-
-        <section class="fieldwork paper-section" id="footprint" aria-labelledby="footprintTitle">
-            <div class="site-container fieldwork-layout">
-                <div class="route-board reveal">
-                    <header>
-                        <p class="eyebrow">FIELD NOTES / 调研路线</p>
-                        <h2 id="footprintTitle">从精神策源到征途探路</h2>
-                    </header>
-                    <svg class="route-map" viewBox="0 0 720 420" role="img" aria-labelledby="routeTitle routeDesc">
-                        <title id="routeTitle">信火追源调研路线图</title>
-                        <desc id="routeDesc">路线由井冈山革命博物馆出发，经过黄洋界、钟家祠、横石村，抵达吉州窑博物馆。</desc>
-                        <path class="map-contour contour-one" d="M40 108c85-74 132-42 203-67 77-27 121 30 203 12 91-20 145 21 229 7"></path>
-                        <path class="map-contour contour-two" d="M24 330c104-55 164-12 245-42 106-39 163 24 254-11 63-24 109-19 173 17"></path>
-                        <path class="route-path" d="M92 118C189 75 199 205 285 185S380 88 459 139s57 154 154 173"></path>
-                        <g class="route-stop">
-                            <circle cx="92" cy="118" r="9"></circle>
-                            <text x="54" y="88">井冈山革命博物馆</text>
-                            <text class="route-index" x="72" y="142">01</text>
-                        </g>
-                        <g class="route-stop">
-                            <circle cx="285" cy="185" r="9"></circle>
-                            <text x="245" y="225">黄洋界</text>
-                            <text class="route-index" x="297" y="178">02</text>
-                        </g>
-                        <g class="route-stop">
-                            <circle cx="459" cy="139" r="9"></circle>
-                            <text x="430" y="102">钟家祠</text>
-                            <text class="route-index" x="472" y="156">03</text>
-                        </g>
-                        <g class="route-stop">
-                            <circle cx="526" cy="248" r="9"></circle>
-                            <text x="482" y="285">横石村</text>
-                            <text class="route-index" x="539" y="240">04</text>
-                        </g>
-                        <g class="route-stop">
-                            <circle cx="613" cy="312" r="9"></circle>
-                            <text x="565" y="350">吉州窑博物馆</text>
-                            <text class="route-index" x="626" y="304">05</text>
-                        </g>
-                    </svg>
-                    <p class="route-caption">以现场拍摄、墙体测绘、口述访谈与馆藏资料核验组成一条可回溯的研究路线。</p>
-                </div>
-
-                <div class="timeline-board reveal">
-                    <p class="panel-kicker">阶段成果</p>
-                    <ol class="timeline">
-                        <li>
-                            <time datetime="1927">1927—1930</time>
-                            <h3>井冈山斗争 · 精神策源</h3>
-                            <p>搜集政治动员原始档案，梳理“农村包围城市”理论的形成脉络。</p>
-                        </li>
-                        <li>
-                            <time datetime="1934-08">1934.08</time>
-                            <h3>红六军团西征 · 长征探路</h3>
-                            <p>走访横石村与钟家祠，了解西征前的组织动员和战略准备。</p>
-                        </li>
-                        <li>
-                            <time datetime="1934-10">1934.10</time>
-                            <h3>中央红军出发 · 伟大远征</h3>
-                            <p>结合展陈与史料，把握战略背景、群众工作和物资筹备。</p>
-                        </li>
-                    </ol>
-                    <a class="button button-secondary" href="#recommendations">
-                        查看调研手记
-                        <svg aria-hidden="true"><use href="#icon-arrow"></use></svg>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section class="research-outcomes paper-section" aria-labelledby="outcomesTitle">
-            <div class="site-container outcomes-layout">
-                <header class="outcomes-heading reveal">
-                    <p class="eyebrow">RESEARCH ARCHIVE / 研究档案</p>
-                    <h2 id="outcomesTitle">让史料、现场与青年表达彼此印证</h2>
-                    <p>研究论文、系列微党课、调研札记与数字互动，共同构成专题项目的阶段成果。</p>
-                </header>
-                <div class="outcome-ledger reveal">
-                    <a href="#researchQuestions">
-                        <span>01 / 论文</span>
-                        <strong>精神策源与道路自信</strong>
-                        <svg aria-hidden="true"><use href="#icon-arrow"></use></svg>
-                    </a>
-                    <a href="#recommendations">
-                        <span>02 / 微党课</span>
-                        <strong>井冈山到长征：一条精神主线</strong>
-                        <svg aria-hidden="true"><use href="#icon-arrow"></use></svg>
-                    </a>
-                    <a href="#footprint">
-                        <span>03 / 札记</span>
-                        <strong>信火追源实践心得汇编</strong>
-                        <svg aria-hidden="true"><use href="#icon-arrow"></use></svg>
-                    </a>
-                    <button type="button" data-open-ai>
-                        <span>04 / 共读</span>
-                        <strong>打开研究批注侧栏</strong>
-                        <svg aria-hidden="true"><use href="#icon-arrow"></use></svg>
-                    </button>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <div class="site-container footer-main">
-            <div>
-                <p class="footer-brand">信火追源</p>
-                <p>信火追源研习团 · 中国海洋大学信息科学与工程学部</p>
-            </div>
-            <nav aria-label="页脚导航">
-                <a href="#hero">星火启程</a>
-                <button type="button" data-open-archive>墙上星火</button>
-                <a href="#slogan">星火解码</a>
-                <a href="#footprint">星火寻访</a>
-                <a href="#recommendations">星火研创</a>
-            </nav>
-        </div>
-        <div class="site-container footer-meta">
-            <p>从星火到征途 · 传承红色基因</p>
-            <p>© 2026 井冈情·中国梦课题实施</p>
-        </div>
-    </footer>
-
-    <aside class="ai-reader" id="aiReader" aria-hidden="true" aria-labelledby="aiReaderTitle">
-        <div class="ai-reader-header">
-            <div>
-                <span class="archive-label">研究批注侧栏</span>
-                <h2 id="aiReaderTitle"><svg aria-hidden="true"><use href="#icon-ai"></use></svg>AI 共读</h2>
-            </div>
-            <button class="icon-button" id="aiClose" type="button" aria-label="关闭 AI 共读">
-                <svg aria-hidden="true"><use href="#icon-close"></use></svg>
-            </button>
-        </div>
-        <div class="ai-quick-prompts" aria-label="快速提问">
-            <button type="button" data-prompt="请讲解“星星之火，可以燎原”">讲解这条标语</button>
-            <button type="button" data-prompt="比较井冈山与长征时期的政治动员">比较两个时期</button>
-            <button type="button" data-prompt="推荐与支部建在连上相关的档案">推荐关联档案</button>
-        </div>
-        <div class="ai-messages" id="aiMessages" aria-live="polite">
-            <article class="message message-assistant">
-                <span>共读批注 01</span>
-                <p>可以从“传播对象、语言形式、组织策略、历史语境”四个角度开始阅读。请选择一个问题，或输入你的研究问题。</p>
-                <a href="#slogan">关联：标语选读</a>
-            </article>
-        </div>
-        <form class="ai-form" id="aiForm">
-            <label for="aiInput">写下你的研究问题</label>
-            <div>
-                <input id="aiInput" type="text" placeholder="例如：这条标语面向谁？" autocomplete="off">
-                <button type="submit" aria-label="发送问题">
-                    <svg aria-hidden="true"><use href="#icon-send"></use></svg>
-                </button>
-            </div>
-            <p>AI 生成内容仅供辅助阅读，请以史料和研究成果为准。</p>
-        </form>
-    </aside>
-    <button class="ai-tab" id="aiTab" type="button" aria-expanded="false" aria-controls="aiReader">
-        <svg aria-hidden="true"><use href="#icon-ai"></use></svg>
-        <span>AI 共读</span>
-    </button>
-
-    <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
-
-    <div class="archive-app" id="archiveApp" aria-hidden="true">
-        <header class="da-topbar">
-            <div class="da-container da-topbar-inner">
-                <button class="da-brand" id="archiveBrand" type="button" aria-label="返回标语数字档案库首页">
-                    <span class="da-brand-mark" aria-hidden="true"></span>
-                    <span>井冈山革命根据地标语数字档案</span>
-                </button>
-                <nav class="da-nav" id="archiveNav" aria-label="标语数字档案库导航">
-                    <button class="da-nav-button is-active" type="button" data-da-route="home">首页</button>
-                    <button class="da-nav-button" type="button" data-da-route="categories">分类总览</button>
-                    <button class="da-nav-button" type="button" data-da-route="detail">标语档案</button>
-                    <button class="da-nav-button" type="button" data-da-route="timeline">时间线索</button>
-                    <button class="da-nav-button" type="button" data-main-target="footprint">调研过程</button>
-                </nav>
-                <button class="da-close" id="archiveClose" type="button" aria-label="返回信火追源首页">← 返回信火追源</button>
-            </div>
-        </header>
-        <main id="archiveContent"></main>
+    <div class="intro-scene" aria-hidden="true">
+        <div class="intro-glow"></div>
+        <div class="ridge ridge-back"></div>
+        <div class="ridge ridge-front"></div>
+        <div class="spark-field" id="sparkField"></div>
+        <div class="grain"></div>
     </div>
 
-    <script src="script.js"></script>
-    <script src="archive.js"></script>
+    <header class="intro-header">
+        <a class="intro-brand" href="index.html" aria-label="信火追源序章">
+            <img src="assets/team-emblem.png" alt="">
+            <span>
+                <strong>信火追源</strong>
+                <small>中国海洋大学研习团</small>
+            </span>
+        </a>
+        <p>2026 · 井冈情 中国梦</p>
+    </header>
+
+    <main class="intro-main" id="introMain">
+        <section class="intro-copy" aria-labelledby="introTitle">
+            <p class="intro-kicker"><span>课题序章</span> RESEARCH PROLOGUE</p>
+            <h1 id="introTitle">
+                <span>从星火</span>
+                <span>到征途</span>
+            </h1>
+            <p class="intro-lead">从井冈山革命标语切入，追索政治语言如何凝聚群众、组织行动，又如何在长征途中延续并发展。</p>
+
+            <div class="intro-meta">
+                <article>
+                    <span>我们的课题</span>
+                    <strong>井冈山斗争对长征政治动员的深层影响研究</strong>
+                </article>
+                <article>
+                    <span>我们是谁</span>
+                    <strong>中国海洋大学信息科学与工程学部 · 信火追源研习团</strong>
+                </article>
+            </div>
+
+            <a class="explore-button" id="exploreButton" href="home.html">
+                <span>开启探索之旅</span>
+                <i aria-hidden="true">→</i>
+            </a>
+        </section>
+
+        <aside class="intro-emblem" aria-label="信火追源研习团队徽">
+            <div class="emblem-orbit orbit-one"></div>
+            <div class="emblem-orbit orbit-two"></div>
+            <img src="assets/team-emblem.png" alt="信火追源研习团队徽：海浪、火炬、山峦与帆船组成的圆形图案">
+            <p><span>OUC</span> / 山海为证，信火相传</p>
+        </aside>
+    </main>
+
+    <footer class="intro-footer">
+        <p>中国海洋大学</p>
+        <p>向下扎根历史，向前寻找答案</p>
+        <span aria-hidden="true">SCROLL TO BEGIN · 01</span>
+    </footer>
+
+    <script src="intro.js"></script>
 </body>
 </html>

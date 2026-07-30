@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#fffdf9">
+    <meta name="description" content="墙上星火——井冈山革命标语数字档案，支持分类、关键词与时间线浏览。">
+    <meta property="og:title" content="墙上星火 · 标语数字档案">
+    <meta property="og:image" content="assets/team-emblem.png">
+    <title>墙上星火 · 标语数字档案</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="archive.css">
+</head>
+<body data-archive-page="true">
+    <a class="da-skip-link" href="#archiveContent">跳到档案内容</a>
+    <div class="archive-app" id="archiveApp" aria-hidden="true">
+        <header class="da-topbar">
+            <div class="da-container da-topbar-inner">
+                <button class="da-brand" id="archiveBrand" type="button" aria-label="返回标语数字档案库首页">
+                    <img class="da-brand-emblem" src="assets/team-emblem.png" alt="">
+                    <span>墙上星火 · 标语数字档案</span>
+                </button>
+                <nav class="da-nav" id="archiveNav" aria-label="标语数字档案库导航">
+                    <button class="da-nav-button is-active" type="button" data-da-route="home">栏目首页</button>
+                    <button class="da-nav-button" type="button" data-da-route="categories">分类检索</button>
+                    <button class="da-nav-button" type="button" data-da-route="detail">代表档案</button>
+                    <button class="da-nav-button" type="button" data-da-route="timeline">时间线索</button>
+                </nav>
+                <a class="da-close" href="home.html" aria-label="返回信火追源首页">← 返回首页</a>
+            </div>
+        </header>
+        <main id="archiveContent"></main>
+    </div>
+    <script src="archive.js"></script>
+</body>
+</html>

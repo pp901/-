@@ -41,6 +41,22 @@ body.archive-mode {
     overflow: hidden;
 }
 
+.da-skip-link {
+    position: fixed;
+    z-index: 4000;
+    top: 12px;
+    left: 12px;
+    padding: 9px 15px;
+    color: #fffdf9;
+    background: #791014;
+    transform: translateY(-160%);
+    transition: transform 180ms ease;
+}
+
+.da-skip-link:focus {
+    transform: translateY(0);
+}
+
 .archive-app {
     --da-red: #9f151a;
     --da-red-dark: #791014;
@@ -160,6 +176,16 @@ body.archive-mode {
     flex: 0 0 auto;
 }
 
+.da-brand-emblem {
+    width: 48px;
+    height: 48px;
+    flex: 0 0 auto;
+    border: 1px solid rgba(159, 21, 26, 0.24);
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 3px 10px rgba(65, 45, 27, 0.12);
+}
+
 .da-brand-mark::before,
 .da-brand-mark::after {
     content: "";
@@ -228,6 +254,8 @@ body.archive-mode {
 
 .da-close {
     appearance: none;
+    display: inline-flex;
+    align-items: center;
     border: 1px solid #dccdbc;
     background: #fffdf9;
     color: #665d54;
@@ -235,6 +263,7 @@ body.archive-mode {
     padding: 0 16px;
     border-radius: 999px;
     white-space: nowrap;
+    text-decoration: none;
     transition: 0.2s ease;
 }
 

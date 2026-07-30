@@ -10,7 +10,7 @@
     --china-red-deep: #651519;
     --ink: #30251d;
     --ink-secondary: #594638;
-    --text-muted: #796451;
+    --text-muted: #684f3c;
     --brown: #7d5635;
     --brown-light: #a77b50;
     --line: #b99769;
@@ -48,9 +48,9 @@ body {
         radial-gradient(circle at 84% 36%, rgba(134, 29, 34, 0.045), transparent 35rem),
         var(--paper-bg);
     font-family: var(--font-serif);
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 1.75;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.82;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
 }
@@ -179,8 +179,8 @@ button:active,
     margin: 0;
     color: var(--china-red-dark);
     font-family: var(--font-sans);
-    font-size: 0.75rem;
-    font-weight: 700;
+    font-size: 0.82rem;
+    font-weight: 800;
     letter-spacing: 0.16em;
 }
 
@@ -364,6 +364,16 @@ button:active,
     line-height: 1;
 }
 
+.brand-emblem {
+    width: 2.7rem;
+    height: 2.7rem;
+    flex: 0 0 auto;
+    border: 1px solid rgba(134, 29, 34, 0.3);
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 3px 10px rgba(67, 42, 25, 0.14);
+}
+
 .brand-mark {
     position: relative;
     width: 28px;
@@ -412,8 +422,8 @@ button:active,
     color: var(--ink-secondary);
     background: transparent;
     font-family: var(--font-serif);
-    font-size: 0.94rem;
-    font-weight: 700;
+    font-size: 0.98rem;
+    font-weight: 800;
     letter-spacing: 0.035em;
     white-space: nowrap;
     transition: color 220ms ease;
@@ -630,6 +640,52 @@ button:active,
     height: 132px;
 }
 
+.slogan-fragment {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0.8rem 0.9rem 1.25rem;
+    color: var(--paper-card-light);
+    background:
+        linear-gradient(rgba(104, 21, 25, 0.92), rgba(134, 29, 34, 0.94)),
+        var(--china-red-dark);
+    filter: none;
+}
+
+.slogan-fragment::before {
+    position: absolute;
+    inset: 0;
+    content: "";
+    opacity: 0.1;
+    background-image: radial-gradient(circle, var(--paper-light) 0.7px, transparent 0.8px);
+    background-size: 7px 7px;
+}
+
+.slogan-fragment p,
+.slogan-fragment cite {
+    position: relative;
+    z-index: 1;
+}
+
+.slogan-fragment p {
+    margin: 0;
+    font-family: var(--font-title);
+    font-size: clamp(1.05rem, 1.65vw, 1.55rem);
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    line-height: 1.35;
+}
+
+.slogan-fragment cite {
+    margin-top: 0.25rem;
+    color: rgba(255, 247, 232, 0.72);
+    font-family: var(--font-sans);
+    font-size: 0.58rem;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+
 .photo-site {
     bottom: 8px;
     left: 0;
@@ -759,6 +815,47 @@ button:active,
 .hero-notes {
     position: relative;
     min-height: 390px;
+}
+
+.slogan-inscription {
+    align-self: center;
+    min-height: 320px;
+    border-left: 3px solid var(--china-red-dark);
+    padding: 2.1rem 1.5rem 4.6rem;
+    background:
+        linear-gradient(135deg, rgba(244, 228, 200, 0.82), rgba(225, 200, 159, 0.46)),
+        repeating-linear-gradient(0deg, transparent 0 34px, rgba(125, 86, 53, 0.1) 34px 35px);
+    box-shadow: var(--shadow-paper-small);
+}
+
+.inscription-index {
+    color: var(--china-red-dark);
+    font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+}
+
+.slogan-inscription blockquote {
+    margin: 1.2rem 0 0;
+}
+
+.slogan-inscription blockquote p {
+    margin: 0;
+    color: var(--ink);
+    font-family: var(--font-title);
+    font-size: clamp(1.45rem, 2vw, 2rem);
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    line-height: 1.65;
+}
+
+.slogan-inscription > p {
+    margin: 1rem 0 0;
+    color: var(--ink-secondary);
+    font-size: 0.9rem;
+    font-weight: 700;
+    line-height: 1.85;
 }
 
 .note-sheet {
@@ -974,7 +1071,7 @@ button:active,
 }
 
 .portal-copy strong {
-    font-size: 1rem;
+    font-size: 1.08rem;
     font-weight: 900;
     letter-spacing: 0.06em;
 }
@@ -983,8 +1080,8 @@ button:active,
     overflow: hidden;
     color: var(--text-muted);
     font-family: var(--font-sans);
-    font-size: 0.68rem;
-    font-weight: 500;
+    font-size: 0.76rem;
+    font-weight: 700;
     line-height: 1.5;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -1037,9 +1134,20 @@ button:active,
     display: block;
     margin-top: 0.8rem;
     color: var(--text-muted);
-    font-size: 0.73rem;
+    font-size: 0.82rem;
     font-style: normal;
     font-weight: 600;
+}
+
+.quote-context {
+    position: relative;
+    z-index: 2;
+    max-width: 25rem;
+    margin: 1.4rem 3.7rem 0 0;
+    color: var(--ink-secondary);
+    font-size: 0.84rem;
+    font-weight: 700;
+    line-height: 1.8;
 }
 
 .quote-panel > img {
@@ -1102,7 +1210,7 @@ button:active,
 .question-list p {
     margin: 0;
     color: var(--ink-secondary);
-    font-size: 0.9rem;
+    font-size: 0.98rem;
     font-weight: 700;
     line-height: 1.65;
 }
@@ -1131,7 +1239,7 @@ button:active,
     gap: 0.25rem;
     color: var(--text-muted);
     font-family: var(--font-sans);
-    font-size: 0.72rem;
+    font-size: 0.8rem;
     font-weight: 700;
 }
 
@@ -1164,6 +1272,22 @@ button:active,
     transition: filter 260ms ease;
 }
 
+.news-mark {
+    display: grid;
+    width: 100%;
+    height: 61px;
+    place-items: center;
+    border: 1px solid rgba(134, 29, 34, 0.28);
+    color: var(--paper-card-light);
+    background:
+        linear-gradient(135deg, rgba(134, 29, 34, 0.88), rgba(101, 21, 25, 0.98)),
+        var(--china-red-dark);
+    font-family: var(--font-title);
+    font-size: 1.65rem;
+    font-weight: 900;
+    box-shadow: inset 0 0 0 4px rgba(244, 228, 200, 0.09);
+}
+
 .news-item:nth-child(1) img {
     object-position: 91% center;
 }
@@ -1183,14 +1307,14 @@ button:active,
 .news-item small {
     color: var(--china-red-dark);
     font-family: var(--font-sans);
-    font-size: 0.65rem;
+    font-size: 0.72rem;
     font-weight: 700;
 }
 
 .news-item strong {
     overflow: hidden;
     color: var(--ink-secondary);
-    font-size: 0.82rem;
+    font-size: 0.9rem;
     font-weight: 700;
     line-height: 1.55;
     text-overflow: ellipsis;
@@ -1201,7 +1325,7 @@ button:active,
 .news-item time {
     color: var(--text-muted);
     font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
-    font-size: 0.63rem;
+    font-size: 0.7rem;
     font-variant-numeric: tabular-nums;
 }
 
@@ -1271,6 +1395,81 @@ button:active,
     transition: transform 450ms var(--ease-paper), filter 300ms ease;
 }
 
+.slogan-cover {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: 1.35rem;
+    isolation: isolate;
+    color: var(--paper-card-light);
+    background: var(--china-red-dark);
+}
+
+.slogan-cover::before,
+.slogan-cover::after {
+    position: absolute;
+    z-index: -1;
+    content: "";
+}
+
+.slogan-cover::before {
+    inset: 0;
+    opacity: 0.16;
+    background:
+        repeating-linear-gradient(112deg, transparent 0 19px, rgba(255, 247, 232, 0.22) 20px 21px),
+        radial-gradient(circle at 80% 16%, rgba(255, 247, 232, 0.75) 0 1px, transparent 2px);
+    background-size: auto, 14px 14px;
+}
+
+.slogan-cover::after {
+    right: -12%;
+    bottom: -37%;
+    width: 78%;
+    aspect-ratio: 1;
+    border: 1px solid rgba(255, 247, 232, 0.24);
+    border-radius: 50%;
+}
+
+.slogan-cover span {
+    font-family: var(--font-title);
+    font-size: clamp(1.65rem, 2.45vw, 2.6rem);
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    line-height: 1.25;
+    text-shadow: 0 3px 16px rgba(43, 16, 12, 0.22);
+    transition: transform 350ms var(--ease-paper);
+}
+
+.slogan-cover small {
+    margin-top: 0.75rem;
+    color: rgba(255, 247, 232, 0.78);
+    font-family: var(--font-sans);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+}
+
+.cover-decode {
+    background: #805124;
+}
+
+.cover-fieldwork {
+    background: #344e3d;
+}
+
+.cover-research {
+    background: #6d3226;
+}
+
+.cover-experience {
+    background: #29485a;
+}
+
+.recommendation-card:hover .slogan-cover span {
+    transform: translateY(-4px);
+}
+
 .crop-mountain img {
     object-position: 11% 45%;
 }
@@ -1325,7 +1524,7 @@ button:active,
 .recommendation-body h3 {
     margin: 0.65rem 0 0;
     color: var(--ink);
-    font-size: 1.02rem;
+    font-size: 1.08rem;
     font-weight: 900;
     letter-spacing: -0.015em;
     line-height: 1.55;
@@ -1333,7 +1532,7 @@ button:active,
 }
 
 .recommendation-feature .recommendation-body h3 {
-    font-size: 1.25rem;
+    font-size: 1.35rem;
 }
 
 .recommendation-body h3 a,
@@ -1350,8 +1549,8 @@ button:active,
     margin: 0.55rem 0 1rem;
     color: var(--ink-secondary);
     font-family: var(--font-sans);
-    font-size: 0.75rem;
-    font-weight: 500;
+    font-size: 0.82rem;
+    font-weight: 650;
     line-height: 1.7;
 }
 
@@ -1365,7 +1564,7 @@ button:active,
     padding-top: 0.72rem;
     color: var(--text-muted);
     font-family: var(--font-sans);
-    font-size: 0.65rem;
+    font-size: 0.72rem;
     font-weight: 600;
 }
 
@@ -1690,7 +1889,7 @@ button:active,
     border-left: 3px solid var(--china-red-dark);
     padding-left: 0.9rem;
     color: var(--ink-secondary);
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     font-weight: 600;
 }
 
@@ -1739,14 +1938,14 @@ button:active,
 .timeline time {
     color: var(--china-red-dark);
     font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
-    font-size: 0.69rem;
+    font-size: 0.76rem;
     font-weight: 700;
     letter-spacing: 0.08em;
 }
 
 .timeline h3 {
     margin: 0.2rem 0 0.35rem;
-    font-size: 1rem;
+    font-size: 1.08rem;
     font-weight: 900;
     line-height: 1.5;
 }
@@ -1755,7 +1954,7 @@ button:active,
     margin: 0;
     color: var(--ink-secondary);
     font-family: var(--font-sans);
-    font-size: 0.75rem;
+    font-size: 0.84rem;
     line-height: 1.7;
 }
 
@@ -1858,7 +2057,7 @@ button:active,
 
 .footer-main p {
     margin: 0.45rem 0 0;
-    font-size: 0.83rem;
+    font-size: 0.9rem;
 }
 
 .footer-main .footer-brand {
@@ -1883,7 +2082,7 @@ button:active,
     padding: 0;
     color: inherit;
     background: transparent;
-    font-size: 0.78rem;
+    font-size: 0.84rem;
     font-weight: 700;
 }
 
@@ -1905,7 +2104,7 @@ button:active,
     padding-top: 1rem;
     color: rgba(255, 247, 232, 0.62);
     font-family: var(--font-sans);
-    font-size: 0.68rem;
+    font-size: 0.74rem;
 }
 
 .footer-meta p {
@@ -2394,8 +2593,8 @@ button:active,
 /* Mobile */
 @media (max-width: 680px) {
     body {
-        font-size: 15px;
-        line-height: 1.75;
+        font-size: 16.5px;
+        line-height: 1.8;
     }
 
     .site-container {
@@ -2408,6 +2607,11 @@ button:active,
 
     .brand-mark {
         display: none;
+    }
+
+    .brand-emblem {
+        width: 2.35rem;
+        height: 2.35rem;
     }
 
     .search-panel-inner {
@@ -2496,7 +2700,7 @@ button:active,
     }
 
     .hero-copy .eyebrow {
-        font-size: 0.68rem;
+        font-size: 0.76rem;
     }
 
     .hero-title {
@@ -2579,11 +2783,11 @@ button:active,
     }
 
     .portal-copy strong {
-        font-size: 0.88rem;
+        font-size: 0.98rem;
     }
 
     .portal-copy small {
-        font-size: 0.61rem;
+        font-size: 0.7rem;
         white-space: normal;
     }
 
