@@ -3492,30 +3492,36 @@ button:active,
     line-height: 1.68;
 }
 
-/* Connecting arrows between timeline cards */
+/* Connecting long arrows between timeline cards */
 #schedule .timeline .tl-arrow {
     position: absolute;
     z-index: 2;
-    right: -0.85rem;
+    right: -1.9rem;
     top: 50%;
+    width: 2rem;
+    height: 0.32rem;
     transform: translateY(-50%);
-    display: grid;
-    width: 1.6rem;
-    height: 1.6rem;
-    place-items: center;
-    border-radius: 50%;
-    color: var(--white-soft);
     background: var(--china-red-dark);
+    border-radius: 999px;
     font-style: normal;
-    font-size: 0.75rem;
-    font-weight: 900;
-    box-shadow: 0 2px 8px rgba(101, 21, 25, 0.35);
+}
+
+#schedule .timeline .tl-arrow::after {
+    position: absolute;
+    right: -0.05rem;
+    top: 50%;
+    width: 0.75rem;
+    height: 0.75rem;
+    content: "";
+    border-right: 0.34rem solid var(--china-red-dark);
+    border-top: 0.34rem solid var(--china-red-dark);
+    transform: translateY(-50%) rotate(45deg);
 }
 
 /* Every 2nd item (right column) arrow points back-left toward next row */
 #schedule .timeline li:nth-child(2n) .tl-arrow {
     right: auto;
-    left: -0.85rem;
+    left: -1.9rem;
     transform: translateY(-50%) rotate(180deg);
 }
 
@@ -3794,7 +3800,7 @@ button:active,
         grid-template-columns: 1fr;
     }
 
-    /* Mobile timeline: single column, arrows point down between cards */
+    /* Mobile timeline: single column, long arrows point down between cards */
     #schedule .timeline {
         grid-template-columns: 1fr;
     }
@@ -3802,17 +3808,30 @@ button:active,
     #schedule .timeline .tl-arrow {
         right: 50%;
         top: auto;
-        bottom: -1.35rem;
-        transform: translateX(50%) rotate(90deg);
-        width: 1.3rem;
-        height: 1.3rem;
-        font-size: 0.65rem;
+        bottom: -1.5rem;
+        width: 0.3rem;
+        height: 1.6rem;
+        transform: translateX(50%);
+        background: var(--china-red-dark);
+        border-radius: 999px;
+    }
+
+    #schedule .timeline .tl-arrow::after {
+        right: auto;
+        left: 50%;
+        top: auto;
+        bottom: -0.35rem;
+        width: 0.7rem;
+        height: 0.7rem;
+        border-right: 0.32rem solid var(--china-red-dark);
+        border-top: 0.32rem solid var(--china-red-dark);
+        transform: translateX(-50%) rotate(135deg);
     }
 
     #schedule .timeline li:nth-child(2n) .tl-arrow {
         right: 50%;
         left: auto;
-        transform: translateX(50%) rotate(90deg);
+        transform: translateX(50%);
     }
 
     .route-board {
@@ -3854,7 +3873,7 @@ button:active,
 
 /* Route map: keep geography quiet and let the events do the speaking. */
 .route-board {
-    grid-template-columns: minmax(17rem, 0.58fr) minmax(0, 1.52fr);
+    grid-template-columns: minmax(0, 1.52fr) minmax(16rem, 0.58fr);
     gap: clamp(1.5rem, 3.4vw, 4rem);
     align-items: stretch;
 }
@@ -3863,9 +3882,9 @@ button:active,
     display: flex;
     min-width: 0;
     flex-direction: column;
-    border-left: 0;
-    border-right: 2px solid var(--china-red-dark);
-    padding: 0.35rem 1.25rem 0.35rem 0;
+    border-left: 2px solid var(--china-red-dark);
+    border-right: 0;
+    padding: 0.35rem 0 0.35rem 1.25rem;
 }
 
 .route-focus h3 {
@@ -4038,6 +4057,7 @@ button:active,
         display: grid;
         grid-template-columns: minmax(12rem, 0.75fr) minmax(0, 1.25fr);
         gap: 0 1.4rem;
+        border-left: 0;
         border-right: 0;
         border-bottom: 2px solid var(--china-red-dark);
         padding: 0 0 1.1rem;

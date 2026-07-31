@@ -213,75 +213,50 @@
             <div class="site-container">
                 <header class="section-heading reveal">
                     <div><p class="eyebrow">HISTORICAL ROUTE / 革命路线</p><h2>从井冈山到长征</h2></div>
-                    <p>红色标语沿革命路线演进：井冈山根据地创建 → 长征北上突破 → 陕北会师播撒火种</p>
+                    <p>循着重要历史节点，在一张中国地图上看见革命火种由赣西南向西、向北的迁徙与传续。</p>
                 </header>
-                <div class="route-board reveal" style="border:1px solid rgba(125,86,53,0.26);background:rgba(241,223,192,0.7);padding:clamp(1.5rem,3vw,2.7rem);box-shadow:var(--shadow-paper-small)">
-                    <svg class="route-map" viewBox="0 0 760 340" role="img" aria-labelledby="routeTitle routeDesc">
-                        <title id="routeTitle">井冈山至陕北会师路线图</title>
-                        <desc id="routeDesc">从江西井冈山（东南）出发，经湖南、广西、贵州、四川，北上至陕北（西北）会师</desc>
-                        <defs>
-                            <marker id="routeArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-                                <path d="M0 0 L10 5 L0 10 z" fill="#8b2024"/>
-                            </marker>
-                        </defs>
-                        <path class="map-contour" d="M0 310l30-24 36-12 42-38 40-12 48-44 44-14 52-50 50-16 56-54 58-14 62-38 66-12 72-14 72 8" fill="none" stroke="var(--brown)" stroke-width="1" opacity="0.1"/>
-                        <path class="map-contour" d="M0 320l24-22 38-14 44-34 46-10 50-40 52-12 56-44 58-10 60-34 64-8 70-16 74 10" fill="none" stroke="var(--brown)" stroke-width="0.8" opacity="0.08" stroke-dasharray="5 7"/>
-                        <!-- Route SE → NW -->
-                        <path class="route-path" marker-end="url(#routeArrow)" d="M560 312c-42-38-68-20-102-68-34-46-62-12-98-58-36-44-58-16-82-50-22-32-42-12-60-30-16-16-28-8-40-20-14-16-22 4-30-12-8-16-16-6-22-14" fill="none"/>
-                        <!-- Nodes SE→NW -->
-                        <g class="route-stop">
-                            <circle cx="610" cy="322" r="11"></circle>
-                            <text x="576" y="295" font-size="13" font-weight="800">秋收起义</text>
-                            <text class="route-date" x="580" y="310">湖南·1927.09</text>
-                            <text class="route-index" x="622" y="326">起</text>
-                        </g>
-                        <g class="route-stop">
-                            <circle cx="572" cy="304" r="11"></circle>
-                            <text x="544" y="276" font-size="13" font-weight="800">三湾改编</text>
-                            <text class="route-date" x="542" y="290">永新·1927.09</text>
-                        </g>
-                        <g class="route-stop">
-                            <circle cx="526" cy="278" r="12"></circle>
-                            <text x="488" y="248" font-size="14" font-weight="800">井冈山</text>
-                            <text class="route-date" x="484" y="262">根据地创建</text>
-                            <text class="route-date" x="484" y="275">1927.10</text>
-                        </g>
-                        <g class="route-stop">
-                            <circle cx="468" cy="236" r="10"></circle>
-                            <text x="436" y="212" font-size="12" font-weight="700">朱毛会师</text>
-                            <text class="route-date" x="434" y="226">1928.04</text>
-                        </g>
-                        <g class="route-stop">
-                            <circle cx="370" cy="194" r="10"></circle>
-                            <text x="336" y="170" font-size="12" font-weight="700">湘江战役</text>
-                            <text class="route-date" x="334" y="184">广西·1934.11</text>
-                        </g>
-                        <g class="route-stop">
-                            <circle cx="288" cy="144" r="10"></circle>
-                            <text x="252" y="118" font-size="12" font-weight="700">遵义会议</text>
-                            <text class="route-date" x="250" y="132">贵州·1935.01</text>
-                        </g>
-                        <g class="route-stop">
-                            <circle cx="210" cy="106" r="10"></circle>
-                            <text x="174" y="80" font-size="12" font-weight="700">四渡赤水</text>
-                            <text class="route-date" x="172" y="94">黔川·1935</text>
-                        </g>
-                        <g class="route-stop">
-                            <circle cx="140" cy="72" r="10"></circle>
-                            <text x="104" y="46" font-size="12" font-weight="700">雪山草地</text>
-                            <text class="route-date" x="102" y="60">四川·1935.08</text>
-                        </g>
-                        <g class="route-stop">
-                            <circle cx="82" cy="46" r="10"></circle>
-                            <text x="46" y="22" font-size="12" font-weight="700">陕北会师</text>
-                            <text class="route-date" x="44" y="36">陕西·1936.10</text>
-                            <text class="route-index" x="94" y="50">终</text>
-                        </g>
-                        <!-- Direction arrow -->
-                        <text x="18" y="328" fill="var(--text-muted)" font-size="11" font-family="ui-monospace,monospace">NW ↖</text>
-                        <text x="702" y="328" fill="var(--text-muted)" font-size="11" font-family="ui-monospace,monospace">SE</text>
-                    </svg>
-                    <p class="route-caption">东南 → 西北：从江西井冈山出发，经湖南、广西、贵州、四川，最终抵达陕北——标语随革命路线从腹地向北方扩展。</p>
+                <div class="route-board reveal">
+                    <div class="route-map-shell">
+                        <svg class="route-map" viewBox="0 0 860 470" role="img" aria-labelledby="routeTitle routeDesc">
+                            <title id="routeTitle">井冈山至陕甘革命路线示意图</title>
+                            <desc id="routeDesc">以中国地图为底图，标出井冈山、瑞金、湘江、遵义、泸定、雪山草地、吴起与会宁等革命路线节点。</desc>
+                            <path class="china-land" d="M495,423 L485,420 L485,411 L491,406 L504,403 L511,403 L514,407 L508,412 L506,418Z M139,165 L138,159 L146,156 L135,137 L159,133 L165,131 L174,111 L198,115 L205,110 L206,99 L216,98 L225,91 L230,90 L233,98 L243,104 L261,108 L269,116 L265,129 L269,133 L283,135 L300,137 L315,143 L322,144 L328,154 L335,161 L348,160 L374,163 L390,161 L402,163 L420,169 L435,169 L440,173 L454,167 L474,163 L492,163 L506,159 L515,153 L524,150 L522,146 L518,142 L524,135 L531,136 L544,138 L556,133 L574,129 L583,121 L592,118 L610,117 L619,118 L621,114 L610,107 L600,104 L590,107 L578,106 L572,107 L568,103 L577,92 L583,84 L597,88 L615,81 L615,77 L626,65 L632,62 L632,56 L626,53 L636,48 L651,46 L667,46 L685,49 L696,53 L704,64 L708,68 L712,75 L717,85 L738,89 L753,96 L757,106 L776,107 L787,102 L807,99 L800,109 L796,113 L791,124 L783,135 L768,133 L758,137 L761,146 L759,158 L753,159 L753,164 L745,158 L741,164 L722,169 L724,174 L713,174 L707,170 L699,178 L685,184 L675,191 L658,194 L649,199 L636,202 L643,197 L640,193 L650,185 L643,180 L633,184 L619,191 L612,198 L600,198 L593,203 L600,211 L610,212 L610,217 L620,220 L633,213 L644,217 L652,217 L654,223 L637,226 L631,231 L619,237 L613,244 L626,250 L631,261 L638,271 L647,279 L647,287 L639,290 L642,295 L649,299 L647,307 L644,316 L637,317 L628,328 L618,342 L607,355 L590,365 L573,374 L560,375 L552,380 L548,377 L541,382 L524,387 L511,389 L507,400 L500,401 L497,393 L500,389 L483,385 L478,387 L465,384 L460,380 L461,374 L450,372 L444,368 L434,374 L422,375 L412,375 L406,377 L400,379 L401,391 L395,391 L394,388 L393,384 L385,387 L379,385 L370,381 L374,372 L366,370 L363,360 L350,362 L352,349 L363,341 L364,332 L363,324 L358,321 L354,315 L347,315 L334,314 L338,309 L332,303 L323,307 L313,305 L299,311 L288,319 L278,321 L273,318 L266,318 L258,315 L251,318 L243,326 L242,317 L235,320 L220,319 L206,316 L197,311 L187,309 L183,304 L176,303 L164,296 L154,292 L149,295 L132,287 L120,281 L117,269 L125,270 L126,265 L121,259 L122,251 L109,238 L89,234 L85,226 L76,221 L74,217 L72,211 L73,207 L65,205 L61,206 L58,196 L62,193 L60,191 L72,186 L80,184 L93,185 L98,178 L113,177 L118,173 L137,167Z" />
+                            <path class="map-graticule" d="M170 165c76 30 122 63 172 148M305 143c55 27 106 75 157 234M457 167c22 38 47 83 66 220M600 120c-14 70-19 159-40 253M255 276c151-12 300-12 433-71M169 211c147 13 323 7 489-29" />
+                            <path class="route-path" d="M547 337 C548 329 555 325 568 330 S489 342 467 340 S430 319 421 317 S385 295 367 292 S404 271 420 269 S461 234 479 222 S458 230 439 233" />
+                            <path class="route-path route-path-dashed" d="M479 222 C464 219 452 223 439 233" />
+                            <g class="route-stop route-stop-origin" id="map-jinggangshan" tabindex="-1"><title>井冈山，江西，1927年10月</title><circle cx="547" cy="337" r="10"/></g>
+                            <g class="route-stop" id="map-ruijin"><title>瑞金，1934年10月</title><circle cx="568" cy="330" r="6"/></g>
+                            <g class="route-stop" id="map-xiangjiang"><title>湘江战役，广西，1934年11月</title><circle cx="467" cy="340" r="6"/></g>
+                            <g class="route-stop" id="map-zunyi"><title>遵义会议，贵州，1935年1月</title><circle cx="421" cy="317" r="6"/></g>
+                            <g class="route-stop" id="map-luding"><title>泸定桥，四川，1935年5月</title><circle cx="367" cy="292" r="6"/></g>
+                            <g class="route-stop" id="map-snow"><title>雪山草地，川西北，1935年8月</title><circle cx="420" cy="269" r="6"/></g>
+                            <g class="route-stop" id="map-wuqi"><title>吴起会师，陕北，1935年10月</title><circle cx="479" cy="222" r="6"/></g>
+                            <g class="route-stop route-stop-final" id="map-huining"><title>会宁会师，甘肃，1936年10月</title><circle cx="439" cy="233" r="7"/></g>
+                        </svg>
+                        <ol class="route-milestones" aria-label="长征路线节点">
+                            <li><a href="#map-jinggangshan"><time>01</time><span><strong>井冈山</strong><small>江西 · 1927.10</small></span></a></li>
+                            <li><a href="#map-ruijin"><time>02</time><span><strong>瑞金</strong><small>1934.10</small></span></a></li>
+                            <li><a href="#map-xiangjiang"><time>03</time><span><strong>湘江战役</strong><small>广西 · 1934.11</small></span></a></li>
+                            <li><a href="#map-zunyi"><time>04</time><span><strong>遵义会议</strong><small>贵州 · 1935.01</small></span></a></li>
+                            <li><a href="#map-luding"><time>05</time><span><strong>泸定桥</strong><small>四川 · 1935.05</small></span></a></li>
+                            <li><a href="#map-snow"><time>06</time><span><strong>雪山草地</strong><small>川西北 · 1935.08</small></span></a></li>
+                            <li><a href="#map-wuqi"><time>07</time><span><strong>吴起会师</strong><small>陕北 · 1935.10</small></span></a></li>
+                            <li><a href="#map-huining"><time>08</time><span><strong>会宁会师</strong><small>甘肃 · 1936.10</small></span></a></li>
+                        </ol>
+                        <p class="route-caption">按地图上的编号阅读路线：由井冈山、瑞金向湘黔转进，再经川西北北上陕甘。</p>
+                    </div>
+                    <aside class="route-focus" aria-label="井冈山革命根据地重要节点">
+                        <p class="panel-kicker">JINGGANGSHAN / 1927—1929</p>
+                        <h3>井冈山：火种的起点</h3>
+                        <p class="route-focus-lead">五个关键事件共同构成了长征前政治动员与组织建设的重要起点。</p>
+                        <ol>
+                            <li><a class="route-event" href="#map-jinggangshan"><time>1927.09</time><span><strong>三湾改编</strong>，确立“支部建在连上”。</span><i aria-hidden="true">↗</i></a></li>
+                            <li><a class="route-event" href="#map-jinggangshan"><time>1927.10</time><span><strong>创建根据地</strong>，在罗霄山脉建立革命立足点。</span><i aria-hidden="true">↗</i></a></li>
+                            <li><a class="route-event" href="#map-jinggangshan"><time>1928.04</time><span><strong>朱毛会师</strong>，壮大工农红军力量。</span><i aria-hidden="true">↗</i></a></li>
+                            <li><a class="route-event" href="#map-jinggangshan"><time>1928.08</time><span><strong>黄洋界保卫战</strong>，巩固根据地军民信心。</span><i aria-hidden="true">↗</i></a></li>
+                            <li><a class="route-event" href="#map-jinggangshan"><time>1929.01</time><span><strong>向赣南闽西进军</strong>，为中央苏区发展打开空间。</span><i aria-hidden="true">↗</i></a></li>
+                        </ol>
+                    </aside>
                 </div>
             </div>
         </section>
