@@ -522,4 +522,17 @@
     initializeHeaderState();
     initializeNavHighlight();
     initializeReveals();
+
+    /* --- Collapsible timeline --- */
+    const timelineCollapse = document.getElementById("timelineCollapse");
+    const timelineToggle = document.getElementById("timelineToggle");
+
+    if (timelineToggle && timelineCollapse) {
+        timelineToggle.addEventListener("click", () => {
+            const expanded = timelineToggle.getAttribute("aria-expanded") === "true";
+            timelineToggle.setAttribute("aria-expanded", String(!expanded));
+            timelineCollapse.classList.toggle("is-expanded", !expanded);
+            timelineToggle.querySelector("span").textContent = expanded ? "展开全部行程" : "收起行程";
+        });
+    }
 })();
