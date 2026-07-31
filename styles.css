@@ -4131,3 +4131,372 @@ button:active,
         border-right: 0;
     }
 }
+
+/* --- Final homepage route treatment --- */
+/* Desktop itinerary: two-row serpentine route inspired by the supplied reference. */
+#schedule .timeline-collapse,
+#schedule .timeline-collapse.is-expanded {
+    max-height: none;
+    overflow: visible;
+}
+
+#schedule .timeline-toggle-wrap {
+    display: none;
+}
+
+#schedule .timeline {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(13.5rem, auto));
+    gap: 2.1rem 0;
+    margin: 0;
+    padding: 0 1.2rem;
+}
+
+#schedule .timeline::before {
+    position: absolute;
+    z-index: 0;
+    top: 1.55rem;
+    right: calc(12.5% + 1.15rem);
+    left: calc(12.5% + 1.15rem);
+    display: block;
+    height: 15.6rem;
+    border-top: 4px solid rgba(134, 29, 34, 0.86);
+    border-right: 4px solid rgba(134, 29, 34, 0.86);
+    border-bottom: 4px solid rgba(134, 29, 34, 0.86);
+    border-radius: 0 4.5rem 4.5rem 0;
+    content: "";
+    background: none;
+}
+
+#schedule .timeline li {
+    position: relative;
+    z-index: 1;
+    display: block;
+    min-height: 13.5rem;
+    margin: 0;
+    border: 0;
+    padding: 4.15rem clamp(0.35rem, 0.85vw, 0.8rem) 0;
+    background: transparent;
+    text-align: center;
+    box-shadow: none;
+    transition: transform 220ms var(--ease-paper);
+}
+
+#schedule .timeline li:hover {
+    background: transparent;
+    box-shadow: none;
+    transform: translateY(-3px);
+}
+
+#schedule .timeline li:nth-child(1) { grid-row: 1; grid-column: 1; }
+#schedule .timeline li:nth-child(2) { grid-row: 1; grid-column: 2; }
+#schedule .timeline li:nth-child(3) { grid-row: 1; grid-column: 3; }
+#schedule .timeline li:nth-child(4) { grid-row: 1; grid-column: 4; }
+#schedule .timeline li:nth-child(5) { grid-row: 2; grid-column: 4; }
+#schedule .timeline li:nth-child(6) { grid-row: 2; grid-column: 3; }
+#schedule .timeline li:nth-child(7) { grid-row: 2; grid-column: 2; }
+#schedule .timeline li:nth-child(8) { grid-row: 2; grid-column: 1; }
+
+#schedule .timeline li::before {
+    position: absolute;
+    z-index: 3;
+    top: 0.68rem;
+    left: 50%;
+    display: block;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 0.36rem solid var(--china-red-dark);
+    border-radius: 50%;
+    content: "";
+    background: var(--paper-card-light);
+    box-shadow: 0 0 0 0.38rem rgba(134, 29, 34, 0.12);
+    transform: translateX(-50%);
+}
+
+#schedule .timeline li::after {
+    position: absolute;
+    z-index: 0;
+    top: 2.3rem;
+    left: 50%;
+    width: 1px;
+    height: 1.65rem;
+    border-left: 2px dashed rgba(134, 29, 34, 0.42);
+    content: "";
+    transform: translateX(-50%);
+}
+
+#schedule .timeline time {
+    position: absolute;
+    z-index: 4;
+    top: -0.52rem;
+    left: calc(50% + 1.05rem);
+    display: block;
+    width: max-content;
+    margin: 0;
+    border-radius: 0;
+    padding: 0;
+    color: var(--china-red-deep);
+    background: transparent;
+    font-size: clamp(1rem, 1.45vw, 1.28rem);
+    font-weight: 900;
+    letter-spacing: -0.055em;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+#schedule .timeline-card {
+    min-height: 8.5rem;
+    border: 1px solid rgba(134, 29, 34, 0.28);
+    border-radius: 2.2rem 2.2rem 1.3rem 1.3rem;
+    padding: 1rem 0.9rem 1.05rem;
+    background: rgba(244, 228, 200, 0.58);
+    box-shadow: inset 0 1px 0 rgba(255, 247, 232, 0.5);
+    transition: border-color 220ms ease, background-color 220ms ease, box-shadow 220ms ease;
+}
+
+#schedule .timeline li:hover .timeline-card {
+    border-color: rgba(134, 29, 34, 0.58);
+    background: rgba(244, 228, 200, 0.88);
+    box-shadow: 0 8px 20px rgba(67, 42, 25, 0.08);
+}
+
+#schedule .timeline h3 {
+    margin: 0 0 0.45rem;
+    font-size: clamp(0.96rem, 1.25vw, 1.12rem);
+    line-height: 1.4;
+}
+
+#schedule .timeline p {
+    margin: 0;
+    color: var(--ink-secondary);
+    font-size: clamp(0.72rem, 0.9vw, 0.82rem);
+    line-height: 1.65;
+    text-wrap: pretty;
+}
+
+#schedule .timeline .tl-arrow {
+    position: absolute;
+    z-index: 4;
+    top: 0.91rem;
+    right: -0.55rem;
+    display: block;
+    width: auto;
+    height: auto;
+    color: rgba(134, 29, 34, 0.62);
+    background: none;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-style: normal;
+    line-height: 1;
+    transform: none;
+}
+
+#schedule .timeline .tl-arrow::after {
+    display: none;
+}
+
+#schedule .timeline li:nth-child(4) .tl-arrow {
+    top: 7.3rem;
+    right: -0.25rem;
+    transform: rotate(90deg);
+}
+
+#schedule .timeline li:nth-child(n+5) .tl-arrow {
+    right: auto;
+    left: -0.55rem;
+    transform: rotate(180deg);
+}
+
+#schedule .timeline li:last-child .tl-arrow {
+    display: none;
+}
+
+/* Historical route: the map regains readable labels; Jinggangshan points to the note rail. */
+.route-map-label text {
+    fill: var(--ink);
+    paint-order: stroke;
+    stroke: rgba(241, 223, 192, 0.96);
+    stroke-linejoin: round;
+    stroke-width: 4px;
+    font-family: var(--font-serif);
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.route-map-label .route-date {
+    fill: var(--text-muted);
+    stroke-width: 3px;
+    font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+    font-size: 8px;
+    font-weight: 700;
+}
+
+.route-callout-arrow {
+    fill: none;
+    stroke: var(--china-red-dark);
+    stroke-dasharray: 5 5;
+    stroke-linecap: round;
+    stroke-width: 1.8;
+}
+
+#routeCalloutArrow path {
+    fill: var(--china-red-dark);
+}
+
+.route-callout-hint {
+    fill: var(--china-red-dark);
+    paint-order: stroke;
+    stroke: rgba(241, 223, 192, 0.96);
+    stroke-width: 4px;
+    font-family: var(--font-sans);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+}
+
+.route-focus {
+    border-left: 2px solid var(--china-red-dark);
+}
+
+@media (max-width: 940px) {
+    #schedule .timeline {
+        grid-template-rows: repeat(2, minmax(14.5rem, auto));
+    }
+
+    #schedule .timeline::before {
+        height: 16.6rem;
+    }
+
+    #schedule .timeline li {
+        min-height: 14.5rem;
+    }
+
+    #schedule .timeline-card {
+        min-height: 9.4rem;
+    }
+
+    .route-map-shell {
+        grid-row: 1;
+    }
+
+    .route-focus {
+        grid-row: 2;
+        border-top: 2px solid var(--china-red-dark);
+        border-bottom: 0;
+        padding-top: 1rem;
+    }
+
+    .route-callout-arrow,
+    .route-callout-hint {
+        display: none;
+    }
+
+    .route-focus::before {
+        grid-column: 1 / -1;
+        margin: 0 0 0.75rem;
+        color: var(--china-red-dark);
+        content: "↑ 来自地图中井冈山节点的补充说明";
+        font-family: var(--font-sans);
+        font-size: 0.7rem;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+    }
+}
+
+@media (max-width: 680px) {
+    #schedule .timeline {
+        display: flex;
+        width: 100%;
+        min-width: 0;
+        flex-direction: column;
+        gap: 0;
+        padding: 0 0 0 3.15rem;
+    }
+
+    #schedule .timeline::before {
+        top: 0.8rem;
+        right: auto;
+        bottom: 1.3rem;
+        left: 1.05rem;
+        width: 2px;
+        height: auto;
+        border: 0;
+        border-radius: 0;
+        background: linear-gradient(180deg, var(--china-red-dark), var(--brown-light));
+    }
+
+    #schedule .timeline li,
+    #schedule .timeline li:nth-child(n) {
+        width: calc(100% - 4.15rem);
+        min-width: 0;
+        max-width: calc(100% - 4.15rem);
+        flex: 0 0 auto;
+        min-height: 0;
+        grid-row: auto;
+        grid-column: auto;
+        margin: 0;
+        padding: 0 0 1.25rem;
+        text-align: left;
+    }
+
+    #schedule .timeline li::before {
+        top: 0.16rem;
+        left: -2.1rem;
+        width: 1.25rem;
+        height: 1.25rem;
+        border-width: 0.3rem;
+        box-shadow: 0 0 0 0.28rem rgba(134, 29, 34, 0.1);
+        transform: translateX(-50%);
+    }
+
+    #schedule .timeline li::after {
+        display: none;
+    }
+
+    #schedule .timeline time {
+        position: static;
+        width: auto;
+        margin: 0 0 0.48rem;
+        font-size: 1.05rem;
+        white-space: normal;
+    }
+
+    #schedule .timeline-card {
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+        min-height: 0;
+        border-radius: 0.35rem 1.25rem 1.25rem 0.35rem;
+        padding: 0.9rem 0.9rem 0.95rem;
+    }
+
+    #schedule .timeline h3 {
+        font-size: 1rem;
+    }
+
+    #schedule .timeline p {
+        font-size: 0.78rem;
+        overflow-wrap: anywhere;
+    }
+
+    #schedule .timeline .tl-arrow {
+        display: none;
+    }
+
+    .route-map-shell {
+        overflow-x: auto;
+    }
+
+    .route-map-label text {
+        font-size: 11px;
+    }
+
+    .route-focus {
+        margin-top: 1rem;
+        border-top: 2px solid var(--china-red-dark);
+        border-left: 0;
+        padding: 1rem 0 0;
+    }
+}
