@@ -1,0 +1,3402 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>井冈山保卫战</title>
+    <style>
+:root {
+  color-scheme: light;
+  --red: #c32723;
+  --red-deep: #741713;
+  --red-dark: #4e100e;
+  --gold: #f4c76a;
+  --gold-soft: #ffe7a8;
+  --ink: #2f241d;
+  --leaf: #4c7d42;
+  --sky: #f0dbc2;
+  --paper: #fff5dc;
+  --line: rgba(123, 32, 22, 0.26);
+  --panel: rgba(255, 246, 222, 0.96);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+body {
+  font-family:
+    "Microsoft YaHei",
+    "Noto Sans CJK SC",
+    "PingFang SC",
+    Arial,
+    sans-serif;
+  background:
+    radial-gradient(circle at 20% 8%, rgba(244, 199, 106, 0.3), transparent 22rem),
+    radial-gradient(circle at 82% 20%, rgba(195, 39, 35, 0.2), transparent 24rem),
+    linear-gradient(180deg, #6f1714 0%, #9e241d 38%, #e0b36d 100%);
+  color: var(--ink);
+}
+
+button {
+  font: inherit;
+}
+
+.app {
+  height: 100vh;
+  width: min(100%, 1520px);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 8px 14px;
+  gap: 8px;
+  overflow: hidden;
+}
+
+.topbar {
+  width: min(100%, 1440px);
+  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 231, 168, 0.38);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(159, 35, 28, 0.98), rgba(103, 23, 19, 0.98)),
+    var(--red-deep);
+  box-shadow: 0 8px 22px rgba(74, 16, 13, 0.28);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.seal {
+  width: 50px;
+  height: 50px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--red-deep);
+  font-size: 30px;
+  box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.1);
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(23px, 2.1vw, 32px);
+  line-height: 1.05;
+  color: var(--gold-soft);
+  letter-spacing: 0;
+}
+
+.brand p {
+  margin-top: 3px;
+  font-size: 15px;
+  color: rgba(255, 245, 220, 0.84);
+}
+
+.codex-button {
+  height: 34px;
+  padding: 0 14px;
+  border: 1px solid rgba(244, 199, 106, 0.52);
+  border-radius: 7px;
+  background: rgba(255, 245, 220, 0.95);
+  color: var(--red-deep);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.codex-button:hover {
+  border-color: var(--gold);
+  background: #fff9e8;
+}
+
+.status {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(90px, 1fr));
+  gap: 10px;
+  min-width: min(480px, 48vw);
+}
+
+.status div {
+  min-height: 44px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: rgba(255, 245, 220, 0.95);
+  border: 1px solid rgba(244, 199, 106, 0.36);
+}
+
+.status span {
+  display: block;
+  font-size: 13px;
+  color: #8f5140;
+}
+
+.status strong {
+  display: block;
+  margin-top: 2px;
+  font-size: 19px;
+  color: var(--red-deep);
+}
+
+.layout {
+  flex: 0 0 auto;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel {
+  border: 1px solid rgba(123, 32, 22, 0.24);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(255, 247, 226, 0.98), rgba(249, 230, 190, 0.96)),
+    var(--panel);
+  box-shadow: 0 8px 22px rgba(74, 16, 13, 0.16);
+}
+
+.roster {
+  width: min(100%, 1440px);
+  align-self: center;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+}
+
+.roster-heading {
+  display: flex;
+  min-width: 342px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0;
+}
+
+.roster-heading h2 {
+  margin-top: 3px;
+  font-size: 18px;
+  color: var(--red-deep);
+}
+
+.eyebrow,
+.unit-info-label,
+.stage-kicker,
+.stage-facts span {
+  display: block;
+  font-size: 12px;
+  color: #8f5140;
+}
+
+.unit-list {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 2px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(112, 88, 42, 0.35) transparent;
+}
+
+.unit-card {
+  width: 76px;
+  height: 68px;
+  position: relative;
+  flex: 0 0 78px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(123, 32, 22, 0.24);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(255, 252, 242, 0.82), rgba(255, 229, 159, 0.58)),
+    #fff2c9;
+  color: var(--ink);
+  cursor: pointer;
+  transition:
+    transform 0.12s ease,
+    border-color 0.12s ease,
+    box-shadow 0.12s ease;
+}
+
+.unit-card:hover {
+  transform: translateY(-1px);
+  border-color: rgba(195, 39, 35, 0.62);
+}
+
+.unit-card.selected {
+  border-color: var(--red);
+  background:
+    linear-gradient(180deg, rgba(255, 245, 220, 0.95), rgba(244, 199, 106, 0.58)),
+    #ffe4a2;
+  box-shadow:
+    inset 0 0 0 2px rgba(195, 39, 35, 0.2),
+    0 3px 10px rgba(116, 23, 19, 0.12);
+}
+
+.unit-card.locked {
+  filter: saturate(0.45);
+  opacity: 0.62;
+}
+
+.unit-card.locked:hover {
+  transform: none;
+}
+
+.vertical-name {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  line-height: 1.1;
+  letter-spacing: 0;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.unlock-badge {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  padding: 2px 4px;
+  border-radius: 4px;
+  background: rgba(116, 23, 19, 0.12);
+  color: #8b5541;
+  font-size: 10px;
+  line-height: 1.2;
+}
+
+.cost {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  min-width: 25px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--red);
+  color: var(--paper);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.roster-tools {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.tool-button {
+  min-height: 40px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 8px;
+  background: linear-gradient(180deg, #d1332d, #9f201b);
+  color: var(--paper);
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.14);
+}
+
+.roster-tools .tool-button {
+  width: 104px;
+  min-width: 0;
+  min-height: 36px;
+  padding: 0 10px;
+  font-size: 13px;
+}
+
+.tool-button.secondary {
+  background: linear-gradient(180deg, #587247, #365236);
+}
+
+.tool-button.active {
+  background: linear-gradient(180deg, #f0bc50, #ad5d21);
+  color: #4e100e;
+}
+
+.game-shell {
+  width: min(100%, 1440px, calc((100vh - 236px) * 2.215));
+  align-self: center;
+  min-width: 0;
+  min-height: 0;
+  flex: 1;
+  margin-top: 2px;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  justify-items: center;
+  border: 1px solid rgba(255, 231, 168, 0.42);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #7b1f18;
+  box-shadow:
+    0 12px 30px rgba(72, 15, 12, 0.28),
+    inset 0 0 0 4px rgba(255, 231, 168, 0.28);
+  position: relative;
+}
+
+canvas {
+  grid-row: 1;
+  width: 100%;
+  max-width: 100%;
+  min-height: 0;
+  height: auto;
+  max-height: 100%;
+  aspect-ratio: 1440 / 650;
+  display: block;
+  touch-action: none;
+  background: var(--sky);
+  box-shadow: none;
+}
+
+.stage-intro,
+.stage-modal {
+  position: absolute;
+  inset: 0 0 36px;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background: rgba(72, 15, 12, 0.24);
+  z-index: 3;
+}
+
+.stage-intro[hidden],
+.stage-modal[hidden] {
+  display: none;
+}
+
+.stage-intro-content,
+.stage-modal-content {
+  width: min(610px, 92%);
+  padding: 18px 22px;
+  border: 1px solid rgba(195, 39, 35, 0.42);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(255, 248, 230, 0.98), rgba(255, 239, 197, 0.97));
+  box-shadow: 0 16px 34px rgba(72, 15, 12, 0.22);
+  text-align: center;
+}
+
+.stage-intro-content h2,
+.stage-modal-content h2 {
+  margin-top: 5px;
+  color: var(--red-deep);
+  font-size: 24px;
+  line-height: 1.2;
+}
+
+.stage-intro-content > p,
+.stage-modal-content p {
+  max-width: 560px;
+  margin: 8px auto 12px;
+  color: #604235;
+  line-height: 1.6;
+}
+
+.stage-facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 14px;
+  text-align: left;
+}
+
+.stage-facts div {
+  min-height: 64px;
+  padding: 9px 11px;
+  border: 1px solid rgba(123, 32, 22, 0.18);
+  border-radius: 8px;
+  background: rgba(255, 250, 235, 0.92);
+}
+
+.stage-facts strong {
+  display: block;
+  margin-top: 5px;
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.stage-intro-content .tool-button,
+.stage-modal-content .tool-button {
+  min-width: 220px;
+}
+
+.stage-modal {
+  z-index: 4;
+}
+
+.stage-modal-content {
+  width: min(360px, 92%);
+}
+
+.stage-modal-content > span {
+  color: #6f765e;
+  font-size: 13px;
+}
+
+.stage-modal-content h2 {
+  font-size: 22px;
+}
+
+.hintbar {
+  width: 100%;
+  grid-row: 2;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  padding: 6px 12px;
+  background: rgba(255, 245, 220, 0.98);
+  border-top: 1px solid rgba(123, 32, 22, 0.22);
+  color: #6b362b;
+  font-size: 13px;
+}
+
+.game-tools {
+  display: inline-flex;
+  gap: 6px;
+  margin-left: 4px;
+}
+
+.icon-tool {
+  min-height: 28px;
+  padding: 0 10px;
+  border: 1px solid rgba(123, 32, 22, 0.25);
+  border-radius: 6px;
+  background: #fff6df;
+  color: var(--red-deep);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.codex-modal {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background: rgba(39, 57, 47, 0.28);
+  z-index: 10;
+}
+
+.codex-modal[hidden] {
+  display: none;
+}
+
+.codex-panel {
+  width: min(920px, 94vw);
+  max-height: min(720px, 88vh);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(185, 37, 34, 0.34);
+  border-radius: 8px;
+  background: rgba(255, 248, 232, 0.98);
+  box-shadow: 0 18px 44px rgba(71, 48, 22, 0.2);
+  overflow: hidden;
+}
+
+.codex-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 18px 12px;
+  border-bottom: 1px solid rgba(112, 88, 42, 0.18);
+}
+
+.codex-header h2 {
+  margin-top: 3px;
+  color: var(--red-deep);
+  font-size: 22px;
+}
+
+.codex-tabs {
+  display: flex;
+  gap: 8px;
+  padding: 12px 18px;
+  background: rgba(255, 253, 244, 0.72);
+}
+
+.codex-tab {
+  min-height: 34px;
+  padding: 0 16px;
+  border: 1px solid rgba(112, 88, 42, 0.22);
+  border-radius: 7px;
+  background: #fffdf4;
+  color: #5a6756;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.codex-tab.active {
+  border-color: var(--red);
+  background: var(--red);
+  color: var(--paper);
+}
+
+.codex-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 10px;
+  padding: 0 18px 18px;
+  overflow-y: auto;
+}
+
+.codex-entry {
+  min-height: 150px;
+  padding: 12px;
+  border: 1px solid rgba(112, 88, 42, 0.18);
+  border-radius: 8px;
+  background: rgba(255, 253, 244, 0.92);
+}
+
+.codex-entry span {
+  color: #6f765e;
+  font-size: 12px;
+}
+
+.codex-entry h3 {
+  margin-top: 5px;
+  color: var(--red-deep);
+  font-size: 19px;
+}
+
+.codex-entry p {
+  margin-top: 7px;
+  color: #566451;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.codex-entry strong,
+.codex-entry em {
+  display: block;
+  margin-top: 7px;
+  color: #8a6e3c;
+  font-size: 12px;
+  font-style: normal;
+}
+
+@media (max-width: 760px) {
+  .app {
+    padding: 8px;
+    gap: 8px;
+  }
+
+  .topbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .status {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .roster-heading {
+    min-width: 0;
+  }
+
+  .roster-tools {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .roster-tools .tool-button {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .stage-facts {
+    grid-template-columns: 1fr;
+  }
+
+  .hintbar {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 520px) {
+  .brand {
+    align-items: flex-start;
+  }
+
+  .seal {
+    width: 48px;
+    height: 48px;
+    font-size: 25px;
+  }
+
+  .status {
+    grid-template-columns: 1fr;
+  }
+
+  .unit-card {
+    width: 72px;
+    flex-basis: 72px;
+    height: 72px;
+  }
+
+  .vertical-name {
+    font-size: 15px;
+  }
+
+  .stage-intro-content,
+  .stage-modal-content {
+    padding: 18px 16px;
+  }
+
+  .stage-intro-content h2 {
+    font-size: 22px;
+  }
+}
+
+
+/* Mobile horizontal build: landscape-first game layout */
+.mobile-landscape-build {
+  background:
+    radial-gradient(circle at 25% 18%, rgba(244, 199, 106, 0.22), transparent 18rem),
+    linear-gradient(180deg, #7b1714 0%, #a42720 48%, #cc844a 100%);
+}
+
+.mobile-landscape-build .app {
+  width: 100vw;
+  height: 100svh;
+  max-width: none;
+  padding: 4px;
+  gap: 4px;
+  display: grid;
+  grid-template-rows: 50px 1fr;
+  overflow: hidden;
+}
+
+.mobile-landscape-build .topbar {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  height: 50px;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  padding: 4px 7px;
+  gap: 8px;
+  align-self: stretch;
+  border-radius: 7px;
+}
+
+.mobile-landscape-build .brand {
+  min-width: 0;
+  gap: 7px;
+  overflow: hidden;
+}
+
+.mobile-landscape-build .seal {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  font-size: 19px;
+}
+
+.mobile-landscape-build h1 {
+  font-size: 18px;
+  line-height: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mobile-landscape-build .brand p {
+  display: none;
+}
+
+.mobile-landscape-build .codex-button {
+  height: 28px;
+  padding: 0 8px;
+  font-size: 12px;
+  flex: 0 0 auto;
+}
+
+.mobile-landscape-build .status {
+  position: relative;
+  z-index: 6;
+  margin-left: auto;
+  min-width: 170px;
+  width: min(32vw, 218px);
+  flex: 0 0 auto;
+  grid-template-columns: repeat(2, minmax(76px, 1fr));
+  gap: 4px;
+}
+
+.mobile-landscape-build .status div:nth-child(3) {
+  display: none;
+}
+
+.mobile-landscape-build .status div {
+  min-width: 0;
+  min-height: 38px;
+  padding: 4px 6px;
+  border-radius: 7px;
+  overflow: visible;
+}
+
+.mobile-landscape-build .status span {
+  font-size: 11px;
+}
+
+.mobile-landscape-build .status strong {
+  white-space: nowrap;
+  overflow: visible;
+  text-align: center;
+  margin-top: 1px;
+  font-size: 14px;
+}
+
+.mobile-landscape-build .layout {
+  position: relative;
+  z-index: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
+  gap: 4px;
+}
+
+.mobile-landscape-build .roster {
+  width: 112px;
+  height: 100%;
+  align-self: stretch;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 5px;
+  padding: 6px;
+  overflow: hidden;
+}
+
+.mobile-landscape-build .roster-heading {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 5px;
+}
+
+.mobile-landscape-build .eyebrow {
+  display: none;
+}
+
+.mobile-landscape-build .roster-heading h2 {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.1;
+}
+
+.mobile-landscape-build .roster-tools {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+}
+
+.mobile-landscape-build .roster-tools .tool-button {
+  width: 100%;
+  min-height: 27px;
+  padding: 0 4px;
+  font-size: 12px;
+}
+
+.mobile-landscape-build .unit-list {
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 48px);
+  align-content: start;
+  justify-content: center;
+  gap: 5px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 1px;
+}
+
+.mobile-landscape-build .unit-card {
+  width: 48px;
+  height: 58px;
+  flex: none;
+  border-radius: 7px;
+}
+
+.mobile-landscape-build .vertical-name {
+  writing-mode: horizontal-tb;
+  text-orientation: mixed;
+  font-size: 10px;
+  line-height: 1.05;
+  max-width: 30px;
+  overflow-wrap: anywhere;
+}
+
+.mobile-landscape-build .cost {
+  min-width: 19px;
+  height: 18px;
+  right: 3px;
+  bottom: 3px;
+  font-size: 10px;
+}
+
+.mobile-landscape-build .unlock-badge {
+  top: 3px;
+  left: 3px;
+  font-size: 8px;
+  padding: 1px 3px;
+}
+
+.mobile-landscape-build .game-shell {
+  width: min(100%, calc((100svh - 88px) * 2.215));
+  max-width: 100%;
+  height: auto;
+  align-self: center;
+  justify-self: center;
+  margin-top: 0;
+  flex: none;
+  grid-template-rows: minmax(0, auto) 26px;
+  border-radius: 7px;
+}
+
+.mobile-landscape-build canvas {
+  width: 100%;
+  height: auto;
+}
+
+.mobile-landscape-build .hintbar {
+  min-height: 26px;
+  height: 26px;
+  padding: 2px 6px;
+  gap: 5px;
+  font-size: 10px;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.mobile-landscape-build .hintbar > span {
+  display: none;
+}
+
+.mobile-landscape-build .game-tools {
+  margin-left: 0;
+}
+
+.mobile-landscape-build .icon-tool {
+  min-height: 21px;
+  padding: 0 8px;
+  font-size: 10px;
+}
+
+.mobile-landscape-build .stage-intro,
+.mobile-landscape-build .stage-modal {
+  inset: 0 0 26px;
+  padding: 8px;
+}
+
+.mobile-landscape-build .stage-intro-content,
+.mobile-landscape-build .stage-modal-content {
+  width: min(460px, 90%);
+  padding: 10px 12px;
+}
+
+.mobile-landscape-build .stage-kicker,
+.mobile-landscape-build .stage-facts span {
+  font-size: 10px;
+}
+
+.mobile-landscape-build .stage-intro-content h2,
+.mobile-landscape-build .stage-modal-content h2 {
+  margin-top: 3px;
+  font-size: 18px;
+}
+
+.mobile-landscape-build .stage-intro-content > p,
+.mobile-landscape-build .stage-modal-content p {
+  margin: 5px auto 7px;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.mobile-landscape-build .stage-facts {
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.mobile-landscape-build .stage-facts div {
+  min-height: 44px;
+  padding: 6px 7px;
+}
+
+.mobile-landscape-build .stage-facts strong {
+  margin-top: 3px;
+  font-size: 11px;
+  line-height: 1.3;
+}
+
+.mobile-landscape-build .stage-intro-content .tool-button,
+.mobile-landscape-build .stage-modal-content .tool-button {
+  min-width: 150px;
+  min-height: 32px;
+  font-size: 13px;
+}
+
+.mobile-landscape-build .codex-modal {
+  padding: 6px;
+  align-items: center;
+  justify-items: center;
+}
+
+.mobile-landscape-build .codex-panel {
+  width: min(780px, calc(100% - 12px));
+  height: min(332px, calc(100% - 12px));
+  max-height: calc(100% - 12px);
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr);
+}
+
+.mobile-landscape-build .codex-header {
+  min-height: 0;
+  padding: 7px 10px 5px;
+}
+
+.mobile-landscape-build .codex-header h2 {
+  margin-top: 1px;
+  font-size: 16px;
+  line-height: 1.1;
+}
+
+.mobile-landscape-build .codex-header .eyebrow {
+  display: none;
+}
+
+.mobile-landscape-build .codex-tabs {
+  padding: 5px 10px;
+  gap: 6px;
+}
+
+.mobile-landscape-build .codex-tab {
+  min-height: 24px;
+  padding: 0 12px;
+  border-radius: 6px;
+  font-size: 11px;
+}
+
+.mobile-landscape-build .codex-list {
+  min-height: 0;
+  grid-auto-flow: column;
+  grid-template-columns: none;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  grid-auto-columns: minmax(150px, 1fr);
+  gap: 6px;
+  padding: 0 10px 10px;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.mobile-landscape-build .codex-entry {
+  min-height: 0;
+  padding: 7px;
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-landscape-build .codex-entry span {
+  font-size: 9px;
+  line-height: 1.1;
+}
+
+.mobile-landscape-build .codex-entry h3 {
+  margin-top: 3px;
+  font-size: 14px;
+  line-height: 1.15;
+}
+
+.mobile-landscape-build .codex-entry p {
+  margin-top: 4px;
+  font-size: 10px;
+  line-height: 1.25;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.mobile-landscape-build .codex-entry strong,
+.mobile-landscape-build .codex-entry em {
+  margin-top: 4px;
+  font-size: 9px;
+  line-height: 1.15;
+}
+
+@media (orientation: portrait) {
+  .mobile-landscape-build {
+    width: 100svw;
+    height: 100svh;
+    overflow: hidden;
+  }
+
+  .mobile-landscape-build .app {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    width: calc(100svh - 28px);
+    height: calc(100svw - 18px);
+    transform: translate(-50%, -50%) rotate(-90deg);
+    transform-origin: center center;
+    grid-template-rows: 44px 1fr;
+    padding: 3px;
+    gap: 3px;
+  }
+
+  .mobile-landscape-build .topbar {
+    height: 44px;
+    min-height: 0;
+    padding: 3px 5px;
+    gap: 5px;
+  }
+
+  .mobile-landscape-build .brand {
+    gap: 5px;
+  }
+
+  .mobile-landscape-build .seal {
+    width: 26px;
+    height: 26px;
+    flex-basis: 26px;
+    font-size: 15px;
+  }
+
+  .mobile-landscape-build h1 {
+    font-size: 13px;
+  }
+
+  .mobile-landscape-build .codex-button {
+    height: 23px;
+    padding: 0 6px;
+    font-size: 10px;
+  }
+
+  .mobile-landscape-build .status {
+    min-width: 176px;
+    width: 176px;
+    grid-template-columns: repeat(2, minmax(82px, 1fr));
+    gap: 3px;
+  }
+
+  .mobile-landscape-build .status div {
+    min-width: 0;
+    min-height: 28px;
+    padding: 3px 4px;
+  }
+
+  .mobile-landscape-build .status span {
+    display: block;
+    font-size: 9px;
+    line-height: 1;
+  }
+
+  .mobile-landscape-build .status strong {
+    margin-top: 1px;
+    font-size: 12px;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: visible;
+  }
+
+  .mobile-landscape-build #spirit {
+    font-size: 14px;
+  }
+
+  .mobile-landscape-build .layout {
+    grid-template-columns: 74px minmax(0, 1fr);
+    gap: 3px;
+  }
+
+  .mobile-landscape-build .roster {
+    width: 74px;
+    padding: 4px;
+    gap: 4px;
+  }
+
+  .mobile-landscape-build .roster-heading {
+    gap: 4px;
+  }
+
+  .mobile-landscape-build .roster-heading > div:first-child {
+    display: none;
+  }
+
+  .mobile-landscape-build .roster-tools {
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+  }
+
+  .mobile-landscape-build .roster-tools .tool-button {
+    min-height: 23px;
+    padding: 0 3px;
+    font-size: 10px;
+  }
+
+  .mobile-landscape-build .unit-list {
+    grid-template-columns: repeat(2, 32px);
+    gap: 4px;
+  }
+
+  .mobile-landscape-build .unit-card {
+    width: 32px;
+    height: 39px;
+    border-radius: 6px;
+  }
+
+  .mobile-landscape-build .unit-card .vertical-name {
+    display: block;
+    writing-mode: horizontal-tb;
+    text-orientation: mixed;
+    max-width: 28px;
+    font-size: 9px;
+    line-height: 1.05;
+    overflow-wrap: anywhere;
+  }
+
+  .mobile-landscape-build .unlock-badge {
+    display: none;
+  }
+
+  .mobile-landscape-build .cost {
+    min-width: 16px;
+    height: 16px;
+    right: 1px;
+    bottom: 1px;
+    font-size: 8px;
+  }
+
+  .mobile-landscape-build .game-shell {
+    width: min(100%, calc((100svw - 88px) * 2.215));
+    grid-template-rows: minmax(0, auto) 20px;
+  }
+
+  .mobile-landscape-build .hintbar {
+    min-height: 20px;
+    height: 20px;
+    padding: 1px 4px;
+  }
+
+  .mobile-landscape-build .icon-tool {
+    min-height: 18px;
+    padding: 0 6px;
+    font-size: 9px;
+  }
+
+  .mobile-landscape-build .stage-intro,
+  .mobile-landscape-build .stage-modal {
+    inset: 0 0 20px;
+    padding: 6px;
+  }
+
+  .mobile-landscape-build .stage-intro-content,
+  .mobile-landscape-build .stage-modal-content {
+    width: min(360px, 88%);
+    padding: 8px 10px;
+  }
+
+  .mobile-landscape-build .stage-intro-content h2,
+  .mobile-landscape-build .stage-modal-content h2 {
+    font-size: 16px;
+  }
+
+  .mobile-landscape-build .stage-intro-content > p,
+  .mobile-landscape-build .stage-modal-content p {
+    font-size: 11px;
+    line-height: 1.3;
+    margin: 4px auto 6px;
+  }
+
+  .mobile-landscape-build .stage-facts {
+    gap: 5px;
+    margin-bottom: 6px;
+  }
+
+  .mobile-landscape-build .stage-facts div {
+    min-height: 38px;
+    padding: 5px 6px;
+  }
+
+  .mobile-landscape-build .stage-facts strong {
+    font-size: 10px;
+    line-height: 1.25;
+  }
+
+  .mobile-landscape-build .codex-modal {
+    padding: 5px;
+  }
+
+  .mobile-landscape-build .codex-panel {
+    width: min(720px, calc(100% - 10px));
+    height: min(310px, calc(100% - 10px));
+    max-height: calc(100% - 10px);
+  }
+
+  .mobile-landscape-build .codex-header {
+    padding: 6px 8px 4px;
+  }
+
+  .mobile-landscape-build .codex-header h2 {
+    font-size: 14px;
+  }
+
+  .mobile-landscape-build .codex-tabs {
+    padding: 4px 8px;
+  }
+
+  .mobile-landscape-build .codex-tab {
+    min-height: 21px;
+    padding: 0 9px;
+    font-size: 10px;
+  }
+
+  .mobile-landscape-build .codex-list {
+    grid-template-columns: none;
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    grid-auto-columns: minmax(126px, 1fr);
+    gap: 5px;
+    padding: 0 8px 8px;
+  }
+
+  .mobile-landscape-build .codex-entry {
+    padding: 6px;
+  }
+
+  .mobile-landscape-build .codex-entry h3 {
+    font-size: 12px;
+  }
+
+  .mobile-landscape-build .codex-entry p {
+    font-size: 9px;
+    line-height: 1.2;
+  }
+
+  .mobile-landscape-build .codex-entry strong,
+  .mobile-landscape-build .codex-entry em {
+    font-size: 8px;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 360px) {
+  .mobile-landscape-build .app {
+    grid-template-rows: 42px 1fr;
+    padding: 3px;
+    gap: 3px;
+  }
+
+  .mobile-landscape-build .topbar {
+    height: 42px;
+    padding: 3px 6px;
+  }
+
+  .mobile-landscape-build .seal {
+    width: 28px;
+    height: 28px;
+    flex-basis: 28px;
+    font-size: 16px;
+  }
+
+  .mobile-landscape-build h1 {
+    font-size: 16px;
+  }
+
+  .mobile-landscape-build .status div {
+    min-height: 32px;
+  }
+
+  .mobile-landscape-build .layout {
+    grid-template-columns: 98px minmax(0, 1fr);
+  }
+
+  .mobile-landscape-build .roster {
+    width: 98px;
+    padding: 4px;
+  }
+
+  .mobile-landscape-build .unit-card {
+    width: 44px;
+    height: 50px;
+  }
+
+  .mobile-landscape-build .game-shell {
+    width: min(100%, calc((100svh - 72px) * 2.215));
+    grid-template-rows: minmax(0, auto) 22px;
+  }
+
+  .mobile-landscape-build .hintbar {
+    height: 22px;
+    min-height: 22px;
+  }
+
+  .mobile-landscape-build .codex-panel {
+    height: min(300px, calc(100% - 10px));
+  }
+
+  .mobile-landscape-build .codex-list {
+    grid-auto-columns: minmax(136px, 1fr);
+  }
+}
+
+</style>
+    <style>
+      .back-link{position:fixed;z-index:20;bottom:8px;left:8px;padding:4px 10px;border:1px solid rgba(244,199,106,0.45);border-radius:6px;color:var(--paper);background:rgba(116,23,19,0.88);font-size:12px;text-decoration:none;backdrop-filter:blur(6px)}
+      .back-link:hover{background:var(--red-deep)}
+    </style>
+  </head>
+  <body class="mobile-landscape-build">
+    <a class="back-link" href="experience.html">← 返回星火沉浸</a>
+    <main class="app">
+      <header class="topbar">
+        <section class="brand">
+          <div class="seal">★</div>
+          <div>
+            <h1>井冈山保卫战</h1>
+            <p>军民一体 · 人民力量生生不息</p>
+          </div>
+          <button id="codexButton" class="codex-button" type="button">图鉴</button>
+        </section>
+        <section class="status" aria-label="战局状态">
+          <div>
+            <span>民心</span>
+            <strong id="spirit">130</strong>
+          </div>
+          <div>
+            <span>关卡</span>
+            <strong id="wave">1</strong>
+          </div>
+          <div>
+            <span>守线</span>
+            <strong>永不失败</strong>
+          </div>
+        </section>
+      </header>
+
+      <section class="layout">
+        <section class="panel roster" aria-label="作战单位">
+          <div class="roster-heading">
+            <div>
+              <span class="eyebrow">作战卡槽</span>
+              <h2>军民协同部署</h2>
+            </div>
+            <div class="roster-tools">
+              <button id="shovel" class="tool-button" type="button">调兵</button>
+              <button id="retreat" class="tool-button secondary" type="button">撤兵</button>
+            </div>
+          </div>
+          <div class="unit-list">
+            <button class="unit-card selected" data-unit="soldier" data-unlock-at="0" type="button">
+              <span class="vertical-name">红军战士</span>
+              <span class="cost">50</span>
+            </button>
+            <button class="unit-card" data-unit="guard" data-unlock-at="0" type="button">
+              <span class="vertical-name">赤卫队员</span>
+              <span class="cost">75</span>
+            </button>
+            <button class="unit-card" data-unit="people" data-unlock-at="0" type="button">
+              <span class="vertical-name">苏区群众</span>
+              <span class="cost">25</span>
+            </button>
+            <button class="unit-card" data-unit="child" data-unlock-at="0" type="button">
+              <span class="vertical-name">儿童团员</span>
+              <span class="cost">40</span>
+            </button>
+            <button class="unit-card" data-unit="machinegun" data-unlock-at="1" type="button">
+              <span class="vertical-name">机枪班</span>
+              <span class="unlock-badge">第2关</span>
+              <span class="cost">90</span>
+            </button>
+            <button class="unit-card" data-unit="medic" data-unlock-at="3" type="button">
+              <span class="vertical-name">卫生员</span>
+              <span class="unlock-badge">第4关</span>
+              <span class="cost">60</span>
+            </button>
+            <button class="unit-card" data-unit="bugler" data-unlock-at="5" type="button">
+              <span class="vertical-name">号兵</span>
+              <span class="unlock-badge">第6关</span>
+              <span class="cost">55</span>
+            </button>
+          </div>
+        </section>
+
+        <section class="game-shell">
+          <canvas id="game" width="1440" height="650" aria-label="横向塔防游戏画面"></canvas>
+          <section id="stageIntro" class="stage-intro">
+            <div class="stage-intro-content">
+              <span id="stageKicker" class="stage-kicker">第 1 关 / 10 关 · 关卡开始前</span>
+              <h2 id="stageName">黄洋界初守</h2>
+              <p id="stageHistory">黄洋界是井冈山根据地的重要山口，军民依托山势和哨口共同守护根据地。</p>
+              <div class="stage-facts">
+                <div>
+                  <span>本关目标</span>
+                  <strong id="stageMission">先稳住两侧山口，熟悉敌军出兵节奏。</strong>
+                </div>
+                <div>
+                  <span>敌方编制</span>
+                  <strong id="stageEnemies">反动派、靖卫团、地主武装</strong>
+                </div>
+              </div>
+              <button id="startLevel" class="tool-button" type="button">开始关卡</button>
+            </div>
+          </section>
+          <section id="stageModal" class="stage-modal" hidden>
+            <div class="stage-modal-content">
+              <span>关卡胜利</span>
+              <h2 id="stageResultTitle">黄洋界初守已守住</h2>
+              <p id="stageResultText">整备阵地后可进入下一关。</p>
+              <button id="nextLevel" class="tool-button" type="button">进入下一关</button>
+            </div>
+          </section>
+          <div class="hintbar">
+            <span>拖动己方单位可调兵换位</span>
+            <span>撤兵可移出单位并返还民心</span>
+            <span>人民的小推车会自动重置</span>
+            <span>空格暂停 / 继续</span>
+            <div class="game-tools">
+              <button id="pause" class="icon-tool" type="button" title="暂停或继续">暂停</button>
+              <button id="reset" class="icon-tool" type="button" title="重新开始当前战役">重开</button>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section id="codexModal" class="codex-modal" hidden>
+        <div class="codex-panel">
+          <header class="codex-header">
+            <div>
+              <span class="eyebrow">作战图鉴</span>
+              <h2>井冈山保卫战图鉴</h2>
+            </div>
+            <button id="codexClose" class="icon-tool" type="button">关闭</button>
+          </header>
+          <div class="codex-tabs" role="tablist" aria-label="图鉴分类">
+            <button id="codexFriendly" class="codex-tab active" type="button">我方单位</button>
+            <button id="codexEnemy" class="codex-tab" type="button">敌方单位</button>
+          </div>
+          <div id="codexList" class="codex-list"></div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+const canvas = document.querySelector("#game");
+const ctx = canvas.getContext("2d");
+const spiritEl = document.querySelector("#spirit");
+const waveEl = document.querySelector("#wave");
+const stageKickerEl = document.querySelector("#stageKicker");
+const stageNameEl = document.querySelector("#stageName");
+const stageHistoryEl = document.querySelector("#stageHistory");
+const stageMissionEl = document.querySelector("#stageMission");
+const stageEnemiesEl = document.querySelector("#stageEnemies");
+const stageIntro = document.querySelector("#stageIntro");
+const startLevelButton = document.querySelector("#startLevel");
+const codexButton = document.querySelector("#codexButton");
+const codexModal = document.querySelector("#codexModal");
+const codexClose = document.querySelector("#codexClose");
+const codexFriendly = document.querySelector("#codexFriendly");
+const codexEnemy = document.querySelector("#codexEnemy");
+const codexList = document.querySelector("#codexList");
+const pauseButton = document.querySelector("#pause");
+const resetButton = document.querySelector("#reset");
+const shovelButton = document.querySelector("#shovel");
+const retreatButton = document.querySelector("#retreat");
+const stageModal = document.querySelector("#stageModal");
+const stageResultTitleEl = document.querySelector("#stageResultTitle");
+const stageResultTextEl = document.querySelector("#stageResultText");
+const nextLevelButton = document.querySelector("#nextLevel");
+const unitButtons = [...document.querySelectorAll(".unit-card")];
+const mobileTextMode = document.body.classList.contains("mobile-landscape-build");
+
+const W = canvas.width;
+const H = canvas.height;
+const grid = {
+  x: 380,
+  y: 158,
+  cols: 9,
+  rows: 5,
+  cellW: 90,
+  cellH: 84,
+};
+const cartHomeX = grid.x - 68;
+const cartTriggerX = grid.x - 42;
+const fieldTop = grid.y - 18;
+const fieldHeight = grid.rows * grid.cellH + 36;
+const fieldBottom = fieldTop + fieldHeight;
+const scenicBackground = new Image();
+scenicBackground.crossOrigin = "anonymous";
+scenicBackground.src =
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/%E4%BA%95%E5%86%88%E5%B1%B1%E9%BB%84%E6%B4%8B%E7%95%8C%E9%99%84%E8%BF%91%E5%90%91%E4%B8%9C%E7%9C%8B_01.jpg/1280px-%E4%BA%95%E5%86%88%E5%B1%B1%E9%BB%84%E6%B4%8B%E7%95%8C%E9%99%84%E8%BF%91%E5%90%91%E4%B8%9C%E7%9C%8B_01.jpg";
+
+const unitTypes = {
+  soldier: {
+    name: "红军战士",
+    unlockAt: 0,
+    cost: 50,
+    hp: 160,
+    damage: 17,
+    cooldown: 900,
+    range: 760,
+    color: "#3f8a55",
+    cap: "#b92522",
+  },
+  guard: {
+    name: "赤卫队员",
+    unlockAt: 0,
+    cost: 75,
+    hp: 210,
+    damage: 28,
+    cooldown: 1250,
+    range: 680,
+    color: "#2f7554",
+    cap: "#9f231f",
+  },
+  people: {
+    name: "苏区群众",
+    unlockAt: 0,
+    cost: 25,
+    hp: 120,
+    damage: 0,
+    cooldown: 8200,
+    range: 0,
+    color: "#cc8c38",
+    cap: "#c0442d",
+    producer: true,
+  },
+  child: {
+    name: "儿童团员",
+    unlockAt: 0,
+    cost: 40,
+    hp: 95,
+    damage: 9,
+    cooldown: 620,
+    range: 520,
+    color: "#4d9b82",
+    cap: "#b92522",
+    slow: true,
+  },
+  machinegun: {
+    name: "机枪班",
+    unlockAt: 1,
+    cost: 90,
+    hp: 185,
+    damage: 13,
+    cooldown: 980,
+    burstCount: 2,
+    burstGap: 120,
+    shotSpeed: 560,
+    range: 800,
+    color: "#345d48",
+    cap: "#a82722",
+  },
+  medic: {
+    name: "卫生员",
+    unlockAt: 3,
+    cost: 60,
+    hp: 110,
+    damage: 0,
+    cooldown: 5200,
+    range: 180,
+    color: "#6a8b62",
+    cap: "#b92522",
+    healer: true,
+    heal: 24,
+  },
+  bugler: {
+    name: "号兵",
+    unlockAt: 5,
+    cost: 55,
+    hp: 105,
+    damage: 6,
+    cooldown: 1150,
+    range: 520,
+    color: "#4e7f70",
+    cap: "#b92522",
+    supporter: true,
+    supportRange: 185,
+  },
+};
+
+const unitProfiles = {
+  soldier: {
+    name: "红军战士",
+    desc: "均衡火力，适合稳守中线与交叉火力压制。",
+    meta: "前排守备 · 50 民心",
+  },
+  guard: {
+    name: "赤卫队员",
+    desc: "耐久更高、火力更强，适合顶住高压线路。",
+    meta: "坚固火力 · 75 民心",
+  },
+  people: {
+    name: "苏区群众",
+    desc: "持续积累民心，负责支撑后续布防节奏。",
+    meta: "资源补给 · 25 民心",
+  },
+  child: {
+    name: "儿童团员",
+    desc: "带有减速效果，能为正面火力争取时间。",
+    meta: "控线支援 · 40 民心",
+  },
+  machinegun: {
+    name: "红军机枪班",
+    desc: "短间隔连发压制，适合持续扫射密集线路。",
+    meta: "连发火力 · 第2关解锁 · 90 民心",
+  },
+  medic: {
+    name: "红军卫生员",
+    desc: "定期治疗附近受伤单位，帮助阵地维持更久。",
+    meta: "医疗支援 · 第4关解锁 · 60 民心",
+  },
+  bugler: {
+    name: "红军号兵",
+    desc: "号声振奋附近战士，缩短他们的下一次攻击等待。",
+    meta: "士气支援 · 第6关解锁 · 55 民心",
+  },
+};
+
+const levels = [
+  {
+    name: "黄洋界初守",
+    note: "先稳住两侧山口，熟悉敌军出兵节奏。",
+    history: "黄洋界是井冈山根据地的重要山口，军民依托山势和哨口共同守护根据地。",
+    enemies: "反动派、靖卫团、地主武装",
+    duration: 22000,
+    spawnStart: 4300,
+    spawnEnd: 3600,
+    enemyCount: 7,
+    enemyBoost: 0,
+    deployCols: 3,
+    boss: null,
+  },
+  {
+    name: "竹林加压",
+    note: "小股敌军增加，优先铺开射手和减速单位。",
+    history: "竹林和山路相连，交通员与赤卫队员需要互相照应，保持山道畅通。",
+    enemies: "反动派、靖卫团、地主武装",
+    duration: 24000,
+    spawnStart: 4100,
+    spawnEnd: 3300,
+    enemyCount: 8,
+    enemyBoost: 10,
+    deployCols: 4,
+    boss: null,
+  },
+  {
+    name: "山口鏖战",
+    note: "反扑头目将出现，可在五条线之间换位突破。",
+    history: "山口哨位承担预警和阻击任务，军民协同才能把消息和火力送到最需要的地方。",
+    enemies: "保安团、地主武装、反扑头目",
+    duration: 28000,
+    spawnStart: 3900,
+    spawnEnd: 3100,
+    enemyCount: 9,
+    enemyBoost: 20,
+    deployCols: 4,
+    boss: {
+      at: 14000,
+      name: "反扑头目",
+      hp: 760,
+      speed: 15,
+      damage: 30,
+      color: "#6f4a2d",
+    },
+  },
+  {
+    name: "苏区坚守",
+    note: "敌军耐久提升，守住中线与后排补给。",
+    history: "苏区民居既是群众生活的地方，也是后勤和救护力量的落脚点。",
+    enemies: "靖卫团、保安团、地主武装",
+    duration: 30000,
+    spawnStart: 3700,
+    spawnEnd: 2900,
+    enemyCount: 10,
+    enemyBoost: 30,
+    deployCols: 5,
+    boss: null,
+  },
+  {
+    name: "民居守望",
+    note: "敌军线路更分散，及时调兵调整火力。",
+    history: "根据地的防守离不开群众支持，民居、粮道和哨口共同构成后方保障。",
+    enemies: "便衣队、保安团、挨户团",
+    duration: 32000,
+    spawnStart: 3550,
+    spawnEnd: 2700,
+    enemyCount: 11,
+    enemyBoost: 42,
+    deployCols: 5,
+    boss: null,
+  },
+  {
+    name: "五线穿插",
+    note: "换线头目再次出现，注意保持各线基本火力。",
+    history: "山路纵横交错，灵活调动和及时换防是山地作战的重要经验。",
+    enemies: "便衣队、火力队、穿插头目",
+    duration: 34000,
+    spawnStart: 3400,
+    spawnEnd: 2550,
+    enemyCount: 12,
+    enemyBoost: 54,
+    deployCols: 6,
+    boss: {
+      at: 13000,
+      name: "穿插头目",
+      hp: 980,
+      speed: 15.5,
+      damage: 34,
+      color: "#65472d",
+    },
+  },
+  {
+    name: "竹海反扑",
+    note: "敌军生命继续提升，撤兵返还能帮助重组阵地。",
+    history: "竹海遮蔽了视线，也考验队伍之间的联络与补位能力。",
+    enemies: "挨户团、保安团、火力队",
+    duration: 35000,
+    spawnStart: 3250,
+    spawnEnd: 2400,
+    enemyCount: 13,
+    enemyBoost: 66,
+    deployCols: 7,
+    boss: null,
+  },
+  {
+    name: "哨口合围",
+    note: "多线压力增强，儿童团员的减速更关键。",
+    history: "哨口之间需要相互呼应，儿童团员和群众也能用自己的方式支援前线。",
+    enemies: "靖卫团、便衣队、火力队",
+    duration: 36000,
+    spawnStart: 3100,
+    spawnEnd: 2250,
+    enemyCount: 14,
+    enemyBoost: 78,
+    deployCols: 8,
+    boss: null,
+  },
+  {
+    name: "黄洋界决胜",
+    note: "重兵头目会更频繁换线逼近防线。",
+    history: "黄洋界防线凝聚着军民共同守护根据地的信念，山口每一处阵地都不能轻弃。",
+    enemies: "保安团、地主武装、重兵头目",
+    duration: 38000,
+    spawnStart: 2950,
+    spawnEnd: 2100,
+    enemyCount: 15,
+    enemyBoost: 92,
+    deployCols: 9,
+    boss: {
+      at: 11000,
+      name: "重兵头目",
+      hp: 1240,
+      speed: 14,
+      damage: 36,
+      color: "#5f432d",
+    },
+  },
+  {
+    name: "人民防线",
+    note: "最终关，敌军更强但数量仍有上限，稳住节奏即可。",
+    history: "最后的防线属于所有人，军民一体、互相支援，人民力量才能持续不断。",
+    enemies: "全编制敌对势力、总攻头目",
+    duration: 42000,
+    spawnStart: 2800,
+    spawnEnd: 1950,
+    enemyCount: 18,
+    enemyBoost: 110,
+    deployCols: 9,
+    boss: {
+      at: 15000,
+      name: "总攻头目",
+      hp: 1480,
+      speed: 14.5,
+      damage: 40,
+      color: "#533d2c",
+    },
+  },
+];
+
+const enemyTypes = [
+  { name: "反动派", hp: 120, speed: 18, damage: 18, color: "#705331", unlockAt: 0, weight: 5 },
+  { name: "靖卫团", hp: 170, speed: 14, damage: 22, color: "#624533", unlockAt: 0, weight: 4 },
+  { name: "地主武装", hp: 230, speed: 10, damage: 28, color: "#815334", unlockAt: 0, weight: 3 },
+  {
+    name: "保安团",
+    hp: 260,
+    speed: 11,
+    damage: 24,
+    color: "#5f6648",
+    unlockAt: 1,
+    weight: 3,
+    armor: 0.78,
+  },
+  {
+    name: "便衣队",
+    hp: 95,
+    speed: 26,
+    damage: 15,
+    color: "#496b52",
+    unlockAt: 2,
+    weight: 3,
+    speedScale: 1.18,
+  },
+  {
+    name: "火力队",
+    hp: 190,
+    speed: 8,
+    damage: 20,
+    color: "#8a5a38",
+    unlockAt: 3,
+    weight: 2,
+    support: true,
+  },
+  {
+    name: "挨户团",
+    hp: 145,
+    speed: 20,
+    damage: 18,
+    color: "#80623c",
+    unlockAt: 4,
+    weight: 2,
+  },
+];
+
+let state;
+let selectedType = "soldier";
+let shovelMode = false;
+let retreatMode = false;
+let paused = false;
+let pointer = null;
+let lastTime = performance.now();
+let spawnTimer = 0;
+let spiritTimer = 0;
+let messageTimer = 0;
+let message = "";
+let codexMode = "friendly";
+
+function freshState(levelIndex = 0) {
+  return {
+    spirit: 130,
+    levelIndex,
+    levelElapsed: 0,
+    enemiesSpawned: 0,
+    awaitingStart: true,
+    awaitingNextLevel: false,
+    campaignComplete: false,
+    bossSpawned: false,
+    units: [],
+    enemies: [],
+    shots: [],
+    carts: Array.from({ length: grid.rows }, (_, row) => ({
+      row,
+      x: cartHomeX,
+      y: laneCenterY(row),
+      active: true,
+      rolling: false,
+      resetAt: 0,
+    })),
+    nextId: 1,
+    elapsed: 0,
+  };
+}
+
+function resetLevelBoard(levelIndex = 0, campaignComplete = false) {
+  state = freshState(levelIndex);
+  state.campaignComplete = campaignComplete;
+  paused = false;
+  pointer = null;
+  shovelMode = false;
+  retreatMode = false;
+  spawnTimer = 1600;
+  spiritTimer = 5600;
+  stageModal.hidden = true;
+  stageIntro.hidden = false;
+  pauseButton.textContent = "暂停";
+  shovelButton.classList.remove("active");
+  retreatButton.classList.remove("active");
+  syncUnlocks();
+  setSelected("soldier");
+  refreshHud();
+}
+
+function currentLevel() {
+  return levels[Math.min(levels.length - 1, state.levelIndex)];
+}
+
+function syncUnitInfo() {
+  // Unit descriptions live in the top-bar codex; selecting cards stays focused on deployment.
+}
+
+function syncStageInfo() {
+  const level = currentLevel();
+  waveEl.textContent = `${state.levelIndex + 1} / ${levels.length}`;
+  stageKickerEl.textContent = `第 ${state.levelIndex + 1} 关 / ${levels.length} 关 · 关卡开始前`;
+  stageNameEl.textContent = level.name;
+  stageHistoryEl.textContent = level.history;
+  stageMissionEl.textContent = `${level.note} 当前可部署前 ${level.deployCols} 列阵地。`;
+  stageEnemiesEl.textContent = level.enemies;
+}
+
+function refreshHud() {
+  spiritEl.textContent = Math.floor(state.spirit);
+  syncStageInfo();
+  syncUnlocks();
+}
+
+function laneCenterY(row) {
+  return grid.y + row * grid.cellH + grid.cellH / 2;
+}
+
+function cellCenter(col, row) {
+  return {
+    x: grid.x + col * grid.cellW + grid.cellW / 2,
+    y: laneCenterY(row),
+  };
+}
+
+function pointToCell(x, y) {
+  const col = Math.floor((x - grid.x) / grid.cellW);
+  const row = Math.floor((y - grid.y) / grid.cellH);
+  if (col < 0 || col >= grid.cols || row < 0 || row >= grid.rows) return null;
+  return { col, row };
+}
+
+function unitAtCell(col, row, exceptId = null) {
+  return state.units.find((unit) => unit.col === col && unit.row === row && unit.id !== exceptId);
+}
+
+function unitAtPoint(x, y) {
+  return [...state.units].reverse().find((unit) => {
+    const pos = cellCenter(unit.col, unit.row);
+    return Math.abs(x - pos.x) <= 36 && Math.abs(y - pos.y) <= 38;
+  });
+}
+
+function canDeployAt(col) {
+  return col < currentLevel().deployCols;
+}
+
+function showMessage(text) {
+  message = text;
+  messageTimer = 1800;
+}
+
+function syncUnlocks() {
+  unitButtons.forEach((button) => {
+    const type = button.dataset.unit;
+    const unlockAt = unitTypes[type].unlockAt ?? 0;
+    const locked = unlockAt > state.levelIndex;
+    button.classList.toggle("locked", locked);
+    button.setAttribute("aria-disabled", String(locked));
+  });
+}
+
+function setSelected(type) {
+  const meta = unitTypes[type];
+  if (!meta || meta.unlockAt > state.levelIndex) {
+    showMessage(`第 ${(meta?.unlockAt ?? 0) + 1} 关解锁该兵种`);
+    return;
+  }
+  selectedType = type;
+  shovelMode = false;
+  retreatMode = false;
+  shovelButton.classList.remove("active");
+  retreatButton.classList.remove("active");
+  unitButtons.forEach((button) => button.classList.toggle("selected", button.dataset.unit === type));
+  syncUnitInfo();
+}
+
+function unitRole(meta) {
+  if (meta.producer) return "生产民心";
+  if (meta.healer) return "医疗支援";
+  if (meta.supporter) return "士气支援";
+  if (meta.slow) return "减速控线";
+  if (meta.damage >= 45) return "重火力";
+  return "基础防守";
+}
+
+function enemyRole(meta) {
+  if (meta.armor) return "耐久护甲";
+  if (meta.speedScale) return "快速穿插";
+  if (meta.support) return "队伍增援";
+  if (meta.speed >= 20) return "快速推进";
+  if (meta.hp >= 220) return "高耐久";
+  return "常规推进";
+}
+
+function renderCodex() {
+  codexFriendly.classList.toggle("active", codexMode === "friendly");
+  codexEnemy.classList.toggle("active", codexMode === "enemy");
+  const bossEntries = levels
+    .filter((level) => level.boss)
+    .map((level) => ({
+      name: level.boss.name,
+      hp: level.boss.hp,
+      speed: level.boss.speed,
+      unlockAt: levels.indexOf(level),
+      role: "五线换位头目",
+      desc: "可在五条线路之间换位推进的关卡头目。",
+    }));
+  const entries =
+    codexMode === "friendly"
+      ? Object.entries(unitTypes).map(([key, meta]) => ({
+          name: meta.name,
+          label: unitRole(meta),
+          unlock: meta.unlockAt === 0 ? "初始可用" : `第 ${meta.unlockAt + 1} 关解锁`,
+          stats: `${meta.cost} 民心 · 生命 ${meta.hp}`,
+          desc: unitProfiles[key]?.desc ?? "军民协同作战单位。",
+        }))
+      : [
+          ...enemyTypes.map((meta) => ({
+            name: meta.name,
+            label: enemyRole(meta),
+            unlock: meta.unlockAt === 0 ? "初始出现" : `第 ${meta.unlockAt + 1} 关出现`,
+            stats: `生命 ${meta.hp} · 速度 ${meta.speed}`,
+            desc: "井冈山斗争时期敌对势力的卡通化表现。",
+          })),
+          ...bossEntries.map((meta) => ({
+            name: meta.name,
+            label: meta.role,
+            unlock: `第 ${meta.unlockAt + 1} 关出现`,
+            stats: `生命 ${meta.hp} · 速度 ${meta.speed}`,
+            desc: meta.desc,
+          })),
+        ];
+
+  codexList.innerHTML = entries
+    .map(
+      (entry) => `
+        <article class="codex-entry">
+          <span>${entry.label}</span>
+          <h3>${entry.name}</h3>
+          <p>${entry.desc}</p>
+          <strong>${entry.unlock}</strong>
+          <em>${entry.stats}</em>
+        </article>
+      `,
+    )
+    .join("");
+}
+
+function openCodex(mode = codexMode) {
+  codexMode = mode;
+  renderCodex();
+  codexModal.hidden = false;
+}
+
+function closeCodex() {
+  codexModal.hidden = true;
+}
+
+unitButtons.forEach((button) => {
+  button.addEventListener("click", () => setSelected(button.dataset.unit));
+});
+
+codexButton.addEventListener("click", () => openCodex("friendly"));
+codexClose.addEventListener("click", closeCodex);
+codexFriendly.addEventListener("click", () => openCodex("friendly"));
+codexEnemy.addEventListener("click", () => openCodex("enemy"));
+codexModal.addEventListener("click", (event) => {
+  if (event.target === codexModal) closeCodex();
+});
+
+shovelButton.addEventListener("click", () => {
+  shovelMode = !shovelMode;
+  retreatMode = false;
+  shovelButton.classList.toggle("active", shovelMode);
+  retreatButton.classList.remove("active");
+  unitButtons.forEach((button) => button.classList.remove("selected"));
+});
+
+retreatButton.addEventListener("click", () => {
+  retreatMode = !retreatMode;
+  shovelMode = false;
+  retreatButton.classList.toggle("active", retreatMode);
+  shovelButton.classList.remove("active");
+  unitButtons.forEach((button) => button.classList.remove("selected"));
+  showMessage(retreatMode ? "点击己方单位撤兵并返还民心" : "撤兵已关闭");
+});
+
+function togglePause() {
+  paused = !paused;
+  pauseButton.textContent = paused ? "继续" : "暂停";
+}
+
+pauseButton.addEventListener("click", togglePause);
+
+document.addEventListener("keydown", (event) => {
+  if (!codexModal.hidden) {
+    if (event.code === "Escape") closeCodex();
+    return;
+  }
+  const tagName = event.target?.tagName;
+  if (event.code !== "Space" || ["INPUT", "TEXTAREA", "BUTTON"].includes(tagName)) return;
+  event.preventDefault();
+  togglePause();
+});
+
+nextLevelButton.addEventListener("click", () => {
+  if (!state.awaitingNextLevel) return;
+  advanceLevel();
+});
+
+startLevelButton.addEventListener("click", () => {
+  if (!state.awaitingStart) return;
+  state.awaitingStart = false;
+  stageIntro.hidden = true;
+  showMessage(`${currentLevel().name} 开始`);
+});
+
+resetButton.addEventListener("click", () => {
+  messageTimer = 0;
+  resetLevelBoard(0);
+  showMessage("保卫战重新部署");
+});
+
+canvas.addEventListener("pointerdown", (event) => {
+  const pos = canvasPoint(event);
+  const unit = unitAtPoint(pos.x, pos.y);
+  if (unit) {
+    if (retreatMode) {
+      retreatUnit(unit);
+      return;
+    }
+    pointer = {
+      id: event.pointerId,
+      unit,
+      fromCol: unit.col,
+      fromRow: unit.row,
+      x: pos.x,
+      y: pos.y,
+      dragging: true,
+    };
+    canvas.setPointerCapture(event.pointerId);
+    return;
+  }
+
+  const cell = pointToCell(pos.x, pos.y);
+  if (!cell) return;
+  if (shovelMode) return;
+  placeUnit(cell.col, cell.row);
+});
+
+canvas.addEventListener("pointermove", (event) => {
+  if (!pointer || pointer.id !== event.pointerId) return;
+  const pos = canvasPoint(event);
+  pointer.x = pos.x;
+  pointer.y = pos.y;
+});
+
+canvas.addEventListener("pointerup", (event) => {
+  if (!pointer || pointer.id !== event.pointerId) return;
+  const cell = pointToCell(pointer.x, pointer.y);
+  if (cell && canDeployAt(cell.col) && !unitAtCell(cell.col, cell.row, pointer.unit.id)) {
+    pointer.unit.col = cell.col;
+    pointer.unit.row = cell.row;
+    showMessage("完成调兵，阵地已调换");
+  } else if (cell && !canDeployAt(cell.col)) {
+    pointer.unit.col = pointer.fromCol;
+    pointer.unit.row = pointer.fromRow;
+    showMessage("该阵地尚未解锁，胜利后可扩展防线");
+  } else {
+    pointer.unit.col = pointer.fromCol;
+    pointer.unit.row = pointer.fromRow;
+    showMessage("该位置已占用，返回原阵地");
+  }
+  pointer = null;
+});
+
+canvas.addEventListener("pointercancel", () => {
+  if (!pointer) return;
+  pointer.unit.col = pointer.fromCol;
+  pointer.unit.row = pointer.fromRow;
+  pointer = null;
+});
+
+function canvasPoint(event) {
+  const rect = canvas.getBoundingClientRect();
+  if (mobileTextMode && window.matchMedia("(orientation: portrait)").matches) {
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    const localWidth = rect.height;
+    const localHeight = rect.width;
+    const localX = localWidth / 2 - (event.clientY - centerY);
+    const localY = localHeight / 2 + (event.clientX - centerX);
+    return {
+      x: (localX / localWidth) * W,
+      y: (localY / localHeight) * H,
+    };
+  }
+  return {
+    x: ((event.clientX - rect.left) / rect.width) * W,
+    y: ((event.clientY - rect.top) / rect.height) * H,
+  };
+}
+
+function placeUnit(col, row) {
+  if (!canDeployAt(col)) {
+    showMessage("该阵地尚未解锁，先守住当前防线");
+    return;
+  }
+  if (unitAtCell(col, row)) {
+    showMessage("可拖动作战单位自由换阵");
+    return;
+  }
+  const type = unitTypes[selectedType];
+  if (state.spirit < type.cost) {
+    showMessage("民心不足，等待苏区群众支援");
+    return;
+  }
+  state.spirit -= type.cost;
+  const unit = {
+    id: state.nextId++,
+    type: selectedType,
+    name: type.name,
+    col,
+    row,
+    hp: type.hp,
+    maxHp: type.hp,
+    fireAt: 0,
+    produceAt: 2400,
+  };
+  state.units.push(unit);
+  showMessage(`${type.name}进入阵地`);
+}
+
+function retreatUnit(unit) {
+  const type = unitTypes[unit.type];
+  state.units = state.units.filter((item) => item.id !== unit.id);
+  state.spirit += type.cost;
+  floatingText(`+${type.cost} 民心`, cellCenter(unit.col, unit.row).x, cellCenter(unit.col, unit.row).y - 34);
+  showMessage(`${type.name}已撤兵，返还 ${type.cost} 民心`);
+}
+
+function pickEnemyType() {
+  const available = enemyTypes.filter((type) => type.unlockAt <= state.levelIndex);
+  const totalWeight = available.reduce((total, type) => total + type.weight, 0);
+  let roll = Math.random() * totalWeight;
+  for (const type of available) {
+    roll -= type.weight;
+    if (roll <= 0) return type;
+  }
+  return available[available.length - 1];
+}
+
+function spawnEnemy() {
+  const level = currentLevel();
+  if (state.enemiesSpawned >= level.enemyCount) return false;
+  const type = pickEnemyType();
+  const row = Math.floor(Math.random() * grid.rows);
+  state.enemies.push({
+    id: state.nextId++,
+    name: type.name,
+    row,
+    x: W + 40,
+    y: laneCenterY(row),
+    hp: type.hp + level.enemyBoost + state.levelIndex * 10,
+    maxHp: type.hp + level.enemyBoost + state.levelIndex * 10,
+    speed: type.speed + state.levelIndex * 0.8,
+    damage: type.damage,
+    color: type.color,
+    blockedBy: null,
+    slowFor: 0,
+    armor: type.armor ?? 1,
+    speedScale: type.speedScale ?? 1,
+    support: Boolean(type.support),
+  });
+  state.enemiesSpawned += 1;
+  return true;
+}
+
+function spawnBoss(def) {
+  const row = Math.floor(Math.random() * grid.rows);
+  state.enemies.push({
+    id: state.nextId++,
+    name: def.name,
+    row,
+    x: W + 60,
+    y: laneCenterY(row),
+    hp: def.hp,
+    maxHp: def.hp,
+    speed: def.speed,
+    damage: def.damage,
+    color: def.color,
+    blockedBy: null,
+    slowFor: 0,
+    boss: true,
+    laneShiftTimer: 900 + Math.random() * 900,
+    blockedFor: 0,
+  });
+}
+
+function nextSpawnDelay() {
+  const level = currentLevel();
+  const pressure = Math.min(1, state.levelElapsed / level.duration);
+  const start = level.spawnStart;
+  const end = level.spawnEnd;
+  const base = start + (end - start) * pressure;
+  return Math.max(1200, base + Math.random() * 360);
+}
+
+function hasBossAlive() {
+  return state.enemies.some((enemy) => enemy.boss);
+}
+
+function activeEnemyLimit() {
+  return Math.min(5, 2 + Math.floor(state.levelIndex / 3));
+}
+
+function normalEnemyCount() {
+  return state.enemies.filter((enemy) => !enemy.boss).length;
+}
+
+function showStageComplete() {
+  const level = currentLevel();
+  state.awaitingNextLevel = true;
+  stageResultTitleEl.textContent = `${level.name}已守住`;
+  if (state.levelIndex >= levels.length - 1) {
+    stageResultTextEl.textContent = "十关全部完成，人民防线进入巡守阶段。";
+    nextLevelButton.textContent = "继续巡守";
+  } else {
+    stageResultTextEl.textContent = `是否进入第 ${state.levelIndex + 2} 关：${levels[state.levelIndex + 1].name}？`;
+    nextLevelButton.textContent = "进入下一关";
+  }
+  stageModal.hidden = false;
+  showMessage(`${level.name} 胜利`);
+}
+
+function advanceLevel() {
+  if (state.levelIndex >= levels.length - 1) {
+    resetLevelBoard(state.levelIndex, true);
+    showMessage("全部十关完成，继续巡守");
+    return;
+  }
+
+  const nextIndex = state.levelIndex + 1;
+  resetLevelBoard(nextIndex);
+  showMessage(`进入第 ${nextIndex + 1} 关：${currentLevel().name}`);
+}
+
+function update(dt) {
+  if (paused) return;
+  state.elapsed += dt;
+  messageTimer = Math.max(0, messageTimer - dt);
+
+  if (!state.awaitingStart && !state.awaitingNextLevel) {
+    state.levelElapsed += dt;
+    spawnTimer -= dt;
+
+    if (spawnTimer <= 0 && state.enemiesSpawned < currentLevel().enemyCount) {
+      if (normalEnemyCount() < activeEnemyLimit()) {
+        spawnEnemy();
+      }
+      spawnTimer = nextSpawnDelay();
+    }
+
+    const level = currentLevel();
+    if (level.boss && !state.bossSpawned && state.levelElapsed >= level.boss.at) {
+      spawnBoss(level.boss);
+      state.bossSpawned = true;
+      showMessage(`${level.name} 出现头目`);
+    }
+
+    const bossHandled = !level.boss || state.bossSpawned;
+    const levelCleared =
+      state.enemiesSpawned >= level.enemyCount && state.enemies.length === 0 && bossHandled && !hasBossAlive();
+    if (!state.campaignComplete && state.levelElapsed >= level.duration && levelCleared) {
+      showStageComplete();
+    }
+  }
+
+  if (state.awaitingStart || state.awaitingNextLevel) {
+    refreshHud();
+    return;
+  }
+
+  spiritTimer -= dt;
+  if (spiritTimer <= 0) {
+    state.spirit += 10;
+    spiritTimer = 6800;
+  }
+
+  updateUnits(dt);
+  updateEnemies(dt);
+  updateShots(dt);
+  updateCarts(dt);
+  cleanUp();
+  refreshHud();
+}
+
+function updateUnits(dt) {
+  for (const unit of state.units) {
+    const meta = unitTypes[unit.type];
+    unit.fireAt -= dt;
+    unit.produceAt -= dt;
+
+    if (meta.producer && unit.produceAt <= 0) {
+      state.spirit += 20;
+      unit.produceAt = meta.cooldown;
+      floatingText("+20 民心", cellCenter(unit.col, unit.row).x, cellCenter(unit.col, unit.row).y - 34);
+      continue;
+    }
+
+    if (meta.healer && unit.produceAt <= 0) {
+      const origin = cellCenter(unit.col, unit.row);
+      const target = state.units
+        .filter((ally) => ally.id !== unit.id && ally.hp < ally.maxHp)
+        .map((ally) => {
+          const pos = cellCenter(ally.col, ally.row);
+          return { ally, distance: Math.hypot(pos.x - origin.x, pos.y - origin.y) };
+        })
+        .filter((item) => item.distance <= meta.range)
+        .sort((a, b) => a.ally.hp / a.ally.maxHp - b.ally.hp / b.ally.maxHp)[0];
+      if (target) {
+        target.ally.hp = Math.min(target.ally.maxHp, target.ally.hp + meta.heal);
+        unit.produceAt = meta.cooldown;
+        floatingText("医疗 +24", origin.x, origin.y - 34);
+      }
+      continue;
+    }
+
+    if (meta.supporter && unit.produceAt <= 0) {
+      const origin = cellCenter(unit.col, unit.row);
+      const nearby = state.units.filter((ally) => {
+        if (ally.id === unit.id) return false;
+        const pos = cellCenter(ally.col, ally.row);
+        return Math.hypot(pos.x - origin.x, pos.y - origin.y) <= meta.supportRange;
+      });
+      if (nearby.length > 0) {
+        nearby.forEach((ally) => {
+          ally.fireAt = Math.max(0, ally.fireAt - 420);
+        });
+        unit.produceAt = meta.cooldown;
+        floatingText("号声振奋", origin.x, origin.y - 34);
+      }
+      continue;
+    }
+
+    if (meta.damage <= 0 || unit.fireAt > 0) continue;
+    const origin = cellCenter(unit.col, unit.row);
+    const target = state.enemies
+      .filter((enemy) => enemy.row === unit.row && enemy.x > origin.x && enemy.x - origin.x <= meta.range)
+      .sort((a, b) => a.x - b.x)[0];
+    if (!target) continue;
+
+    state.shots.push({
+      x: origin.x + 28,
+      y: origin.y - 10,
+      row: unit.row,
+      targetId: target.id,
+      damage: meta.damage,
+      slow: meta.slow,
+      speed: meta.shotSpeed ?? 480,
+    });
+    if (meta.burstCount) {
+      unit.burstProgress = (unit.burstProgress ?? 0) + 1;
+      if (unit.burstProgress < meta.burstCount) {
+        unit.fireAt = meta.burstGap;
+      } else {
+        unit.burstProgress = 0;
+        unit.fireAt = meta.cooldown;
+      }
+    } else {
+      unit.fireAt = meta.cooldown;
+    }
+  }
+}
+
+function chooseBossRow(enemy) {
+  let bestRow = enemy.row;
+  let bestScore = Infinity;
+  for (let row = 0; row < grid.rows; row += 1) {
+    const defenders = state.units.filter((unit) => unit.row === row && cellCenter(unit.col, row).x < enemy.x + 260).length;
+    const score = defenders * 2 + Math.abs(row - enemy.row) * 0.35 + Math.random() * 0.35;
+    if (score < bestScore) {
+      bestScore = score;
+      bestRow = row;
+    }
+  }
+  return bestRow;
+}
+
+function updateEnemies(dt) {
+  for (const enemy of state.enemies) {
+    enemy.slowFor = Math.max(0, enemy.slowFor - dt);
+    const nearbySupport = state.enemies.some(
+      (ally) =>
+        ally.id !== enemy.id &&
+        ally.support &&
+        ally.row === enemy.row &&
+        Math.abs(ally.x - enemy.x) < 150,
+    );
+    const supportBoost = nearbySupport ? 1.12 : 1;
+    const speed = (enemy.slowFor > 0 ? enemy.speed * 0.48 : enemy.speed) * (enemy.speedScale ?? 1) * supportBoost;
+
+    if (enemy.boss) {
+      enemy.laneShiftTimer -= dt;
+      const blocker = state.units.find((unit) => {
+        if (unit.row !== enemy.row) return false;
+        const pos = cellCenter(unit.col, unit.row);
+        return Math.abs(enemy.x - pos.x) < 50;
+      });
+
+      if (blocker) {
+        enemy.blockedBy = blocker.id;
+        blocker.hp -= (enemy.damage * dt) / 1000;
+        enemy.blockedFor += dt;
+      } else {
+        enemy.blockedBy = null;
+        enemy.blockedFor = Math.max(0, enemy.blockedFor - dt * 0.5);
+      }
+
+      if (enemy.blockedFor > 900 || enemy.laneShiftTimer <= 0) {
+        enemy.row = chooseBossRow(enemy);
+        enemy.y = laneCenterY(enemy.row);
+        enemy.blockedFor = 0;
+        enemy.laneShiftTimer = 950 + Math.random() * 950;
+        floatingText("头目换线", enemy.x, enemy.y - 48);
+      }
+
+      enemy.x -= (speed * dt) / 1000;
+      continue;
+    }
+
+    const blocker = state.units.find((unit) => {
+      if (unit.row !== enemy.row) return false;
+      const pos = cellCenter(unit.col, unit.row);
+      return Math.abs(enemy.x - pos.x) < 43;
+    });
+
+    if (blocker) {
+      enemy.blockedBy = blocker.id;
+      blocker.hp -= (enemy.damage * dt) / 1000;
+      continue;
+    }
+
+    enemy.blockedBy = null;
+    enemy.x -= (speed * dt) / 1000;
+  }
+}
+
+function updateShots(dt) {
+  for (const shot of state.shots) {
+    const target = state.enemies.find((enemy) => enemy.id === shot.targetId);
+    if (!target) {
+      shot.done = true;
+      continue;
+    }
+    const dx = target.x - shot.x;
+    const step = (shot.speed * dt) / 1000;
+    if (Math.abs(dx) <= step + 8) {
+      target.hp -= shot.damage * (target.armor ?? 1);
+      if (shot.slow) target.slowFor = 1400;
+      shot.done = true;
+    } else {
+      shot.x += Math.sign(dx) * step;
+    }
+  }
+}
+
+function updateCarts(dt) {
+  for (const cart of state.carts) {
+    if (!cart.active && !cart.rolling && state.elapsed >= cart.resetAt) {
+      cart.active = true;
+      cart.x = cartHomeX;
+      showMessage("人民的小推车已自动重置");
+    }
+
+    if (cart.active && !cart.rolling) {
+      const enemy = state.enemies.find((item) => item.row === cart.row && item.x < cartTriggerX);
+      if (enemy) {
+        cart.rolling = true;
+      }
+    }
+
+    if (cart.rolling) {
+      cart.x += (520 * dt) / 1000;
+      for (const enemy of state.enemies) {
+        if (enemy.row === cart.row && Math.abs(enemy.x - cart.x) < 45) {
+          enemy.hp = 0;
+        }
+      }
+      if (cart.x > W + 80) {
+        cart.rolling = false;
+        cart.active = false;
+        cart.resetAt = state.elapsed + 2600;
+      }
+    }
+  }
+}
+
+function cleanUp() {
+  state.units = state.units.filter((unit) => unit.hp > 0);
+  state.enemies = state.enemies.filter((enemy) => {
+    if (enemy.hp <= 0) {
+      state.spirit += 5;
+      floatingText("+5 民心", enemy.x, enemy.y - 42);
+      return false;
+    }
+    if (enemy.x < -60) {
+      enemy.x = enemy.boss ? W + 120 : W + 60;
+      if (enemy.boss) {
+        enemy.row = Math.floor(Math.random() * grid.rows);
+        enemy.y = laneCenterY(enemy.row);
+        enemy.blockedFor = 0;
+        enemy.laneShiftTimer = 900 + Math.random() * 900;
+      }
+      enemy.hp = enemy.maxHp;
+      return true;
+    }
+    return true;
+  });
+  state.shots = state.shots.filter((shot) => !shot.done);
+}
+
+const floaters = [];
+
+function floatingText(text, x, y) {
+  floaters.push({ text, x, y, life: 900 });
+}
+
+function updateFloaters(dt) {
+  for (const item of floaters) {
+    item.y -= (18 * dt) / 1000;
+    item.life -= dt;
+  }
+  for (let i = floaters.length - 1; i >= 0; i -= 1) {
+    if (floaters[i].life <= 0) floaters.splice(i, 1);
+  }
+}
+
+function draw() {
+  ctx.clearRect(0, 0, W, H);
+  drawBackground();
+  drawGrid();
+  drawCarts();
+  drawUnits();
+  drawEnemies();
+  drawShots();
+  drawFloaters();
+  drawMessage();
+  if (paused) drawPause();
+}
+
+function drawBackground() {
+  const sky = ctx.createLinearGradient(0, 0, 0, 240);
+  sky.addColorStop(0, "#f3dcc0");
+  sky.addColorStop(1, "#f7edcf");
+  ctx.fillStyle = sky;
+  ctx.fillRect(0, 0, W, H);
+
+  if (scenicBackground.complete && scenicBackground.naturalWidth > 0) {
+    drawImageCover(scenicBackground, 0, 0, W, fieldBottom + 42);
+    const photoTint = ctx.createLinearGradient(0, 0, 0, fieldBottom + 42);
+    photoTint.addColorStop(0, "rgba(112, 20, 18, 0.26)");
+    photoTint.addColorStop(0.45, "rgba(246, 220, 166, 0.2)");
+    photoTint.addColorStop(1, "rgba(104, 44, 24, 0.34)");
+    ctx.fillStyle = photoTint;
+    ctx.fillRect(0, 0, W, fieldBottom + 42);
+  } else {
+    drawMountain(0, 158, "#a95643", 0.82);
+    drawMountain(160, 142, "#7c8e58", 1);
+    drawMountain(530, 150, "#7b9b68", 0.92);
+    drawMountain(880, 132, "#946244", 0.64);
+  }
+
+  ctx.fillStyle = "rgba(63, 99, 62, 0.78)";
+  const bambooCount = Math.ceil(W / 31) + 4;
+  for (let i = 0; i < bambooCount; i += 1) {
+    const x = 20 + i * 31;
+    const base = 150 + (i % 5) * 7;
+    ctx.fillRect(x, 74, 5, base);
+    ctx.beginPath();
+    ctx.moveTo(x + 3, 104);
+    ctx.lineTo(x + 28, 84 + (i % 3) * 8);
+    ctx.strokeStyle = "rgba(63, 138, 85, 0.72)";
+    ctx.lineWidth = 3;
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(x + 2, 126);
+    ctx.lineTo(x - 22, 112 + (i % 4) * 6);
+    ctx.stroke();
+  }
+
+  drawWoodFence(grid.x - 18, 120, grid.cols * grid.cellW + 250);
+  drawBaseArea();
+  drawBattlefieldBase();
+  drawRightApproach();
+  drawHouse(W - 318, 82, 74, 52);
+  drawHouse(W - 218, 96, 96, 58);
+  drawSentry(grid.x - 316, 90);
+
+  ctx.fillStyle = "#bd8f54";
+  ctx.fillRect(0, fieldBottom + 10, W, H - fieldBottom - 10);
+  ctx.fillStyle = "rgba(118, 85, 42, 0.16)";
+  const groundLines = Math.ceil(W / 52);
+  for (let i = 0; i < groundLines; i += 1) {
+    ctx.fillRect(i * 52, 598 + (i % 4) * 7, 28, 3);
+  }
+}
+
+function drawImageCover(image, x, y, width, height) {
+  const imageRatio = image.naturalWidth / image.naturalHeight;
+  const boxRatio = width / height;
+  let sx = 0;
+  let sy = 0;
+  let sw = image.naturalWidth;
+  let sh = image.naturalHeight;
+  if (imageRatio > boxRatio) {
+    sw = image.naturalHeight * boxRatio;
+    sx = (image.naturalWidth - sw) / 2;
+  } else {
+    sh = image.naturalWidth / boxRatio;
+    sy = (image.naturalHeight - sh) / 2;
+  }
+  ctx.drawImage(image, sx, sy, sw, sh, x, y, width, height);
+}
+
+function drawWoodFence(x, y, width) {
+  ctx.strokeStyle = "#7b5d38";
+  ctx.lineWidth = 5;
+  ctx.beginPath();
+  ctx.moveTo(x, y + 30);
+  ctx.lineTo(x + width, y + 18);
+  ctx.stroke();
+  const count = Math.ceil(width / 42);
+  for (let i = 0; i < count; i += 1) {
+    const px = x + i * 42;
+    ctx.fillStyle = i % 2 ? "#8c6a43" : "#735633";
+    ctx.beginPath();
+    ctx.moveTo(px - 7, y + 58);
+    ctx.lineTo(px, y + 8);
+    ctx.lineTo(px + 7, y + 58);
+    ctx.closePath();
+    ctx.fill();
+  }
+}
+
+function drawBaseArea() {
+  const wall = ctx.createLinearGradient(0, 120, grid.x - 24, fieldBottom);
+  wall.addColorStop(0, "#f4d697");
+  wall.addColorStop(1, "#c88954");
+  ctx.fillStyle = wall;
+  ctx.beginPath();
+  ctx.moveTo(0, 122);
+  ctx.lineTo(grid.x - 30, 140);
+  ctx.lineTo(grid.x - 30, fieldBottom + 16);
+  ctx.lineTo(0, fieldBottom + 42);
+  ctx.closePath();
+  ctx.fill();
+
+  ctx.fillStyle = "#a64d34";
+  ctx.beginPath();
+  ctx.moveTo(0, 92);
+  ctx.lineTo(198, 58);
+  ctx.lineTo(grid.x - 44, 132);
+  ctx.lineTo(0, 164);
+  ctx.closePath();
+  ctx.fill();
+  ctx.fillStyle = "rgba(100, 59, 36, 0.24)";
+  for (let x = 30; x < grid.x - 70; x += 42) {
+    ctx.fillRect(x, 108 + (x % 3) * 8, 28, 5);
+  }
+
+  ctx.fillStyle = "#f8e2aa";
+  roundedRect(58, 190, 70, 86, 8);
+  ctx.fill();
+  ctx.strokeStyle = "rgba(112, 88, 42, 0.26)";
+  ctx.lineWidth = 2;
+  ctx.stroke();
+  ctx.fillStyle = "#8a5638";
+  roundedRect(73, 176, 32, 22, 4);
+  ctx.fill();
+  ctx.fillStyle = "#9fc8c1";
+  ctx.fillRect(78, 217, 22, 22);
+
+  ctx.fillStyle = "rgba(123, 32, 22, 0.1)";
+  roundedRect(178, 304, 78, 44, 8);
+  ctx.fill();
+  ctx.fillStyle = "#8a5638";
+  roundedRect(190, 314, 26, 20, 4);
+  ctx.fill();
+  ctx.fillStyle = "#b88445";
+  roundedRect(220, 314, 24, 20, 4);
+  ctx.fill();
+
+  const dockX = grid.x - 100;
+  const dockY = 165;
+  const dockW = 86;
+  const dockH = fieldBottom - dockY - 28;
+  ctx.fillStyle = "rgba(120, 59, 40, 0.12)";
+  roundedRect(dockX, dockY, dockW, dockH, 10);
+  ctx.fill();
+  ctx.strokeStyle = "rgba(123, 32, 22, 0.16)";
+  ctx.lineWidth = 2;
+  ctx.stroke();
+  for (let row = 0; row < grid.rows; row += 1) {
+    const y = laneCenterY(row);
+    ctx.strokeStyle = "rgba(123, 32, 22, 0.1)";
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(dockX + 8, y + 24);
+    ctx.lineTo(dockX + dockW - 8, y + 24);
+    ctx.stroke();
+    ctx.fillStyle = row % 2 === 0 ? "rgba(123, 32, 22, 0.1)" : "rgba(244, 199, 106, 0.12)";
+    ctx.beginPath();
+    ctx.arc(dockX + 12, y, 3, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  ctx.fillStyle = "#7b1f18";
+  ctx.font = "700 18px Microsoft YaHei, sans-serif";
+  ctx.textAlign = "center";
+  ctx.fillText("苏区民居", 154, 414);
+}
+
+function drawBattlefieldBase() {
+  const fieldWidth = grid.cols * grid.cellW;
+  ctx.fillStyle = "#6f9349";
+  roundedRect(grid.x - 14, fieldTop, fieldWidth + 28, fieldHeight, 7);
+  ctx.fill();
+  ctx.strokeStyle = "rgba(69, 82, 42, 0.35)";
+  ctx.lineWidth = 4;
+  ctx.stroke();
+
+  for (let row = 0; row < grid.rows; row += 1) {
+    const y = grid.y + row * grid.cellH;
+    const soil = row % 2 === 0 ? "#b47b3e" : "#6f9a48";
+    ctx.fillStyle = soil;
+    ctx.fillRect(grid.x - 8, y + 4, fieldWidth + 16, grid.cellH - 8);
+    ctx.fillStyle = "rgba(255, 248, 232, 0.12)";
+    for (let i = 0; i < 16; i += 1) {
+      const dotX = grid.x + ((i * 61 + row * 17) % fieldWidth);
+      const dotY = y + 16 + ((i * 19 + row * 11) % (grid.cellH - 30));
+      ctx.beginPath();
+      ctx.arc(dotX, dotY, 2 + (i % 3), 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  ctx.fillStyle = "rgba(68, 92, 48, 0.18)";
+  ctx.fillRect(grid.x - 14, fieldTop - 14, fieldWidth + 28, 18);
+  ctx.fillRect(grid.x - 14, fieldBottom - 4, fieldWidth + 28, 18);
+}
+
+function drawRightApproach() {
+  const startX = grid.x + grid.cols * grid.cellW + 18;
+  ctx.fillStyle = "#d0b07d";
+  ctx.beginPath();
+  ctx.moveTo(startX, 134);
+  ctx.lineTo(W, 112);
+  ctx.lineTo(W, fieldBottom + 28);
+  ctx.lineTo(startX, fieldBottom + 8);
+  ctx.closePath();
+  ctx.fill();
+  ctx.strokeStyle = "rgba(91, 88, 52, 0.22)";
+  ctx.lineWidth = 2;
+  for (let row = 0; row <= grid.rows; row += 1) {
+    const y = grid.y + row * grid.cellH;
+    ctx.beginPath();
+    ctx.moveTo(startX + 8, y);
+    ctx.lineTo(W, y - 14);
+    ctx.stroke();
+  }
+  for (let x = startX + 44; x < W; x += 76) {
+    ctx.beginPath();
+    ctx.moveTo(x, 142);
+    ctx.lineTo(x + 18, fieldBottom + 20);
+    ctx.stroke();
+  }
+  ctx.fillStyle = "#7a5137";
+  ctx.font = "700 18px Microsoft YaHei, sans-serif";
+  ctx.textAlign = "center";
+  ctx.fillText("山路入口", startX + 108, fieldTop - 18);
+}
+
+function drawMountain(offset, peak, color, alpha) {
+  ctx.globalAlpha = alpha;
+  ctx.fillStyle = color;
+  ctx.beginPath();
+  ctx.moveTo(offset - 120, 206);
+  ctx.quadraticCurveTo(offset + 40, peak, offset + 210, 206);
+  ctx.quadraticCurveTo(offset + 360, peak - 50, offset + 560, 212);
+  ctx.lineTo(offset + 600, 260);
+  ctx.lineTo(offset - 160, 260);
+  ctx.closePath();
+  ctx.fill();
+  ctx.globalAlpha = 1;
+}
+
+function drawHouse(x, y, w, h) {
+  ctx.fillStyle = "#a75c3b";
+  ctx.beginPath();
+  ctx.moveTo(x - 8, y + 18);
+  ctx.lineTo(x + w / 2, y - 12);
+  ctx.lineTo(x + w + 8, y + 18);
+  ctx.closePath();
+  ctx.fill();
+  ctx.fillStyle = "#f2d79a";
+  ctx.fillRect(x, y + 18, w, h);
+  ctx.fillStyle = "#7a5137";
+  ctx.fillRect(x + w * 0.42, y + 35, w * 0.18, h - 17);
+}
+
+function drawSentry(x, y) {
+  ctx.fillStyle = "#7b5d38";
+  ctx.fillRect(x, y + 40, 72, 42);
+  ctx.fillStyle = "#9b6d3e";
+  ctx.beginPath();
+  ctx.moveTo(x - 6, y + 43);
+  ctx.lineTo(x + 36, y + 12);
+  ctx.lineTo(x + 78, y + 43);
+  ctx.closePath();
+  ctx.fill();
+  drawFlag(x + 64, y + 8, 42);
+}
+
+function drawFlag(x, y, h) {
+  ctx.strokeStyle = "#7b5d38";
+  ctx.lineWidth = 4;
+  ctx.beginPath();
+  ctx.moveTo(x, y);
+  ctx.lineTo(x, y + h);
+  ctx.stroke();
+  ctx.fillStyle = "#b92522";
+  ctx.beginPath();
+  ctx.moveTo(x + 2, y + 4);
+  ctx.lineTo(x + 44, y + 13);
+  ctx.lineTo(x + 2, y + 25);
+  ctx.closePath();
+  ctx.fill();
+  drawStar(x + 14, y + 14, 6, "#f3c65f");
+}
+
+function drawGrid() {
+  const deployCols = currentLevel().deployCols;
+  const fieldWidth = grid.cols * grid.cellW;
+  ctx.save();
+  ctx.fillStyle = "rgba(255, 248, 232, 0.32)";
+  roundedRect(grid.x - 10, grid.y - 10, fieldWidth + 20, grid.rows * grid.cellH + 20, 7);
+  ctx.fill();
+  for (let row = 0; row < grid.rows; row += 1) {
+    for (let col = 0; col < grid.cols; col += 1) {
+      const x = grid.x + col * grid.cellW;
+      const y = grid.y + row * grid.cellH;
+      const turf = row % 2 === 0;
+      ctx.fillStyle = turf
+        ? ((row + col) % 2 === 0 ? "rgba(133, 176, 76, 0.82)" : "rgba(102, 151, 70, 0.82)")
+        : ((row + col) % 2 === 0 ? "rgba(181, 124, 58, 0.8)" : "rgba(145, 99, 50, 0.8)");
+      roundedRect(x + 3, y + 3, grid.cellW - 6, grid.cellH - 6, 4);
+      ctx.fill();
+      ctx.strokeStyle = "rgba(65, 77, 43, 0.2)";
+      ctx.lineWidth = 1;
+      ctx.stroke();
+      if (turf) {
+        ctx.fillStyle = "rgba(255, 248, 232, 0.13)";
+        ctx.fillRect(x + 8, y + 8, grid.cellW - 16, 7);
+      }
+      if (col >= deployCols) {
+        ctx.fillStyle = "rgba(65, 34, 25, 0.4)";
+        roundedRect(x + 3, y + 3, grid.cellW - 6, grid.cellH - 6, 4);
+        ctx.fill();
+        if (row === 0) {
+          drawLabelText("待解锁", x + grid.cellW / 2, y + grid.cellH / 2, "rgba(255, 248, 232, 0.86)", 13);
+        }
+      }
+    }
+  }
+
+  const openLineX = grid.x + deployCols * grid.cellW;
+  ctx.fillStyle = "rgba(195, 39, 35, 0.28)";
+  ctx.fillRect(openLineX - 6, grid.y - 7, 12, grid.rows * grid.cellH + 14);
+  ctx.fillStyle = "rgba(173, 69, 49, 0.18)";
+  ctx.fillRect(grid.x - 34, grid.y - 4, 14, grid.rows * grid.cellH + 8);
+  ctx.restore();
+}
+
+function drawCarts() {
+  for (const cart of state.carts) {
+    if (!cart.active && !cart.rolling) {
+      ctx.globalAlpha = 0.32;
+    }
+    drawCart(cart.x, cart.y, cart.rolling);
+    ctx.globalAlpha = 1;
+  }
+}
+
+function drawCart(x, y, rolling) {
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.globalAlpha = rolling ? 1 : 0.98;
+  ctx.fillStyle = "rgba(61, 38, 22, 0.16)";
+  ctx.beginPath();
+  ctx.ellipse(-2, 23, 42, 9, 0, 0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.fillStyle = "#8a5a36";
+  roundedRect(-44, -18, 74, 28, 7);
+  ctx.fill();
+  ctx.strokeStyle = "#5a381f";
+  ctx.lineWidth = 2.5;
+  ctx.stroke();
+  ctx.fillStyle = "#9b6c41";
+  roundedRect(-34, -26, 56, 10, 4);
+  ctx.fill();
+  ctx.fillStyle = "#b92522";
+  ctx.beginPath();
+  ctx.moveTo(-18, -27);
+  ctx.lineTo(-18, -39);
+  ctx.lineTo(-4, -34);
+  ctx.lineTo(-18, -30);
+  ctx.closePath();
+  ctx.fill();
+  drawStar(-12, -17, 9, "#c32723");
+  ctx.fillStyle = "#483322";
+  ctx.beginPath();
+  ctx.arc(-20, 18, 7, 0, Math.PI * 2);
+  ctx.arc(18, 18, 7, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.strokeStyle = "#5f3f27";
+  ctx.lineWidth = 3;
+  ctx.beginPath();
+  ctx.moveTo(26, -4);
+  ctx.lineTo(46, -17);
+  ctx.stroke();
+  ctx.fillStyle = "#f7d79c";
+  roundedRect(-27, -10, 38, 16, 3);
+  ctx.fill();
+  if (rolling) {
+    ctx.fillStyle = "rgba(195, 39, 35, 0.16)";
+    ctx.fillRect(-58, -4, 18, 6);
+  }
+  ctx.restore();
+}
+
+function drawUnits() {
+  for (const unit of state.units) {
+    if (pointer && pointer.unit.id === unit.id) continue;
+    const pos = cellCenter(unit.col, unit.row);
+    drawUnit(unit, pos.x, pos.y, false);
+  }
+  if (pointer) {
+    drawUnit(pointer.unit, pointer.x, pointer.y, true);
+  }
+}
+
+function drawUnit(unit, x, y, lifted) {
+  const meta = unitTypes[unit.type];
+  ctx.save();
+  ctx.translate(x, y);
+  if (lifted) ctx.globalAlpha = 0.82;
+  ctx.fillStyle = "rgba(55, 45, 24, 0.18)";
+  ctx.beginPath();
+  ctx.ellipse(0, 34, 35, 10, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = meta.color;
+  roundedRect(-28, -32, 56, 66, 14);
+  ctx.fill();
+  ctx.strokeStyle = "#2e573e";
+  ctx.lineWidth = 3;
+  ctx.stroke();
+  ctx.fillStyle = meta.cap;
+  ctx.beginPath();
+  ctx.moveTo(-24, -29);
+  ctx.quadraticCurveTo(0, -48, 25, -29);
+  ctx.lineTo(14, -18);
+  ctx.lineTo(-18, -18);
+  ctx.closePath();
+  ctx.fill();
+  drawStar(0, -28, 7, "#f3c65f");
+  if (meta.healer) {
+    ctx.fillStyle = "#fff8e8";
+    ctx.fillRect(-3, -4, 6, 18);
+    ctx.fillRect(-9, 2, 18, 6);
+  } else if (meta.supporter) {
+    ctx.strokeStyle = "#f3c65f";
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(8, -4);
+    ctx.lineTo(19, -13);
+    ctx.lineTo(24, -9);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(24, -9, 4, 0, Math.PI * 2);
+    ctx.stroke();
+  } else if (meta.damage >= 45) {
+    ctx.fillStyle = "#f3c65f";
+    ctx.fillRect(-19, 8, 38, 4);
+    ctx.fillRect(-19, 15, 26, 4);
+  }
+  drawLabelText(meta.name, 0, -13, "#fff8e8", 13);
+  drawHp(-30, 42, 60, unit.hp / unit.maxHp, "#2f8f45");
+  ctx.restore();
+}
+
+function drawEnemies() {
+  for (const enemy of state.enemies) {
+    drawEnemy(enemy);
+  }
+}
+
+function drawEnemy(enemy) {
+  if (enemy.boss) {
+    drawBoss(enemy);
+    return;
+  }
+  ctx.save();
+  ctx.translate(enemy.x, enemy.y);
+  ctx.fillStyle = "rgba(55, 45, 24, 0.18)";
+  ctx.beginPath();
+  ctx.ellipse(0, 34, 34, 9, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = enemy.slowFor > 0 ? "#697d69" : enemy.color;
+  roundedRect(-25, -31, 50, 64, 12);
+  ctx.fill();
+  ctx.strokeStyle = "#4b3828";
+  ctx.lineWidth = 3;
+  ctx.stroke();
+  ctx.fillStyle = "#d4bd8b";
+  ctx.beginPath();
+  ctx.arc(0, -38, 15, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = "#51402d";
+  ctx.fillRect(-18, -48, 36, 8);
+  if (enemy.armor < 1) {
+    ctx.strokeStyle = "#d8c08f";
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(-20, -10);
+    ctx.lineTo(20, 14);
+    ctx.moveTo(-20, 4);
+    ctx.lineTo(20, 28);
+    ctx.stroke();
+  }
+  if (enemy.speedScale > 1) {
+    ctx.strokeStyle = "#f3c65f";
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(-20, -20);
+    ctx.lineTo(18, -4);
+    ctx.stroke();
+  }
+  if (enemy.support) {
+    ctx.fillStyle = "#f3c65f";
+    ctx.beginPath();
+    ctx.arc(0, 10, 7, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = "#fff2d7";
+    ctx.lineWidth = 2;
+    ctx.stroke();
+  }
+  const enemyLabelSize = enemy.name.length > 4 ? 11 : 15;
+  drawLabelText(enemy.name, 0, -14, "#fff2d7", mobileTextMode ? 11 : enemyLabelSize);
+  drawHp(-28, 42, 56, enemy.hp / enemy.maxHp, "#b92522");
+  ctx.restore();
+}
+
+function drawBoss(enemy) {
+  ctx.save();
+  ctx.translate(enemy.x, enemy.y);
+  ctx.fillStyle = "rgba(55, 45, 24, 0.2)";
+  ctx.beginPath();
+  ctx.ellipse(0, 42, 50, 14, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = enemy.slowFor > 0 ? "#6e7c67" : enemy.color;
+  roundedRect(-38, -46, 76, 94, 16);
+  ctx.fill();
+  ctx.strokeStyle = "#4b3828";
+  ctx.lineWidth = 4;
+  ctx.stroke();
+  ctx.fillStyle = "#d8c08f";
+  ctx.beginPath();
+  ctx.arc(0, -56, 20, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = "#5a432b";
+  ctx.fillRect(-24, -66, 48, 10);
+  ctx.fillStyle = "#b92522";
+  ctx.beginPath();
+  ctx.moveTo(-46, -38);
+  ctx.lineTo(46, -38);
+  ctx.lineTo(30, -18);
+  ctx.lineTo(-30, -18);
+  ctx.closePath();
+  ctx.fill();
+  drawStar(0, -34, 8, "#f3c65f");
+  ctx.fillStyle = "#fff8e8";
+  ctx.font = "700 17px Microsoft YaHei, sans-serif";
+  ctx.textAlign = "center";
+  ctx.fillText(enemy.name, 0, -8);
+  drawHp(-38, 54, 76, enemy.hp / enemy.maxHp, "#b92522");
+  ctx.restore();
+}
+
+function drawShots() {
+  for (const shot of state.shots) {
+    ctx.fillStyle = shot.slow ? "#2d8c77" : "#c53b2f";
+    ctx.beginPath();
+    ctx.arc(shot.x, shot.y, shot.slow ? 6 : 7, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = "#f3c65f";
+    ctx.fillRect(shot.x - 3, shot.y - 1, 10, 2);
+  }
+}
+
+function drawFloaters() {
+  for (const item of floaters) {
+    ctx.globalAlpha = Math.max(0, item.life / 900);
+    ctx.fillStyle = "#b92522";
+    ctx.font = "700 18px Microsoft YaHei, sans-serif";
+    ctx.textAlign = "center";
+    ctx.fillText(item.text, item.x, item.y);
+    ctx.globalAlpha = 1;
+  }
+}
+
+function drawMessage() {
+  if (messageTimer <= 0) return;
+  ctx.save();
+  ctx.globalAlpha = Math.min(1, messageTimer / 260);
+  ctx.fillStyle = "rgba(255, 248, 232, 0.92)";
+  roundedRect(W / 2 - 170, 24, 340, 44, 8);
+  ctx.fill();
+  ctx.strokeStyle = "rgba(185, 37, 34, 0.38)";
+  ctx.stroke();
+  ctx.fillStyle = "#831d1b";
+  ctx.font = "700 18px Microsoft YaHei, sans-serif";
+  ctx.textAlign = "center";
+  ctx.fillText(message, W / 2, 53);
+  ctx.restore();
+}
+
+function drawPause() {
+  ctx.fillStyle = "rgba(39, 57, 47, 0.22)";
+  ctx.fillRect(0, 0, W, H);
+  ctx.fillStyle = "#fff8e8";
+  roundedRect(W / 2 - 82, H / 2 - 34, 164, 68, 8);
+  ctx.fill();
+  ctx.strokeStyle = "#b92522";
+  ctx.lineWidth = 2;
+  ctx.stroke();
+  ctx.fillStyle = "#831d1b";
+  ctx.font = "700 26px Microsoft YaHei, sans-serif";
+  ctx.textAlign = "center";
+  ctx.fillText("暂停中", W / 2, H / 2 + 9);
+}
+
+function drawHp(x, y, width, ratio, color) {
+  ctx.fillStyle = "rgba(255, 248, 232, 0.82)";
+  roundedRect(x, y, width, 7, 4);
+  ctx.fill();
+  ctx.fillStyle = color;
+  roundedRect(x, y, width * Math.max(0, Math.min(1, ratio)), 7, 4);
+  ctx.fill();
+}
+
+function drawLabelText(text, x, y, color, size) {
+  if (!mobileTextMode) {
+    drawVerticalText(text, x, y, color, size);
+    return;
+  }
+  ctx.save();
+  ctx.fillStyle = "rgba(70, 37, 25, 0.36)";
+  const width = Math.max(36, Math.min(68, text.length * size + 8));
+  roundedRect(x - width / 2, y - size / 2 - 4, width, size + 8, 4);
+  ctx.fill();
+  ctx.fillStyle = color;
+  ctx.font = `800 ${size}px Microsoft YaHei, Noto Sans CJK SC, sans-serif`;
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillText(text, x, y);
+  ctx.restore();
+}
+
+function drawVerticalText(text, x, y, color, size) {
+  ctx.save();
+  ctx.fillStyle = color;
+  ctx.font = `700 ${size}px Microsoft YaHei, Noto Sans CJK SC, sans-serif`;
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  const chars = [...text];
+  const step = size + 1;
+  const start = y - ((chars.length - 1) * step) / 2;
+  chars.forEach((char, index) => {
+    ctx.fillText(char, x, start + index * step);
+  });
+  ctx.restore();
+}
+
+function roundedRect(x, y, width, height, radius) {
+  const r = Math.min(radius, width / 2, height / 2);
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + width - r, y);
+  ctx.quadraticCurveTo(x + width, y, x + width, y + r);
+  ctx.lineTo(x + width, y + height - r);
+  ctx.quadraticCurveTo(x + width, y + height, x + width - r, y + height);
+  ctx.lineTo(x + r, y + height);
+  ctx.quadraticCurveTo(x, y + height, x, y + height - r);
+  ctx.lineTo(x, y + r);
+  ctx.quadraticCurveTo(x, y, x + r, y);
+}
+
+function drawStar(cx, cy, outer, color) {
+  const inner = outer * 0.43;
+  ctx.save();
+  ctx.fillStyle = color;
+  ctx.beginPath();
+  for (let i = 0; i < 10; i += 1) {
+    const radius = i % 2 === 0 ? outer : inner;
+    const angle = -Math.PI / 2 + (i * Math.PI) / 5;
+    const x = cx + Math.cos(angle) * radius;
+    const y = cy + Math.sin(angle) * radius;
+    if (i === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
+  }
+  ctx.closePath();
+  ctx.fill();
+  ctx.restore();
+}
+
+function frame(now) {
+  const dt = Math.min(50, now - lastTime);
+  lastTime = now;
+  update(dt);
+  updateFloaters(dt);
+  draw();
+  requestAnimationFrame(frame);
+}
+
+resetLevelBoard(0);
+messageTimer = 0;
+requestAnimationFrame(frame);
+
+</script>
+  </body>
+</html>
+
