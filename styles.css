@@ -1908,7 +1908,7 @@ button:active,
 
 .timeline {
     position: relative;
-    margin: 1.2rem 0 1.5rem;
+    margin: 2rem 0 1.5rem;
     padding: 0;
     list-style: none;
 }
@@ -1917,15 +1917,19 @@ button:active,
     position: absolute;
     top: 0.5rem;
     bottom: 0.5rem;
-    left: 4px;
-    width: 1px;
+    left: 13px;
+    width: 3px;
     content: "";
-    background: var(--line);
+    border-radius: 2px;
+    background: linear-gradient(180deg, var(--china-red-dark), var(--brown-light) 60%, transparent);
 }
 
 .timeline li {
     position: relative;
-    padding: 0 0 1.5rem 1.5rem;
+    display: grid;
+    grid-template-columns: 7.5rem minmax(0, 1fr);
+    gap: 1.5rem;
+    padding: 0 0 1.6rem 2.8rem;
 }
 
 .timeline li:last-child {
@@ -1934,37 +1938,41 @@ button:active,
 
 .timeline li::before {
     position: absolute;
-    top: 0.45rem;
-    left: 0;
-    width: 9px;
-    height: 9px;
-    border: 2px solid var(--china-red-dark);
+    top: 0.55rem;
+    left: 8px;
+    width: 13px;
+    height: 13px;
+    border: 3px solid var(--china-red-dark);
     content: "";
     background: var(--paper-card-light);
     transform: rotate(45deg);
+    box-shadow: 0 0 0 4px rgba(134, 29, 34, 0.08);
 }
 
 .timeline time {
+    padding-top: 0.2rem;
     color: var(--china-red-dark);
     font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
-    font-size: 0.76rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    font-variant-numeric: tabular-nums;
 }
 
 .timeline h3 {
-    margin: 0.2rem 0 0.35rem;
-    font-size: 1.08rem;
+    margin: 0 0 0.45rem;
+    font-size: clamp(1.15rem, 1.6vw, 1.35rem);
     font-weight: 900;
-    line-height: 1.5;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
 }
 
 .timeline p {
     margin: 0;
     color: var(--ink-secondary);
     font-family: var(--font-sans);
-    font-size: 0.84rem;
-    line-height: 1.7;
+    font-size: clamp(0.88rem, 1.1vw, 0.96rem);
+    line-height: 1.8;
 }
 
 /* Research outcomes */
@@ -2958,6 +2966,34 @@ button:active,
 
     .timeline-board .timeline {
         margin-top: 1rem;
+    }
+
+    .timeline li {
+        grid-template-columns: 1fr;
+        gap: 0.35rem;
+        padding: 0 0 1.3rem 2.2rem;
+    }
+
+    .timeline::before {
+        left: 10px;
+    }
+
+    .timeline li::before {
+        left: 6px;
+        width: 11px;
+        height: 11px;
+    }
+
+    .timeline time {
+        font-size: 0.8rem;
+    }
+
+    .timeline h3 {
+        font-size: 1.05rem;
+    }
+
+    .timeline p {
+        font-size: 0.84rem;
     }
 
     .outcome-ledger a,
