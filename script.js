@@ -314,12 +314,9 @@
         }
     }
 
-    const AI_API = (typeof XINHUO_CONFIG !== "undefined" && XINHUO_CONFIG.AI_API)
-        || "https://api.siliconflow.cn/v1/chat/completions";
-    const AI_KEY = (typeof XINHUO_CONFIG !== "undefined" && XINHUO_CONFIG.AI_KEY)
-        || "";
-    const AI_MODEL = (typeof XINHUO_CONFIG !== "undefined" && XINHUO_CONFIG.AI_MODEL)
-        || "Qwen/Qwen3-8B";
+    const AI_API = "https://api.siliconflow.cn/v1/chat/completions";
+    const AI_KEY = "sk-sshxuaczighzniwxvgltwmybtvcxiimrkticycnnfafuugmz";
+    const AI_MODEL = "Qwen/Qwen3-8B";
 
     const AI_SYSTEM_PROMPT = [
         "你是「信火追源」项目的数字讲解员，专注于井冈山斗争（1927-1930）与长征（1934-1936）时期的革命历史研究。",
