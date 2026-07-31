@@ -462,7 +462,7 @@ button:focus-visible {
     display: block;
     margin-top: 0.25rem;
     color: var(--ink);
-    font-size: 1rem;
+    font-size: 0.88rem;
     font-weight: 900;
 }
 
@@ -470,19 +470,19 @@ button:focus-visible {
     max-width: 50rem;
     margin: 0;
     color: var(--ink);
-    font-size: clamp(2.4rem, 4.2vw, 4.6rem);
+    font-size: clamp(1.6rem, 2.6vw, 2.4rem);
     font-weight: 900;
-    letter-spacing: -0.05em;
-    line-height: 1.15;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
     text-wrap: balance;
 }
 
 .section-heading > p {
     max-width: 48rem;
-    margin: 1rem 0 0;
+    margin: 0.7rem 0 0;
     color: var(--ink-soft);
-    font-size: 1rem;
-    line-height: 1.9;
+    font-size: 0.92rem;
+    line-height: 1.8;
 }
 
 .feature-grid {
