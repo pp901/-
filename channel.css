@@ -977,6 +977,17 @@ button:focus-visible {
     gap: 0.3rem;
 }
 
+.media-num {
+    justify-self: start;
+    border: 1px solid var(--accent);
+    padding: 0.1rem 0.5rem;
+    color: var(--accent-deep);
+    font-family: var(--sans);
+    font-size: 0.66rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+}
+
 .media-body strong {
     font-size: 1.12rem;
     font-weight: 900;
