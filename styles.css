@@ -4133,7 +4133,7 @@ button:active,
 }
 
 /* --- Final homepage route treatment --- */
-/* Desktop itinerary: two-row serpentine route inspired by the supplied reference. */
+/* Desktop itinerary: two-row serpentine route. */
 #schedule .timeline-collapse,
 #schedule .timeline-collapse.is-expanded {
     max-height: none;
@@ -4155,19 +4155,7 @@ button:active,
 }
 
 #schedule .timeline::before {
-    position: absolute;
-    z-index: 0;
-    top: 1.55rem;
-    right: calc(12.5% + 1.15rem);
-    left: calc(12.5% + 1.15rem);
-    display: block;
-    height: 15.6rem;
-    border-top: 2px solid rgba(134, 29, 34, 0.35);
-    border-right: 2px solid rgba(134, 29, 34, 0.35);
-    border-bottom: 2px solid rgba(134, 29, 34, 0.35);
-    border-radius: 0 3rem 3rem 0;
-    content: "";
-    background: none;
+    display: none;
 }
 
 #schedule .timeline li {
@@ -4216,15 +4204,7 @@ button:active,
 }
 
 #schedule .timeline li::after {
-    position: absolute;
-    z-index: 0;
-    top: 2.3rem;
-    left: 50%;
-    width: 1px;
-    height: 1.65rem;
-    border-left: 2px dashed rgba(134, 29, 34, 0.42);
-    content: "";
-    transform: translateX(-50%);
+    display: none;
 }
 
 #schedule .timeline time {
@@ -4276,7 +4256,46 @@ button:active,
     text-wrap: pretty;
 }
 
+/* Directional arrows between cards — serpentine: 1→2→3→4↓5←6←7←8 */
 #schedule .timeline .tl-arrow {
+    position: absolute;
+    z-index: 4;
+    top: 50%;
+    right: -1rem;
+    display: block;
+    width: auto;
+    height: auto;
+    color: var(--china-red-dark);
+    background: none;
+    font-family: var(--font-sans);
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 1;
+    opacity: 0.45;
+    transform: translateY(-55%);
+}
+
+#schedule .timeline .tl-arrow::after {
+    display: none;
+}
+
+/* Card 4: arrow points down to row 2 */
+#schedule .timeline li:nth-child(4) .tl-arrow {
+    top: auto;
+    bottom: -1.1rem;
+    right: 50%;
+    transform: translateX(50%) rotate(90deg);
+}
+
+/* Cards 5-7: arrow points left (row 2, reverse direction) */
+#schedule .timeline li:nth-child(n+5):not(:nth-child(n+8)) .tl-arrow {
+    right: auto;
+    left: -1rem;
+    transform: translateY(-55%) rotate(180deg);
+}
+
+#schedule .timeline li:last-child .tl-arrow {
     display: none;
 }
 
@@ -4333,7 +4352,7 @@ button:active,
     }
 
     #schedule .timeline::before {
-        height: 16.6rem;
+        display: none;
     }
 
     #schedule .timeline li {
@@ -4383,15 +4402,7 @@ button:active,
     }
 
     #schedule .timeline::before {
-        top: 0.8rem;
-        right: auto;
-        bottom: 1.3rem;
-        left: 1.05rem;
-        width: 2px;
-        height: auto;
-        border: 0;
-        border-radius: 0;
-        background: linear-gradient(180deg, var(--china-red-dark), var(--brown-light));
+        display: none;
     }
 
     #schedule .timeline li,
