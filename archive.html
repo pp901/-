@@ -4,15 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#8b2024">
-    <meta name="description" content="墙上星火——汇集井冈山精神与长征红色标语的数字档案。">
+    <meta name="description" content="墙上星火——汇集井冈山与长征红色标语的数字档案。">
     <meta property="og:title" content="墙上星火 · 红色标语数字档案">
     <meta property="og:image" content="assets/team-emblem.png">
     <title>墙上星火 · 红色标语数字档案</title>
-    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="assets/favicon.ico" sizes="32x32">
+    <link rel="apple-touch-icon" href="assets/favicon-180.png">
     <link rel="preload" href="assets/team-emblem-mark.webp" as="image" type="image/webp" fetchpriority="high">
     <link rel="stylesheet" href="channel.css">
     <link rel="stylesheet" href="archive.css">
     <link rel="stylesheet" href="page-transitions.css">
+    <link rel="stylesheet" href="counter.css">
 </head>
 <body class="page-archive">
     <a class="skip-link" href="#archiveSearch">跳到标语搜索</a>
@@ -43,7 +45,7 @@
                     <p class="channel-kicker">01 / SLOGAN ARCHIVE</p>
                     <h1 class="channel-title">墙上星火</h1>
                     <p class="channel-subtitle">红色标语数字档案</p>
-                    <p class="channel-lead">从井冈山精神到伟大长征，沿着墙壁、传单与口号留下的文字，查看革命主张如何被表达、传播并转化为行动。</p>
+                    <p class="channel-lead">从井冈山到伟大长征，沿着墙壁、传单与口号留下的文字，查看革命主张如何被表达、传播并转化为行动。</p>
                     <nav class="hero-jump-links" aria-label="本页目录">
                         <a href="#archiveSearch">搜索标语</a>
                         <a href="#statistics">量化统计</a>
@@ -52,7 +54,7 @@
                     </nav>
                 </div>
                 <a class="slogan-monument reveal" href="#slogan-jg-0031" aria-label="查看标语：革命成功万岁">
-                    <span>馆藏标语 / 井冈山精神</span>
+                    <span>馆藏标语 / 井冈山</span>
                     <blockquote><p>革命成功<br>万岁</p></blockquote>
                     <cite><b>政治动员</b><i>莲花县</i><em>查看档案 ↗</em></cite>
                 </a>
@@ -85,7 +87,7 @@
                 <header class="section-intro reveal">
                     <div class="section-marker"><span>01 / STATS</span><strong>量化统计</strong></div>
                     <div class="section-heading">
-                        <h2 id="statisticsTitle">井冈山精神 · 长征</h2>
+                        <h2 id="statisticsTitle">井冈山 · 长征</h2>
                         <p>从时期占比、主题规模与线索密度三个维度，观察两类标语的内容结构。</p>
                     </div>
                 </header>
@@ -120,7 +122,7 @@
                     <div class="section-marker"><span>03 / LEDGER</span><strong>标语目录</strong></div>
                     <div class="section-heading">
                         <h2 id="catalogTitle">全部标语</h2>
-                        <p>左侧井冈山精神，右侧长征标语；点击任一条目查看完整档案信息。</p>
+                        <p>左侧井冈山，右侧长征标语；点击任一条目查看完整档案信息。</p>
                     </div>
                 </header>
 
@@ -133,7 +135,7 @@
                     <div class="catalog-col" id="catalogColJinggang">
                         <div class="col-head jinggang-head">
                             <span class="col-badge">井</span>
-                            <strong>井冈山精神</strong>
+                            <strong>井冈山</strong>
                         </div>
                         <div class="record-list" id="archiveRecordListJG" aria-live="polite"></div>
                     </div>
@@ -200,5 +202,6 @@
     <script src="navigation.js"></script>
     <script src="channel.js"></script>
     <script src="archive.js"></script>
+    <script src="counter.js"></script>
 </body>
 </html>

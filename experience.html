@@ -6,10 +6,12 @@
     <meta name="theme-color" content="#31536a">
     <meta name="description" content="星火沉浸——通过策略互动游戏、标语闯关、拼图修复、地图与人物图鉴体验井冈山革命标语。">
     <title>星火沉浸 · 标语互动与数字体验</title>
-    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="assets/favicon.ico" sizes="32x32">
+    <link rel="apple-touch-icon" href="assets/favicon-180.png">
     <link rel="preload" href="assets/team-emblem-mark.webp" as="image" type="image/webp" fetchpriority="high">
     <link rel="stylesheet" href="channel.css">
     <link rel="stylesheet" href="page-transitions.css">
+    <link rel="stylesheet" href="counter.css">
 </head>
 <body class="page-experience">
     <a class="skip-link" href="#mainContent">跳到栏目内容</a>
@@ -44,19 +46,26 @@
             <div class="channel-container">
                 <header class="section-intro reveal">
                     <div class="section-marker"><span>01 / PROJECTS</span><strong>互动项目</strong></div>
-                    <div class="section-heading"><h2>四种体验，连接策略、文字、空间与人物</h2><p>当前先搭建项目入口和说明，后续可逐个接入真正的游戏页面、关卡数据和数字资源。</p></div>
+                    <div class="section-heading"><h2>四种体验，连接策略、文字、空间与人物</h2><p>当前已上线《井冈山保卫战》策略互动游戏，后续将逐步接入标语闯关、拼图修复和人物图鉴等项目。</p></div>
                 </header>
-                <div class="feature-grid">
-                    <a class="feature-card reveal" href="game-defense.html" style="grid-column:span 6;">
-                        <span class="card-index">GAME / 01 · 可游玩</span>
-                        <img src="assets/game-cover.svg" alt="井冈山保卫战" style="width:100%;height:auto;aspect-ratio:800/500;object-fit:cover;border:1px solid var(--line);margin-bottom:1rem;">
-                        <h3>《井冈山保卫战》策略互动</h3>
-                        <p>部署红军战士、赤卫队员、苏区群众等单位，在黄洋界、竹海、山口等 10 道关卡中抵御敌军进攻。群众推车、医疗支援、号兵鼓舞——军民一体的人民防线。</p>
-                        <ul><li>10 道历史关卡</li><li>7 种作战单位逐步解锁</li><li>预计体验 15—25 分钟</li></ul>
+
+                <div class="game-hero-card reveal">
+                    <a class="game-hero-link" href="game-defense.html">
+                        <img src="assets/game-cover.svg" alt="井冈山保卫战" class="game-cover-img">
+                        <div class="game-hero-body">
+                            <span class="card-index">GAME / 01 · 可游玩</span>
+                            <h3>《井冈山保卫战》策略互动</h3>
+                            <p>部署红军战士、赤卫队员、苏区群众等单位，在黄洋界、竹海、山口等 10 道关卡中抵御敌军进攻。群众推车、医疗支援、号兵鼓舞——军民一体的人民防线。</p>
+                            <ul><li>10 道历史关卡</li><li>7 种作战单位逐步解锁</li><li>预计体验 15—25 分钟</li></ul>
+                            <span class="game-play-btn">进入游戏 →</span>
+                        </div>
                     </a>
-                    <article class="feature-card reveal"><span class="card-index">CHALLENGE / 02</span><h3>标语闯关与时期判断</h3><p>根据文字主题、传播对象和历史语境判断标语所属时期，再查看依据与关联档案。</p></article>
-                    <article class="feature-card reveal"><span class="card-index">RESTORE / 03</span><h3>标语拼图与数字修复</h3><p>从模糊、缺损的墙面影像中拼合文字，体验档案修复前的观察、辨识与记录过程。</p></article>
-                    <article class="feature-card reveal"><span class="card-index">ATLAS / 04</span><h3>地图、情境与人物图鉴</h3><p>按地点进入历史场景，查看代表人物、相关事件、标语档案与团队寻访记录。</p></article>
+                </div>
+
+                <div class="feature-grid feature-grid-3col reveal">
+                    <article class="feature-card"><span class="card-index">CHALLENGE / 02</span><h3>标语闯关与时期判断</h3><p>根据文字主题、传播对象和历史语境判断标语所属时期，再查看依据与关联档案。</p><p class="feature-status">即将上线</p></article>
+                    <article class="feature-card"><span class="card-index">RESTORE / 03</span><h3>标语拼图与数字修复</h3><p>从模糊、缺损的墙面影像中拼合文字，体验档案修复前的观察、辨识与记录过程。</p><p class="feature-status">即将上线</p></article>
+                    <article class="feature-card"><span class="card-index">ATLAS / 04</span><h3>地图、情境与人物图鉴</h3><p>按地点进入历史场景，查看代表人物、相关事件、标语档案与团队寻访记录。</p><p class="feature-status">即将上线</p></article>
                 </div>
             </div>
         </section>
@@ -108,5 +117,6 @@
 
     <script src="navigation.js"></script>
     <script src="channel.js"></script>
+    <script src="counter.js"></script>
 </body>
 </html>
