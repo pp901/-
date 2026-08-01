@@ -3737,7 +3737,7 @@ button:active,
     }
 
     .hero-copy {
-        padding: 0 0 1.6rem;
+        padding: 0 0 0.6rem;
         text-align: left;
     }
 
@@ -3748,19 +3748,21 @@ button:active,
     }
 
     .title-brush {
-        margin: 0.45rem 0 0.95rem 24%;
+        margin: 0.35rem 0 0.55rem 24%;
     }
 
     .hero-subtitle {
         max-width: 21em;
         padding: 0;
         font-size: 1rem;
+        line-height: 1.5;
         text-align: left;
         text-wrap: balance;
     }
 
     .hero-quote {
-        margin-top: 1.25rem;
+        margin-top: 0.5rem;
+        padding-top: 0.35rem;
         text-align: left;
     }
 
