@@ -619,6 +619,10 @@ a:focus-visible {
         padding: 0.72rem 0.65rem;
     }
 
+    .intro-meta a:first-child {
+        padding-left: 0.65rem;
+    }
+
     .intro-meta a:nth-child(2n) {
         border-right: 0;
     }
