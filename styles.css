@@ -4453,6 +4453,17 @@ button:active,
     }
 
     #schedule .timeline li::after {
+        position: absolute;
+        z-index: 0;
+        top: 1.3rem;
+        left: -1.48rem;
+        width: 1px;
+        height: calc(100% - 0.5rem);
+        border-left: 2px dashed rgba(134, 29, 34, 0.42);
+        content: "";
+    }
+
+    #schedule .timeline li:last-child::after {
         display: none;
     }
 
